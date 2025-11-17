@@ -1,0 +1,4 @@
+<button class="button" [style]="`background-color: ${selectedColor}; color: ${fontColor};`" (click)="action()">
+    <ng-template #iconHost></ng-template>
+    <p *ngIf="label">{{label}}</p>
+</button>

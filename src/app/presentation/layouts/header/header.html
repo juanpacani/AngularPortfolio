@@ -1,0 +1,16 @@
+<section class="header">
+    <!-- Theme buttons -->
+    <div class="appareanceFixed">
+        <ui-button [styles]="[{q: 'border-top-left-radius:', v: '0px;'}, {q: 'border-top-right-radius:', v: '0px;'}]" 
+            severity="contrast" [label]="DownloadCV"></ui-button>
+        <ui-button [styles]="[{q: 'border-top-left-radius:', v: '0px;'}, {q: 'border-top-right-radius:', v: '0px;'}]" 
+            severity="contrast" [label]="Docs"></ui-button>
+        <ui-button [styles]="[{q: 'border-top-left-radius:', v: '0px;'}, {q: 'border-top-right-radius:', v: '0px;'}]"
+            severity="contrast" (onClick)="toggleTheme()" icon="icon-sun"></ui-button>
+
+        <ui-input-color [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></ui-input-color>
+        <ui-select type="text" [options]="langOptions" [(ngModel)]="lang"
+            [styles]="[{q: 'border-top-right-radius', v: '0'}, {q: 'border-top-left-radius', v: '0'}, {q: 'width', v: '3em'}, {q: 'height', v: '2.3em'}]"
+            (selected)="toggleLanguage($event)" transform="translateX(0) translateY(10%)"></ui-select>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<style>
+    /* .uiSelectInput {
+        /* position: absolute;
+    } */
+
+    .options {
+        /* position: absolute; */
+        left: 50%;
+        top: 50%;
+        background-color: var(--contrast-neutral-color-0);
+        z-index: 1000;
+        border-radius: 8px;
+    }
+
+    .options div {
+        background-color: transparent;
+        min-height: 1em;
+        padding-top: 0.5em;
+        padding-left: .5em;
+        padding-right: .8em;
+        color: var(--contrast-neutral-color-9);
+        box-sizing: border-box;
+    }
+
+    .options div:hover {
+        background-color: var(--contrast-neutral-color-1);
+    }
+</style>
+
+<div style="position: relative; display: inline-block;">
+    <input #input class="uiSelectInput" id="ui-select" uiInputText [type]="type" style="min-width: 2em;" (focus)="active = true" (blur)="onTouched()" [readonly]="true"
+        [value]="value" [placeholder]="placeholder">
+
+    <section class="options" *ngIf="active" [style]="'transform:' + transform">
+        <div *ngFor="let option of options" (mousedown)="choseValue(option)" [style]="'width: ' + inputWidth + 'px; height: ' + inputHeight + 'px;'">
+            {{ option }}
+        </div>
+    </section>
+</div>

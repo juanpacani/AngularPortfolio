@@ -1,0 +1,26 @@
+    .button {
+        min-height: 3em;
+        min-width: 3em;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: .25em;
+        padding-bottom: .25em;
+        border-radius: 8px;
+        border: 0;
+        box-shadow: 0 .3em .3em black;
+        display: flex;
+        align-items: center;
+        gap: .5em;
+    }
+
+    .button:hover {
+        opacity: 70%;
+    }
+
+    .button:active {
+        opacity: 50%;
+    }
+
+    .button p {
+        font-size: 1.2em;
+    }

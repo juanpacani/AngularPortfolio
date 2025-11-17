@@ -1,0 +1,14 @@
+<style>
+    .inputColor {
+        opacity: 0%;
+        width: 2.5em;
+        height: 2.5em;
+        top: 0;
+        left: 0;
+    }
+</style>
+<!-- input-color.html -->
+<div style="position: relative;">
+    <input type="color" class="inputColor" [value]="value" (input)="onInput($event)" (blur)="onTouched()">
+    <icon-palette style="position: absolute; top: 0; left: 0; pointer-events: none;"></icon-palette>
+</div>

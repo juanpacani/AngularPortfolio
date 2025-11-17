@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@use './app/desing_system/utilities/styles/_colors.scss' as *;
+@use './app/desing_system/components/directives/inputs/directive-styles.scss' as *;
+
+body {
+    background-color: var(--element-color-4);
+    color: var(--contrast-neutral-color-9);
+    padding: 0;
+    margin: 0;
+}
+p {
+    margin: 0;
+}

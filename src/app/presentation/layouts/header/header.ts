@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import languages from './header.language.json';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { Select } from '../../../desing_system/components/attoms/ui/select/select';
+import { UiSelect } from '../../../desing_system/components/attoms/ui/select/select';
 import { InputColor } from '../../../desing_system/components/attoms/ui/input-color/input-color';
 import { Translate } from '../../../desing_system/utilities/services/translate/translate';
 import { Theming } from '../../../desing_system/utilities/services/theming/theming';
@@ -10,7 +10,7 @@ import { uiButton } from '../../../desing_system/components/attoms/ui/button/but
 
 @Component({
   selector: 'app-header',
-  imports: [FormsModule, uiButton, Select, InputColor],
+  imports: [FormsModule, uiButton, UiSelect, InputColor],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })

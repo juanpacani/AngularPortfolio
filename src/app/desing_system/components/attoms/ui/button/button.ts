@@ -19,8 +19,6 @@ export class uiButton implements OnInit {
 
   @Output() onClick = new EventEmitter<void>();
 
-  selectedColor: string = 'var(--primary-color-9)';
-  fontColor: string = 'var(--neutral-color-9)';
   iconColor: string = 'var(--contrast-neutral-color-1)';
 
   constructor(private iconMapping: IconMapping,
@@ -34,37 +32,49 @@ export class uiButton implements OnInit {
 
   //Life Cicle Events
   ngOnInit(): void {
+    var backgroundColor: string = 'var(--primary-color-9)';
+    var fontColor: string = 'var(--neutral-color-9)';
+
+
     switch (this.severity) {
+      
       case 'secondary':
-        this.selectedColor = 'var(--neutral-color-8)';
-        this.fontColor = 'var(--neutral-color-0)';
+        backgroundColor = 'var(--neutral-color-8)';
+        fontColor = 'var(--neutral-color-0)';
         this.iconColor = 'var(--contrast-neutral-color-9)';
-
         break;
+
       case 'succes':
-        this.selectedColor = 'green';
+        backgroundColor = 'green';
         break;
-      case 'info':
-        this.selectedColor = 'blue';
-        break;
-      case 'warn':
-        this.selectedColor = 'orange';
-        break;
-      case 'help':
-        this.selectedColor = 'violet';
-        break;
-      case 'danger':
-        this.selectedColor = 'red';
-        break;
-      case 'contrast':
-        this.selectedColor = 'var(--neutral-color-0)';
-        // this.fontColor = 'var(--contrast-neutral-color-1)';
-        this.iconColor = 'var(--contrast-neutral-color-1)';
 
+      case 'info':
+        backgroundColor = 'blue';
         break;
+
+      case 'warn':
+        backgroundColor = 'orange';
+        break;
+
+      case 'help':
+        backgroundColor = 'violet';
+        break;
+
+      case 'danger':
+        backgroundColor = 'red';
+        break;
+
+      case 'contrast':
+        backgroundColor = 'var(--neutral-color-0)';
+        fontColor = 'var(--contrast-neutral-color-1)';
+        this.iconColor = 'var(--contrast-neutral-color-1)';
+        break;
+
       default:
-        this.selectedColor = 'var(--primary-color-9)'
+        backgroundColor = 'var(--primary-color-9)'
     };
+
+    this.styles.push({ q: 'background-color:', v: backgroundColor + ';' }, { q: 'color:', v: fontColor + ';' });
     this.overrideStyles();
   };
 
@@ -89,18 +99,17 @@ export class uiButton implements OnInit {
   };
 
   overrideStyles() {
-    const button = this.el.nativeElement.querySelector('.button');
-    let styles: string ='';
+    const button = this.el.nativeElement.querySelector('.ui-button');
+    let styles: string = '';
     if (!button) return;
     this.styles.forEach(e => {
-      //const qualifiedName = this.stylesMapping.getStyle(e.qualifiedName);
       styles = styles + e.q + ' ' + e.v;
       if (e.q === 'flex-direction' && e.v === 'column' || 'column-reverse') {
         styles + 'padding-top: 1em; padding-bottom: 0.5em;';
       };
-    });    
+    });
     this.renderer.setAttribute(button, 'style', styles);
-    
+
   };
 
 };

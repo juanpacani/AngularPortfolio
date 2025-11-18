@@ -2,19 +2,21 @@ import { Component, ElementRef, EventEmitter, forwardRef, HostListener, input, I
 import { NgFor, NgIf, } from "@angular/common";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputText } from '../../../directives/inputs/input-text';
+import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
+import { UiStyleRule } from '../../../../data/ui-constants';
 
 @Component({
   selector: 'ui-select',
   imports: [InputText, NgIf, NgFor, FormsModule],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => Select),
+    useExisting: forwardRef(() => UiSelect),
     multi: true
   }],
   templateUrl: './select.html',
   styleUrl: './select.scss'
 })
-export class Select implements ControlValueAccessor {
+export class UiSelect implements ControlValueAccessor {
   @ViewChild('input') inputEl!: ElementRef<HTMLInputElement>;
   @HostListener('document:click', ['$event'])
   outerClick(event: Event) {
@@ -25,7 +27,7 @@ export class Select implements ControlValueAccessor {
   
   @Input() transform?: string;
   @Input() options?: string[];
-  @Input() styles: { q: string, v: string }[] = [];
+  @Input() styles: UiStyleRule[] = [];
   @Input() placeholder?: string;
    
   @Input() type:
@@ -43,7 +45,9 @@ export class Select implements ControlValueAccessor {
   inputWidth: number = 0;
   inputHeight: number = 0;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) { }
+  constructor(private renderer: Renderer2, private el: ElementRef,
+    private styleMapping: UiStyleMapping,
+  ) { }
   
   ngAfterViewChecked() {
     this.overrideStyles();
@@ -77,11 +81,6 @@ export class Select implements ControlValueAccessor {
   overrideStyles() {
     const input = this.inputEl.nativeElement;
     
-    if (!input) return;
-    this.styles.forEach(e => {
-      //console.log(e.q, e.v);
-      
-      this.renderer.setStyle(input, e.q, e.v);
-    });
+    this.styleMapping.overrideStyles(this.renderer, this.styles, input);
   };
 }

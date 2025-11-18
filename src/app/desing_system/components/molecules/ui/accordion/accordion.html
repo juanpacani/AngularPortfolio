@@ -26,9 +26,9 @@
     }
 </style>
 <section class="accordion">
-    <ui-button (onClick)="activeSwitch()" label="+" severity="secondary"
+    <ui-button (onClick)="updateAccordionGroupStatus()" [label]="label" severity="secondary"
         [styles]="[{q: 'width:',v: '100%;'}]"></ui-button>
-    <div class="accordion-content-unactive">
-        <ng-content *ngIf="switch"></ng-content>
+    <div [ngClass]="status ? 'accordion-content-active': 'accordion-content-unactive'">
+        <ng-content *ngIf="status"></ng-content>
     </div>
 </section>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconsConstants } from '../icons-constants';
 
 @Component({
   selector: 'icon-sun',
@@ -15,6 +16,7 @@ style="height: 2.2em; "
   `,
   styles: ``
 })
-export class Sun {
-  @Input() color: string = 'var(--contrast-neutral-color-1)';
+export class Sun extends IconsConstants{
+  override color: string = 'var(--contrast-neutral-color-9)';
+  //@Input() color: string = 'var(--contrast-neutral-color-1)';
 }

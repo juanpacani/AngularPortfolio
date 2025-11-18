@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconsConstants } from '../icons-constants';
 
 @Component({
   selector: 'icon-palette',
@@ -21,6 +22,7 @@ import { Component, Input } from '@angular/core';
   `,
   styles: ``
 })
-export class Palette {
-  @Input() color: string = 'var(--contrast-neutral-color-9)';
+export class Palette extends IconsConstants{
+  override color: string = 'var(--contrast-neutral-color-9)';
+  //@Input() color: string = 'var(--contrast-neutral-color-9)';
 }

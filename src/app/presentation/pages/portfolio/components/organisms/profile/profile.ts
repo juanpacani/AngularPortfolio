@@ -16,12 +16,13 @@ import { ProfileKnowledge } from './molecules/profile-knowledge/profile-knowledg
   styles: `
   .container {
     width: 100%;
-    height: 100%;
+    //height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1em;
+    margin-bottom: 1em;
   }
   `
 })

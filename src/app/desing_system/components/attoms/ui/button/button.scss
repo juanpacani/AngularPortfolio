@@ -1,4 +1,4 @@
-    .button {
+    .ui-button {
         min-height: 3em;
         min-width: 3em;
         padding-left: 1em;
@@ -13,14 +13,14 @@
         gap: .5em;
     }
 
-    .button:hover {
+    .ui-button:hover {
         opacity: 70%;
     }
 
-    .button:active {
+    .ui-button:active {
         opacity: 50%;
     }
 
-    .button p {
+    .ui-button p {
         font-size: 1.2em;
     }

@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { uiAccordion } from '../../../../../../desing_system/components/molecules/ui/accordion/accordion';
+import { UiAccordion } from '../../../../../../desing_system/components/molecules/ui/accordion/accordion';
+import { UiAccordionGroup } from '../../../../../../desing_system/components/organisms/accordion-group/accordion-group';
 
 @Component({
   selector: 'app-curriculum',
-  imports: [uiAccordion],
+  imports: [UiAccordion, UiAccordionGroup],
   template: `
   <section style="width: 100%; height: 100%;">
-    <ui-accordion [styles]="[{q: 'width:', v: '5em;'}]"><p>PUTO</p></ui-accordion>
+    <ui-accordion-group>
+      <ui-accordion label="Summary" [accordionId]="'1'" [styles]="[{q: 'width:', v: '30%;'}]"><p>1</p></ui-accordion>
+      <ui-accordion label="Education" [accordionId]="'2'" [styles]="[{q: 'width:', v: '30%;'}]"><p>2</p></ui-accordion>
+      <ui-accordion label="Experience" [accordionId]="'3'" [styles]="[{q: 'width:', v: '30%;'}]"><p>3</p></ui-accordion>
+    </ui-accordion-group>
   </section>
   `,
   styles: ``

@@ -1,18 +1,17 @@
-import { Component, Inject, OnInit, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgFor, NgIf, UpperCasePipe } from "@angular/common";
-import { InputText } from "./desing_system/components/directives/inputs/input-text";
+import { Component, signal } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { Subscription } from 'rxjs';
-import { RouterOutlet } from '@angular/router';
-import { UiDrag } from './desing_system/utilities/directives/drag/ui-drag';
+import { Header } from './presentation/layouts/header/header';
+import { Body } from './presentation/layouts/body/body';
 import { Theming } from './desing_system/utilities/services/theming/theming';
+
+import { UiDrag } from './desing_system/utilities/directives/drag/ui-drag';
 import { Dialog } from './desing_system/components/attoms/ui/dialog/dialog';
 import { uiButton } from './desing_system/components/attoms/ui/button/button';
-import { Header } from './presentation/layouts/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, CommonModule, RouterOutlet, Dialog, NgIf, uiButton, UiDrag],//, InputText],
+  imports: [Header, CommonModule, Body],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

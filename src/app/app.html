@@ -1,16 +1,27 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<app-body></app-body>
+
+
+<!-- 
+DRAGABLE AND DIALOG TEST
+
 <ui-dialog *ngIf="visible" (closs)="clossOverlay()"
 [styles]="[{q: 'justify-content', v: 'baseline'}]">
   <ui-button *ngFor="let i of [0,0,0,0,0,0,0,0]"></ui-button>
 </ui-dialog>
-<ui-button (onClick)="openOverlay()" uiDrag></ui-button>
-<!-- Palettes -->
-<!-- <section class="palette" *ngFor="let palette of allPalettes; let i = index; trackBy: trackByPalette">
+<ui-button (onClick)="openOverlay()" uiDrag></ui-button> 
+-->
+
+
+<!-- PALETTE TEST
+
+<section class="palette" *ngFor="let palette of allPalettes; let i = index; trackBy: trackByPalette">
   <div *ngFor="let color of palette; let i = index; trackBy: trackByColor" [style.background-color]="color"></div>
   <div *ngIf="(i +1) % 2 === 0" class="br"></div>
 </section> -->
 
 
-<!-- Test -->
-<!-- <input uiInputText type="text" placeholder="Hola Guapos"> -->
+<!-- uiInputText DIRECTIVE AND PLACEHOLDER TEST 
+
+<input uiInputText type="text" placeholder="Hola Guapos"> 
+-->

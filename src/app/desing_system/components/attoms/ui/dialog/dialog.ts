@@ -1,5 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2, ViewChild, } from '@angular/core';
 import { UiDrag } from '../../../../utilities/directives/drag/ui-drag';
+import { UiStyleRule } from '../../../../data/ui-constants';
+import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
 
 @Component({
   selector: 'ui-dialog',
@@ -10,13 +12,16 @@ import { UiDrag } from '../../../../utilities/directives/drag/ui-drag';
 export class Dialog {
   @ViewChild('uiDialogDiv') divEl!: ElementRef<HTMLInputElement>;
   @Output() closs = new EventEmitter<boolean>();
-  @Input() styles: { q: string, v: string }[] = [];
+  @Input() styles: UiStyleRule[] = [];
   @HostListener('window:keydown.escape', ['$event'])
   handleKeyDown(event: Event) {
     this.clossOverlay();
   }
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private styleMapping: UiStyleMapping,
+    private renderer: Renderer2
+  ) { }
 
   ngAfterViewChecked() {
     this.overrideStyles();
@@ -29,9 +34,6 @@ export class Dialog {
   overrideStyles() {
     const div = this.divEl.nativeElement;
     if (!div) return;
-    this.styles.forEach(e => {
-      this.renderer.setStyle(div, e.q, e.v);
-    });
-
+    this.styleMapping.overrideStyles(this.renderer, this.styles, div);
   };
 }

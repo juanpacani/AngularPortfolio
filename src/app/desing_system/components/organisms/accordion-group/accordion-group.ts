@@ -1,6 +1,8 @@
-import { AfterContentInit, Component, ContentChildren, Input, OnDestroy, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, ElementRef, Input, OnDestroy, QueryList, Renderer2 } from '@angular/core';
 import { UiAccordion } from '../../molecules/ui/accordion/accordion';
 import { Subscription } from 'rxjs';
+import { UiStyleMapping } from '../../../utilities/services/stylesMapping/style-mapping';
+import { UiStyleRule } from '../../../data/ui-constants';
 
 @Component({
   selector: 'ui-accordion-group',
@@ -11,12 +13,19 @@ import { Subscription } from 'rxjs';
 export class UiAccordionGroup implements AfterContentInit, OnDestroy {
 
   @Input() singleExpand: boolean = true;
+  @Input() styles: UiStyleRule[] = [];
 
   @ContentChildren(UiAccordion) accordions!: QueryList<UiAccordion>;
 
   accordionActiveId?: String;
 
   sub?: Subscription | null;
+
+  constructor(
+    private styleMapping: UiStyleMapping,
+    private el: ElementRef,
+    private renderer: Renderer2,
+  ){}
 
   ngAfterContentInit(): void {
     if (this.singleExpand) {
@@ -43,5 +52,12 @@ export class UiAccordionGroup implements AfterContentInit, OnDestroy {
       this.accordionActiveId = id; 
     }
   }
+
+  overrideStyles() {
+    const section: any = this.el.nativeElement.querySelector('section');
+    if (!section) return;
+    
+    this.styleMapping.overrideStyles(this.renderer, this.styles, section);
+  };
 }
 

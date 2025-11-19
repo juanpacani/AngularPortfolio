@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { uiButton } from '../../../attoms/ui/button/button';
 import { NgIf, NgClass } from "@angular/common";
 import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
+import { UiStyleRule } from '../../../../data/ui-constants';
 
 @Component({
   selector: 'ui-accordion',
@@ -10,7 +11,7 @@ import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/sty
   styleUrl: './accordion.scss'
 })
 export class UiAccordion implements OnInit{
-  @Input() styles: { q: string, v: string }[] = [];
+  @Input() styles: UiStyleRule[] = [];
   @Input() accordionId?: string;
   @Input() status: boolean = false;//false = unactive
   @Input() label: string = 'Accordion Name';
@@ -34,14 +35,8 @@ export class UiAccordion implements OnInit{
 
   overrideStyles() {
     const section: any = this.el.nativeElement.querySelector('section');
-    this.styleMapping.overrideStyles(this.renderer, this.styles, section);
-    /*let styles: string = '';
     if (!section) return;
-    this.styles.forEach(e => {
-      styles = styles + e.q + ' ' + e.v;
-    });
-    this.renderer.setAttribute(section, 'style', styles);*/
-
-
+    
+    this.styleMapping.overrideStyles(this.renderer, this.styles, section);
   };
 }

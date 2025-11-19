@@ -8,9 +8,9 @@ import { UiAccordionGroup } from '../../../../../../desing_system/components/org
   template: `
   <section style="width: 100%; height: 100%;">
     <ui-accordion-group>
-      <ui-accordion label="Summary" [accordionId]="'1'" [styles]="[{q: 'width:', v: '30%;'}]"><p>1</p></ui-accordion>
-      <ui-accordion label="Education" [accordionId]="'2'" [styles]="[{q: 'width:', v: '30%;'}]"><p>2</p></ui-accordion>
-      <ui-accordion label="Experience" [accordionId]="'3'" [styles]="[{q: 'width:', v: '30%;'}]"><p>3</p></ui-accordion>
+      <ui-accordion label="Summary" [accordionId]="'1'" [styles]="[{p: 'width', v: '30%'}]"><p>1</p></ui-accordion>
+      <ui-accordion label="Education" [accordionId]="'2'" [styles]="[{p: 'width', v: '30%'}]"><p>2</p></ui-accordion>
+      <ui-accordion label="Experience" [accordionId]="'3'" [styles]="[{p: 'width', v: '30%'}]"><p>3</p></ui-accordion>
     </ui-accordion-group>
   </section>
   `,

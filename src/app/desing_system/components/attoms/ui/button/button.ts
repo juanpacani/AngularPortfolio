@@ -1,6 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgComponentOutlet, NgIf } from "@angular/common";
 import { IconMapping } from '../../../../utilities/services/iconMapping/icon-mapping';
+import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
+import { UiStyleRule } from '../../../../data/ui-constants';
 
 
 @Component({
@@ -15,14 +17,17 @@ export class uiButton implements OnInit {
   @Input() icon?: string;
   @Input() label?: string;
   @Input() severity: 'primary' | 'secondary' | 'succes' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' = 'primary';
-  @Input() styles: { q: string, v: string }[] = [];
+  @Input() styles: UiStyleRule[] = [];
 
   @Output() onClick = new EventEmitter<void>();
 
   iconColor: string = 'var(--contrast-neutral-color-1)';
 
-  constructor(private iconMapping: IconMapping,
-    private renderer: Renderer2, private el: ElementRef
+  constructor(
+    private styleMapping: UiStyleMapping,
+    private iconMapping: IconMapping,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) { }
 
   //Event Emitter
@@ -35,46 +40,37 @@ export class uiButton implements OnInit {
     var backgroundColor: string = 'var(--primary-color-9)';
     var fontColor: string = 'var(--neutral-color-9)';
 
-
     switch (this.severity) {
-      
       case 'secondary':
         backgroundColor = 'var(--neutral-color-8)';
         fontColor = 'var(--neutral-color-0)';
         this.iconColor = 'var(--contrast-neutral-color-9)';
         break;
-
       case 'succes':
         backgroundColor = 'green';
         break;
-
       case 'info':
         backgroundColor = 'blue';
         break;
-
       case 'warn':
         backgroundColor = 'orange';
         break;
-
       case 'help':
         backgroundColor = 'violet';
         break;
-
       case 'danger':
         backgroundColor = 'red';
         break;
-
       case 'contrast':
         backgroundColor = 'var(--neutral-color-0)';
         fontColor = 'var(--contrast-neutral-color-1)';
         this.iconColor = 'var(--contrast-neutral-color-1)';
         break;
-
       default:
         backgroundColor = 'var(--primary-color-9)'
     };
 
-    this.styles.push({ q: 'background-color:', v: backgroundColor + ';' }, { q: 'color:', v: fontColor + ';' });
+    this.styles.push({ p: 'background-color', v: backgroundColor }, { p: 'color', v: fontColor});
     this.overrideStyles();
   };
 
@@ -98,18 +94,15 @@ export class uiButton implements OnInit {
     (cmpRef.instance as any).color = iconColor;
   };
 
+  //Override Styles
   overrideStyles() {
     const button = this.el.nativeElement.querySelector('.ui-button');
-    let styles: string = '';
     if (!button) return;
     this.styles.forEach(e => {
-      styles = styles + e.q + ' ' + e.v;
-      if (e.q === 'flex-direction' && e.v === 'column' || 'column-reverse') {
-        styles + 'padding-top: 1em; padding-bottom: 0.5em;';
-      };
+      if ((e.p === 'flex-direction') && e.v === 'column' || e.v === 'column-reverse') this.styles.push(...[{ p: 'padding-top', v: '1em' }, { p: 'padding-bottom', v: '.5em' }]);
     });
-    this.renderer.setAttribute(button, 'style', styles);
 
+    this.styleMapping.overrideStyles(this.renderer, this.styles, button);    
   };
 
 };

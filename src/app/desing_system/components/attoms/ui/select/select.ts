@@ -80,7 +80,7 @@ export class UiSelect implements ControlValueAccessor {
 
   overrideStyles() {
     const input = this.inputEl.nativeElement;
-    
+    if (!input) return;
     this.styleMapping.overrideStyles(this.renderer, this.styles, input);
   };
 }

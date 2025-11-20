@@ -1,10 +1,10 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Palette } from '../../icons/palette/palette';
+import { UiIconPalette } from '../../icons/palette/palette';
 
 @Component({
   selector: 'ui-input-color',
-  imports: [Palette],
+  imports: [UiIconPalette],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => InputColor),

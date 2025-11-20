@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { IconsConstants } from '../icons-constants';
+import { InputColorClass } from '../common/input-color-class';
 
 @Component({
-  selector: 'icon-sun',
+  selector: 'ui-icon-sun',
   imports: [],
   template: `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -16,7 +16,7 @@ style="height: 2.2em; "
   `,
   styles: ``
 })
-export class Sun extends IconsConstants{
+export class UiIconSun extends InputColorClass {
   override color: string = 'var(--contrast-neutral-color-9)';
   //@Input() color: string = 'var(--contrast-neutral-color-1)';
 }

@@ -7,6 +7,7 @@ import { InputColor } from '../../../desing_system/components/attoms/ui/input-co
 import { Translate } from '../../../desing_system/utilities/services/translate/translate';
 import { Theming } from '../../../desing_system/utilities/services/theming/theming';
 import { uiButton } from '../../../desing_system/components/attoms/ui/button/button';
+import { UiStyleRule } from '../../../desing_system/data/ui-constants';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +16,14 @@ import { uiButton } from '../../../desing_system/components/attoms/ui/button/but
   styleUrl: './header.scss'
 })
 export class Header implements OnInit, OnDestroy {
-  //Texts of DOM
+  //DOM VARS
   Title?: string;
   Docs?: string;
   DownloadCV?: string;
 
-  //Theming Vars
-  //Light Theme = False
+  staticButtonsStyles: UiStyleRule[] = [{p: 'border-top-left-radius', v: '0px'}, {p: 'border-top-right-radius', v: '0px'}];
+
+  //Theming Vars Light Theme = False
   activeTheme: boolean = false;
   colorHex: string = '#AA2222';//AA22AA also 170, 34, 0 / 170, 34, 170 are good options
 

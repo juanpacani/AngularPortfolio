@@ -45,7 +45,12 @@ import { Component } from '@angular/core';
         border-bottom-left-radius: 70px;
         border-bottom-right-radius: 200px;
         box-shadow: inset 0 -150px 0px rgba(0, 0, 0, 0.6);
-    }`
+    }
+    .picture>svg {
+        max-width: 100vw;
+        
+    }
+    `
 })
 export class ProfilePicture {
 

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { PcTemplate } from './components/templates/pc-template/pc-template';
+import { Theming } from '../../../desing_system/utilities/services/theming/theming';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-portfolio',
@@ -8,15 +10,20 @@ import { PcTemplate } from './components/templates/pc-template/pc-template';
   templateUrl: './portfolio.html',
   styleUrl: './portfolio.scss'
 })
-export class Portfolio {
+export class Portfolio implements OnDestroy {
 
-  knowledges: String[] = [
-    'knowledges/angular.svg', 
-    'knowledges/c++.svg',
-    'knowledges/flutter.svg',
-    'knowledges/nestjs.svg',
-    'knowledges/postgresql.svg',
-    'knowledges/mongodb.svg',
-  ];
+  activeThemeSubscription: Subscription | null;
+  activeTheme?: boolean = false;
 
+  constructor(
+    private theming: Theming
+  ) {
+    this.activeThemeSubscription = theming.activeTheme$.subscribe(e =>
+      this.activeTheme = e,
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.activeThemeSubscription?.unsubscribe();
+  }
 }

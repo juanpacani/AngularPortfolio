@@ -1,14 +1,7 @@
 <style>
-    /* .uiSelectInput {
-        /* position: absolute;
-    } */
-
     .options {
-        /* position: absolute; */
-        left: 50%;
-        top: 50%;
         background-color: var(--contrast-neutral-color-0);
-        z-index: 1000;
+        z-index: 1;
         border-radius: 8px;
     }
 
@@ -28,11 +21,12 @@
 </style>
 
 <div style="position: relative; display: inline-block;">
-    <input #input class="uiSelectInput" id="ui-select" uiInputText [type]="type" style="min-width: 2em;" (focus)="active = true" (blur)="onTouched()" [readonly]="true"
-        [value]="value" [placeholder]="placeholder">
+    <input #input id="ui-select" uiInputText [type]="type" style="min-width: 2em;" (mousedown)="active =! active"
+        [readonly]="true" [value]="value" [placeholder]="placeholder">
 
     <section class="options" *ngIf="active" [style]="'transform:' + transform">
-        <div *ngFor="let option of options" (mousedown)="choseValue(option)" [style]="'width: ' + inputWidth + 'px; height: ' + inputHeight + 'px;'">
+        <div *ngFor="let option of options" (mousedown)="choseValue(option)"
+            [style]="'width: ' + inputWidth + 'px; height: ' + inputHeight + 'px;'">
             {{ option }}
         </div>
     </section>

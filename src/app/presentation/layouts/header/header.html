@@ -1,12 +1,12 @@
-<section class="header">
+<section class="header" >
     <!-- Theme buttons -->
     <div class="appareanceFixed">
-        <ui-button [styles]="[{p: 'border-top-left-radius', v: '0px'}, {p: 'border-top-right-radius', v: '0px'}]" 
+        <ui-button [styles]="staticButtonsStyles" 
             severity="contrast" [label]="DownloadCV"></ui-button>
-        <ui-button [styles]="[{p: 'border-top-left-radius', v: '0px'}, {p: 'border-top-right-radius', v: '0px'}]" 
+        <ui-button [styles]="staticButtonsStyles" 
             severity="contrast" [label]="Docs"></ui-button>
-        <ui-button [styles]="[{p: 'border-top-left-radius', v: '0px'}, {p: 'border-top-right-radius', v: '0px'}]"
-            severity="contrast" (onClick)="toggleTheme()" icon="icon-sun"></ui-button>
+        <ui-button [styles]="staticButtonsStyles"
+            severity="contrast" (onClick)="toggleTheme()" icon="ui-icon-sun"></ui-button>
 
         <ui-input-color [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></ui-input-color>
         <ui-select type="text" [options]="langOptions" [(ngModel)]="lang"

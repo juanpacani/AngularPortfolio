@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, forwardRef, HostListener, input, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, HostListener, input, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { NgFor, NgIf, } from "@angular/common";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputText } from '../../../directives/inputs/input-text';
@@ -16,16 +16,18 @@ import { UiStyleRule } from '../../../../data/ui-constants';
   templateUrl: './select.html',
   styleUrl: './select.scss'
 })
-export class UiSelect implements ControlValueAccessor {
-  @ViewChild('input') inputEl!: ElementRef<HTMLInputElement>;
+export class UiSelect implements ControlValueAccessor, AfterViewInit {
+
+  @ViewChild('input') inputEl!: ElementRef<HTMLElement>;
+
   @HostListener('document:click', ['$event'])
   outerClick(event: Event) {
     if (!this.el.nativeElement.contains(event.target)) {
       this.active = false;
     }
-  }
+  };
   
-  @Input() transform?: string;
+  @Input() transform?: string; //This option basicly allow to the consumer put the options at the side where he wants
   @Input() options?: string[];
   @Input() styles: UiStyleRule[] = [];
   @Input() placeholder?: string;
@@ -45,32 +47,35 @@ export class UiSelect implements ControlValueAccessor {
   inputWidth: number = 0;
   inputHeight: number = 0;
 
-  constructor(private renderer: Renderer2, private el: ElementRef,
+  constructor(
+    private renderer: Renderer2, 
+    private el: ElementRef,
     private styleMapping: UiStyleMapping,
-  ) { }
-  
-  ngAfterViewChecked() {
+  ) {}
+
+  ngAfterViewInit(): void {
     this.overrideStyles();
     this.inputWidth =  this.inputEl.nativeElement.offsetWidth || 3;
     this.inputHeight = this.inputEl.nativeElement.offsetHeight || 3;
-  };
+  }
 
   onChange = (value: any) => { };
   onTouched = () => { };
 
+
+  //Here starts the events from ControlValueAccesor
   writeValue(value: any): void {
     this.value = value;
   };
-
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+  //Here ends The events from ControlValueAccesor
 
-  choseValue(option: any) {
+  choseValue(option: any) {    
     this.value = option;
     this.onChange(option);
     this.onTouched();

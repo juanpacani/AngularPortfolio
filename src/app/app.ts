@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnDestroy, signal, ViewChild } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { Subscription } from 'rxjs';
 import { Header } from './presentation/layouts/header/header';
@@ -8,29 +8,35 @@ import { Theming } from './desing_system/utilities/services/theming/theming';
 import { UiDrag } from './desing_system/utilities/directives/drag/ui-drag';
 import { Dialog } from './desing_system/components/attoms/ui/dialog/dialog';
 import { uiButton } from './desing_system/components/attoms/ui/button/button';
+import { ALL_ICONS } from './desing_system/components/attoms/icons/common/all_icons_array';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, CommonModule, Body],
+  imports: [Header, CommonModule, Body, ALL_ICONS],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements OnDestroy{
   protected readonly title = signal('Hydenaky HomePage');
 
   visible: boolean = false;
 
   //Palettes
-  subPalettes: Subscription | null;
+  allPalettesSubscription: Subscription | null;
   allPalettes: string[][] = [];
 
   constructor(
     private dinamicTheme: Theming,
   ) {
-    this.subPalettes = this.dinamicTheme.allPalettes$.subscribe(e => {
+    this.allPalettesSubscription = this.dinamicTheme.allPalettes$.subscribe(e => {
       this.allPalettes = e;
     });
+
   };
+
+  ngOnDestroy(): void {
+      this.allPalettesSubscription?.unsubscribe();
+  }
 
   trackByPalette(i: number, palette: string[]): number {
     return i;

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Palette } from './palette';
+import { UiIconPalette } from './palette';
 
 describe('Palette', () => {
-  let component: Palette;
-  let fixture: ComponentFixture<Palette>;
+  let component: UiIconPalette;
+  let fixture: ComponentFixture<UiIconPalette>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Palette]
+      imports: [UiIconPalette]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Palette);
+    fixture = TestBed.createComponent(UiIconPalette);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

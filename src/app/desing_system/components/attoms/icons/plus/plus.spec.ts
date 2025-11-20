@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UiIconSun } from './sun';
+import { Plus } from './plus';
 
-describe('Sun', () => {
-  let component: UiIconSun;
-  let fixture: ComponentFixture<UiIconSun>;
+describe('Plus', () => {
+  let component: Plus;
+  let fixture: ComponentFixture<Plus>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UiIconSun]
+      imports: [Plus]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UiIconSun);
+    fixture = TestBed.createComponent(Plus);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

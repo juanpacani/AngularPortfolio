@@ -8,4 +8,25 @@
         width: 34%;
       }
 </style>
-<app-pc-template class="pc-template"></app-pc-template>
+<style>
+  .generalBackground {
+    background-size: cover;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    padding-top: 7em;
+  }
+
+  .day {
+    background-image: url('/multimedia/images/backgrounds/day.svg');
+  }
+
+  .night {
+    background-image: url('/multimedia/images/backgrounds/night.svg');
+  }
+</style>
+<section [ngClass]="activeTheme ? 'night': 'day'" class="generalBackground">
+  <app-pc-template class="pc-template"></app-pc-template>
+</section>

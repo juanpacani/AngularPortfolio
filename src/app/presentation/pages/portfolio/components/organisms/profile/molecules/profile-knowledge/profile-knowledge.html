@@ -4,13 +4,13 @@
         height: auto;
     }
 
-    
+
     .slider-wrapper {
         position: relative;
         max-width: 80em;
         margin: 0 auto;
     }
-    
+
     .slider {
         display: flex;
         overflow-x: auto;
@@ -69,6 +69,8 @@
         padding-left: 1em;
         padding-right: 1em;
         box-sizing: border-box;
+
+        user-select: none;
     }
 
     .contents img {
@@ -76,6 +78,7 @@
         min-height: 90px;
         max-height: 100px;
         pointer-events: none;
+        user-select: none;
     }
 
     .slider-nav {
@@ -116,10 +119,12 @@
             <button class="slider-nav-button" (click)="goToSlide(2)"></button> <!--Frameworks-->
             <button class="slider-nav-button" (click)="goToSlide(3)"></button> <!--Data Bases-->
             <button class="slider-nav-button" (click)="goToSlide(4)"></button> <!--Enviroments and Platforms-->
-            <button class="slider-nav-button" (click)="goToSlide(5)"></button> <!--Develope tools and utilities-->            
+            <button class="slider-nav-button" (click)="goToSlide(5)"></button> <!--Develope tools and utilities-->
         </div>
         <br>
-        <div class="slider" id="slider">
+        <div class="slider" id="slider" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
+            (mouseup)="onMouseUp()" (mouseleave)="onMouseLeave()" (scroll)="onScroll()">
+            >
             <section id="slide-1" class="contents"> <!--Languages-->
                 <img src="multimedia/images/knowledge/languages/ts.svg" alt="">
                 <img src="multimedia/images/knowledge/languages/js.svg" alt="">

@@ -3,31 +3,29 @@
         margin: 0;
         padding: 0;
         min-width: 5em;
-        background-color: var(--contrast-neutral-color-0);
         box-sizing: border-box;
         border-radius: 8px;
     }
-    
+
     .accordion-content-active {
         box-sizing: border-box;
         padding: .5em;
-        padding-top: .5em;
         min-height: 5em;
         background-color: var(--contrast-neutral-color-0);
         width: 100%;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-        transition: 150ms;
+        transition: 250ms;
+        border-radius: 8px;
     }
 
     .accordion-content-unactive {
-        min-height: 0;
-        transition: 250ms;
+        transition: 150ms;
     }
 </style>
 <section class="accordion">
-    <ui-button (onClick)="updateAccordionGroupStatus()" [label]="label" severity="secondary"
-        [styles]="[{p: 'width',v: '100%'}]"></ui-button>
+    <div>
+        <ui-button (onClick)="updateAccordionGroupStatus()" [label]="label" severity="secondary"
+            [styles]="[{p: 'width',v: '100%'}]"></ui-button>
+    </div>
     <div [ngClass]="status ? 'accordion-content-active': 'accordion-content-unactive'">
         <ng-content *ngIf="status"></ng-content>
     </div>

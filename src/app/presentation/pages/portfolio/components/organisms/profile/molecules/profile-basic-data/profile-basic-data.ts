@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Translate } from '../../../../../../../../core/utilities/translate/translate';
+import { Subscription } from 'rxjs';
+
+import languages from './profile-basic-data-languages.json';
 
 @Component({
   selector: 'app-profile-basic-data',
@@ -7,7 +11,7 @@ import { Component } from '@angular/core';
   template: `
       <div style="text-align: center;">
         <h1>Juan Pablo Canon</h1>
-        <h4 style="font-size: 2.4em;">{{'software analyst and developer' | titlecase}}</h4>
+        <h4 style="font-size: 2.4em;">{{title | titlecase}}</h4>
     </div>
     <div class="line"></div>
   `,
@@ -32,6 +36,27 @@ import { Component } from '@angular/core';
     }
   `
 })
-export class ProfileBasicData {
+export class ProfileBasicData implements OnInit, OnDestroy{
+  title?: string;
 
+
+  //Subscriptions
+  sub: Subscription | undefined;
+  constructor(
+    private translate: Translate,
+  ) {}
+
+  ngOnInit(): void {
+      this.sub = this.translate.language$.subscribe(e => 
+        this.updateLanguages(e),
+      );
+  }
+
+  ngOnDestroy(): void {
+      this.sub?.unsubscribe();
+  }
+
+  updateLanguages(lang: string) {
+    this.title = (languages as any)[lang]?.title ?? '';
+  }
 }

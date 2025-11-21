@@ -1,27 +1,20 @@
 <section style="width: 70%; height: 100%; margin-left: 5%;">
     <ui-accordion-group>
-        <ui-accordion label="Summary" [accordionId]="'1'" [styles]="[{p: 'width', v: '100%'}]">
-            <p>Junior Fullstack Devoloper with one year of experience with Angular and NestJS.
-                Focused on frontend devolopement with Angular, Flutter, NestJS and JS knowledge.
-                A keen learner of technologies and an active participant in development teams.
-            </p>
+        <ui-accordion [label]="summaryButtonLabel!" [accordionId]="'1'" [styles]="[{p: 'width', v: '100%'}]">
+            <p>{{summary}}</p>
         </ui-accordion>
-        <ui-accordion label="Education" [accordionId]="'2'" [styles]="[{p: 'width', v: '100%'}]">
-            <p><b>Technical Bachelor's Degree with a Specialization in Graphic Design and Development.</b></p>
-            <em>Julio Flórez Technical Industrial Educational Institution.</em><br>
-            <em>Chiquinquirá / Boyacá / Colombia.</em>
-            <p><b>Course in Web Design with HTML and JavaScript.</b></p>
-            <em>SENA - Industrial Maintenance and Manufacturing Center.</em><br>
-            <em>Online.</em>
-            <p><b>Software Analysis and Development Technology.</b></p>
-            <em>SENA - Industrial Maintenance and Manufacturing Center.</em><br>    
-            <em>Chiquinquirá / Boyacá / Colombia.</em>
+        <ui-accordion [label]="educationButtonLabel!" [accordionId]="'2'" [styles]="[{p: 'width', v: '100%'}]">
+            <div *ngFor="let e of education">
+                <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
+                <em>{{e['studyPlace'] || 'Not Found'}}</em><br>
+            </div>
         </ui-accordion>
-        <ui-accordion label="Experience" [accordionId]="'3'" [styles]="[{p: 'width', v: '100%'}]">
-            <p><b>Web Development - BIOWEB SAS.</b></p>
-            <em>September 31th 2024 - September 19th 2025.</em><br>
-            <em>Development of HTML5 and CSS instances for products on sales websites, editing internal code with
-                Angular, Firebase with Kanban and Scrum methodologies, remote.</em>
+        <ui-accordion [label]="experienceButtonLabel!" [accordionId]="'3'" [styles]="[{p: 'width', v: '100%'}]">
+            <div *ngFor="let e of experience">
+                <p><b>{{e['jobTitle'] || 'NotFound'}} - {{e['companyName'] || 'NotFound'}}</b></p>
+                <em>{{e['dateInterval'] || 'Not Defined'}}</em><br>
+                <em>{{e['description'] || 'Not Defined'}}</em>
+            </div>
         </ui-accordion>
     </ui-accordion-group>
 </section>

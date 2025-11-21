@@ -18,5 +18,4 @@ style="height: 2.2em; "
 })
 export class UiIconSun extends InputColorClass {
   override color: string = 'var(--contrast-neutral-color-9)';
-  //@Input() color: string = 'var(--contrast-neutral-color-1)';
 }

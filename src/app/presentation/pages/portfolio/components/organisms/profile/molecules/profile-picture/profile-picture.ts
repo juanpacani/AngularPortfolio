@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
                     }
 
                     .fil0 {
-                        fill: var(--element-color-1);
+                        fill: var(--element-color-4);
                     }
                 </style>
             </defs>

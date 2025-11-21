@@ -1,11 +1,11 @@
 {
     "EN": {
-        "Title": "Hydenaky",
+        "title": "Hydenaky",
         "docs": "Documentation",
         "download": "Download CV"
     },
     "ES": {
-        "Title": "Hydenaky  ",
+        "title": "Hydenaky  ",
         "docs": "Documentos",
         "download": "Descargar CV"
     }

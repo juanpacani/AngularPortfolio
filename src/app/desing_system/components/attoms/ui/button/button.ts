@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, Type, ViewChild, ViewContainerRef } from '@angular/core';
-import { NgComponentOutlet, NgIf } from "@angular/common";
+import { NgIf } from "@angular/common";
 import { IconMapping } from '../../../../utilities/services/iconMapping/icon-mapping';
 import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
 import { UiStyleRule } from '../../../../data/ui-constants';

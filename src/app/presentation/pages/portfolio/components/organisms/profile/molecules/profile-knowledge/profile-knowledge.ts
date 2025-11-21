@@ -21,7 +21,7 @@ export class ProfileKnowledge {
 
   ngAfterViewInit() {
     this.slider = this.el.nativeElement.querySelector('#slider') as HTMLElement;
-    this.slides = this.slider.querySelectorAll('section');    
+    this.slides = this.slider.querySelectorAll('section');
 
     this.sliderNavs = this.el.nativeElement.querySelector('#slider-nav');
     this.slidesNavs = this.sliderNavs!.querySelectorAll('button');
@@ -30,6 +30,36 @@ export class ProfileKnowledge {
 
     this.updateActiveNav();
   }
+
+  //EVENTOS DE PRUEBA PARA HACER SCROLL CON EL MOUSE CLICKEANDO
+  pressed = false;
+  startX = 0;
+  startScrollLeft = 0;
+
+  onMouseDown(event: MouseEvent) {
+    this.slider = this.el.nativeElement.querySelector('#slider') as HTMLElement;
+    this.pressed = true;
+    this.startX = event.pageX;
+    this.startScrollLeft = this.slider.scrollLeft;
+  }
+
+  onMouseMove(event: MouseEvent) {
+    this.slider = this.el.nativeElement.querySelector('#slider') as HTMLElement;
+    if (!this.pressed) return;
+
+    const dx = event.pageX - this.startX;
+    this.slider.scrollLeft = this.startScrollLeft - dx; // ← esto dispara onScroll()
+  }
+
+  onMouseUp() {
+    this.pressed = false;
+  }
+
+  onMouseLeave() {
+    this.pressed = false;
+  }
+  //AQUI TERMINAN LOS EVENTOS DE PRUEBA
+
 
   onScroll() {
     if (!this.slider || !this.slides) return;

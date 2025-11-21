@@ -1,0 +1,58 @@
+{
+    "EN": {
+        "summaryButtonLabel": "Summary",
+        "educationButtonLabel": "Education",
+        "experienceButtonLabel": "Experience",
+        "summary": "Junior Fullstack Devoloper with one year of experience with Angular and NestJS. Focused on frontend devolopement with Angular and Flutter, NestJS and JS knowledge. A keen learner of technologies and an active participant in development teams.",
+        "education": [
+            {
+                "studyTitle": "Technical Bachelor's Degree with a Specialization in Graphic Design and Development.",
+                "studyPlace": "Julio Flórez Technical Industrial Educational Institution."
+            },
+            {
+                "studyTitle": "Course in Web Design with HTML and JavaScript.",
+                "studyPlace": "SENA - Industrial Maintenance and Manufacturing Center."
+            },
+            {
+                "studyTitle": "Software Analysis and Development Technology.",
+                "studyPlace": "SENA - Industrial Maintenance and Manufacturing Center."
+            }
+        ],
+        "experience": [
+            {
+                "jobTitle": "Web Development",
+                "companyName": "BIOWEB SAS.",
+                "dateInterval": "September 31th 2024 - September 19th 2025.",
+                "description": "Development of HTML5 and CSS instances for products on sales websites, editing internal code with Angular, Firebase with Kanban and Scrum methodologies, remote."
+            }
+        ]
+    },
+    "ES": {
+        "summaryButtonLabel": "Resumen",
+        "educationButtonLabel": "Educación",
+        "experienceButtonLabel": "Experiencia",
+        "summary": "Desarrollador Fullstack Junior con un año de experiencia en Angular y NestJS. Enfocado en desarrollo frontend con Angular y Flutter, con conocimientos en NestJS y JavaScript. Aprendiz constante y participante activo en equipos de desarrollo.",
+        "education": [
+            {
+                "studyTitle": "Bachiller Técnico con Especialización en Desarrollo y Diseño Gráfico.",
+                "studyPlace": "Institución Educativa Técnica Industrial Julio Flórez."
+            },
+            {
+                "studyTitle": "Curso de Diseño Web con HTML y JavaScript.",
+                "studyPlace": "SENA - Centro de Mantenimiento Industrial y Manufactura."
+            },
+            {
+                "studyTitle": "Tecnología en Análisis y Desarrollo de Software.",
+                "studyPlace": "SENA - Centro de Mantenimiento Industrial y Manufactura."
+            }
+        ],
+        "experience": [
+            {
+                "jobTitle": "Desarrollo Web",
+                "companyName": "BIOWEB SAS.",
+                "dateInterval": "31 de septiembre de 2024 - 19 de septiembre de 2025.",
+                "description": "Desarrollo de instancias HTML5 y CSS para productos en sitios web de ventas, edición de código interno con Angular y Firebase bajo metodologías Kanban y Scrum, trabajo remoto."
+            }
+        ]
+    }
+}

@@ -4,7 +4,7 @@
         <ui-button [styles]="staticButtonsStyles" 
             severity="contrast" [label]="downloadCV"></ui-button>
         <ui-button [styles]="staticButtonsStyles"
-            severity="contrast" (onClick)="toggleTheme()" icon="ui-icon-sun"></ui-button>
+            severity="contrast" (onClick)="toggleTheme()" [icon]="{icon: 'ui-icon-sun'}"></ui-button>
 
         <ui-input-color [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></ui-input-color>
         <ui-select type="text" [options]="langOptions" [(ngModel)]="lang"

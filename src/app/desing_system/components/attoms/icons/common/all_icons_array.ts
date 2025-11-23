@@ -1,9 +1,9 @@
-import { UiIconChevronArrow } from "../chevron-arrow/chevron-arrow";
-import { UiIconCv } from "../cv/cv";
-import { UiIconDocument } from "../document/document";
-import { UiIconPalette } from "../palette/palette";
-import { UiIconPlus } from "../plus/plus";
-import { UiIconSun } from "../sun/sun";
+import { UiIconChevronArrow } from "../dynamicIcons/chevron-arrow-up/chevron-arrow";
+import { UiIconPlus } from "../dynamicIcons/plus/plus";
+import { UiIconCv } from "../staticIcons/cv/cv";
+import { UiIconDocument } from "../staticIcons/document/document";
+import { UiIconPalette } from "../staticIcons/palette/palette";
+import { UiIconSun } from "../staticIcons/sun/sun";
 
 export const ALL_ICONS = [
     UiIconChevronArrow,

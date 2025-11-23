@@ -19,14 +19,38 @@
     padding-top: 7em;
   }
 
-  .day {
-    background-image: url('/multimedia/images/backgrounds/day.svg');
+  .multimedia-themes-controler {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    background-color: red;
+    width: auto;
+    min-width: 23%;
+    height: auto;
+    min-height: 6em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .night {
-    background-image: url('/multimedia/images/backgrounds/night.svg');
+  .multimedia-themes-controler>div {
+    width: 2.3em;
+    height: 100%;
+    background-color: green;
   }
 </style>
-<section [ngClass]="activeTheme ? 'night': 'day'" class="generalBackground">
+<section class="generalBackground">
   <app-pc-template class="pc-template"></app-pc-template>
 </section>
+
+<div class="multimedia-themes-controler">
+  <div>
+  <ui-button>
+  </ui-button>
+  </div>
+  <div>
+    <ui-button>
+    </ui-button>
+  </div>
+</div>

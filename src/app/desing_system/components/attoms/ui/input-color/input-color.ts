@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { UiIconPalette } from '../../icons/palette/palette';
+import { UiIconPalette } from '../../icons/staticIcons/palette/palette';
 
 @Component({
   selector: 'ui-input-color',

@@ -14,7 +14,7 @@ import { UiStyleRule } from '../../../../data/ui-constants';
 export class uiButton implements OnInit {
   @ViewChild('iconHost', { read: ViewContainerRef }) iconHost!: ViewContainerRef;
 
-  @Input() icon?: string;
+  @Input() icon?: {icon: string, isDinamic?: boolean, values?: [string, string][]};
   @Input() label?: string;
   @Input() severity: 'primary' | 'secondary' | 'succes' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' = 'primary';
   @Input() styles: UiStyleRule[] = [];
@@ -80,7 +80,7 @@ export class uiButton implements OnInit {
 
   //Icon Events
   getIconComponent(): Type<{ color?: string }> | undefined {
-    return this.icon ? this.iconMapping.getIconComponent(this.icon) ?? undefined : undefined;
+    return this.icon ? this.iconMapping.getIconComponent(this.icon.icon, this.icon.isDinamic!, this.icon.values!) ?? undefined : undefined;
   };
 
 

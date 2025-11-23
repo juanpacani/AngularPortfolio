@@ -1,10 +1,10 @@
 import { Component, Injectable, Type } from '@angular/core';
-import { UiIconSun } from '../../../components/attoms/icons/sun/sun';
-import { UiIconPalette } from '../../../components/attoms/icons/palette/palette';
-import { UiIconChevronArrow } from '../../../components/attoms/icons/chevron-arrow/chevron-arrow';
+import { UiIconSun } from '../../../components/attoms/icons/staticIcons/sun/sun';
+import { UiIconPalette } from '../../../components/attoms/icons/staticIcons/palette/palette';
+import { UiIconChevronArrow } from '../../../components/attoms/icons/dynamicIcons/chevron-arrow-up/chevron-arrow';
 import { UiIconPlus } from '../../../components/attoms/icons/plus/plus';
-import { UiIconDocument } from '../../../components/attoms/icons/document/document';
-import { UiIconCv } from '../../../components/attoms/icons/cv/cv';
+import { UiIconDocument } from '../../../components/attoms/icons/staticIcons/document/document';
+import { UiIconCv } from '../../../components/attoms/icons/staticIcons/cv/cv';
 
 
 @Injectable({
@@ -12,24 +12,45 @@ import { UiIconCv } from '../../../components/attoms/icons/cv/cv';
 })
 export class IconMapping {
   //coding keys
-  baseIcons = {
+  staticIcons = {
     sun: UiIconSun,
     palette: UiIconPalette,
-    'chevron-arrow': UiIconChevronArrow,
     plus: UiIconPlus,
     document: UiIconDocument,
     cv: UiIconCv,
   };
 
+
+  //Dinamic Icons
+  dinamicIcons = {
+    'chevron-arrow': UiIconChevronArrow,
+  }
+
   iconRef = 'ui-icon-';
 
-  iconMap = Object.fromEntries(
-    Object.entries(this.baseIcons).map(([key, val]) => [`${this.iconRef}${key}`, val])
+  staticIconMap = Object.fromEntries(
+    Object.entries(this.staticIcons).map(([key, val]) => [`${this.iconRef}${key}`, val])
   );
 
+  dinamicIconMap = Object.fromEntries(
+    Object.entries(this.dinamicIcons).map(([key, val]) => [`${this.iconRef}${key}`, val])
+  );
 
-  getIconComponent(icon: string): Type<any> | null {
-    return this.iconMap[icon] || null;
+  getIconComponent(icon: string, isDinamic?: boolean, values?: Map<string, string>): Type<any> | null | undefined | void {
+    if (isDinamic) {
+      var iconInstance = this.dinamicIconMap[icon] || null;
+      if (!iconInstance) return;
+      for (let i = 0; i < values?.size!; i++) {
+        try {
+          iconInstance!;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      console.log('IS DINAMIC');
+    } else {
+      return this.staticIconMap[icon] || null;
+    }
   }
 
 }

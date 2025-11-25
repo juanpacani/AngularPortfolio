@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import languages from './header.language.json';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,10 @@ import { Translate } from '../../../core/utilities/translate/translate';
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header implements OnInit, OnDestroy {
+export class Header implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('buttonTheme', {static: false}) buttonTheme!: uiButton;
+
+
   //DOM VARS
   title?: string;
   docs?: string;
@@ -53,18 +56,25 @@ export class Header implements OnInit, OnDestroy {
     this.activeThemeSubscription = this.themingService.activeTheme$.subscribe(e => {
       this.activeTheme = e;
     })
+
   };
+  
+  ngAfterViewInit(): void {
+    this.buttonTheme.changeDetectorRef.detectChanges();
+  }
 
   ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
     this.activeThemeSubscription?.unsubscribe();
   };
 
-
   //Theming Events
   toggleTheme(): void {
     this.activeTheme = !this.activeTheme;
-    this.themingService.generatePalettes(this.colorHex, this.activeTheme);
+    this.themingService.generatePalettes(this.colorHex, this.activeTheme);   
+    const iconName = this.activeTheme ? 'sun' : 'moon';
+    this.buttonTheme.icon = {icon: iconName};
+    this.buttonTheme.loadIcon();
   };
 
   onColorChange(hex: string) {

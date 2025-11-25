@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgIf } from "@angular/common";
 import { IconMapping } from '../../../../utilities/services/iconMapping/icon-mapping';
 import { UiStyleMapping } from '../../../../utilities/services/stylesMapping/style-mapping';
@@ -9,7 +9,7 @@ import { UiStyleRule } from '../../../../data/ui-constants';
   selector: 'ui-button',
   imports: [NgIf],
   templateUrl: './button.html',
-  styleUrl: './button.scss'
+  styleUrl: './button.scss',
 })
 export class uiButton implements OnInit {
   @ViewChild('iconHost', { read: ViewContainerRef }) iconHost!: ViewContainerRef;
@@ -27,7 +27,9 @@ export class uiButton implements OnInit {
     private styleMapping: UiStyleMapping,
     private iconMapping: IconMapping,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    public changeDetectorRef: ChangeDetectorRef,
+
   ) { }
 
   //Event Emitter
@@ -75,7 +77,7 @@ export class uiButton implements OnInit {
   };
 
   ngAfterViewInit() {
-    this.loadIcon(this.iconColor);
+    this.loadIcon();
   };
 
   //Icon Events
@@ -88,9 +90,9 @@ export class uiButton implements OnInit {
   };
 
 
-  loadIcon(iconColor: string): void {
+  loadIcon(): void {
     this.iconHost.clear();
-    this.getIconComponent(iconColor);
+    this.getIconComponent(this.iconColor);
   };
 
   /*this.iconHost.clear();

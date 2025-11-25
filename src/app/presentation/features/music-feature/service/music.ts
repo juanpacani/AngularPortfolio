@@ -28,8 +28,11 @@ export class Music {
   speed$ = this.speedSubject.asObservable();
 
   constructor() {
+    console.log('a');
+    
     this.audio.src = this.tracks[this.currentIndex].src;
     this.audio.onended = () => this.next();
+    console.log('b');
   };
 
   play() {

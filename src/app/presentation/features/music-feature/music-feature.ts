@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Music, MusicTrack } from './service/music';
 import { Subscription } from 'rxjs';
-import { NgIf } from '@angular/common';
 import { uiButton } from '../../../desing_system/components/attoms/ui/button/button';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-music-feature',
@@ -11,6 +11,10 @@ import { uiButton } from '../../../desing_system/components/attoms/ui/button/but
   styleUrl: './music-feature.scss'
 })
 export class MusicFeature implements OnInit, OnDestroy{
+
+  //NO FUNCIONA XQ ES SSR
+
+
   isPlaying: boolean = false;
   speed: number = 1;
 
@@ -29,10 +33,11 @@ export class MusicFeature implements OnInit, OnDestroy{
     this.speedSubcription = this.musicService.speed$.subscribe(speed => {
       this.speed = speed;
     })
+    this.currentTrack = this.musicService.getCurrentTrack();
   }
 
   ngOnInit(): void {
-    this.currentTrack = this.musicService.getCurrentTrack();
+    console.log(this.currentTrack);
   }
 
   ngOnDestroy(): void {

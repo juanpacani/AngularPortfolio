@@ -3,8 +3,8 @@
     <div class="appareanceFixed">
         <ui-button [styles]="staticButtonsStyles" 
             severity="contrast" [label]="downloadCV"></ui-button>
-        <ui-button [styles]="staticButtonsStyles"
-            severity="contrast" (onClick)="toggleTheme()" [icon]="activeTheme ? {icon: 'moon'} : {icon: 'sun'}"></ui-button>
+        <ui-button #buttonTheme id="buttonTheme" [styles]="staticButtonsStyles"
+            severity="contrast" (onClick)="toggleTheme()" [icon]="activeTheme ? {icon: 'sun'} : {icon: 'moon'}"></ui-button>
 
         <ui-input-color [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></ui-input-color>
         <ui-select type="text" [options]="langOptions" [(ngModel)]="lang"

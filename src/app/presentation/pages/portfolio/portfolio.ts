@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2 } from '@ang
 import { PcTemplate } from './components/templates/pc-template/pc-template';
 import { uiButton } from '../../../desing_system/components/attoms/ui/button/button';
 import { DynamicBackgroundFeature } from '../../features/dynamic-background-feature/dynamic-background-feature';
+import { MusicFeature } from '../../features/music-feature/music-feature';
 
 @Component({
   selector: 'app-portfolio',

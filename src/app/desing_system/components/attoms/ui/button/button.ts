@@ -14,7 +14,7 @@ import { UiStyleRule } from '../../../../data/ui-constants';
 export class uiButton implements OnInit {
   @ViewChild('iconHost', { read: ViewContainerRef }) iconHost!: ViewContainerRef;
 
-  @Input() icon?: {icon: string, isDinamic?: boolean, values?: [string, string][]};
+  @Input() icon?: {icon: string, isDynamic?: boolean, values?: UiStyleRule[]};
   @Input() label?: string;
   @Input() severity: 'primary' | 'secondary' | 'succes' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' = 'primary';
   @Input() styles: UiStyleRule[] = [];
@@ -79,20 +79,27 @@ export class uiButton implements OnInit {
   };
 
   //Icon Events
-  getIconComponent(): Type<{ color?: string }> | undefined {
-    return this.icon ? this.iconMapping.getIconComponent(this.icon.icon, this.icon.isDinamic!, this.icon.values!) ?? undefined : undefined;
+  getIconComponent(iconColor: string): void {
+
+    const values = this.icon?.values ? new Map(this.icon.values.map(rule => [rule.p, rule.v])) : new Map<string, string>();
+    values.set('color', iconColor);
+    
+    this.icon ? this.iconMapping.getIconComponent(this.icon.icon, this.iconHost!, this.icon.isDynamic!, values!) ?? undefined : undefined;
   };
 
 
-  loadIcon(iconColor: string) {
+  loadIcon(iconColor: string): void {
     this.iconHost.clear();
+    this.getIconComponent(iconColor);
+  };
+
+  /*this.iconHost.clear();
 
     const cmp = this.getIconComponent();
     if (!cmp) return;
 
     const cmpRef = this.iconHost.createComponent<any>(cmp);
-    (cmpRef.instance as any).color = iconColor;
-  };
+    (cmpRef.instance as any).color = iconColor;*/
 
   //Override Styles
   overrideStyles() {

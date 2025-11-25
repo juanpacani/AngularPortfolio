@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InputColorClass } from '../../common/input-color-class';
+import { iconsPropertiesAbstractClass } from '../../common/icons-properties-abstract-class';
 
 @Component({
   selector: 'ui-icon-palette',
@@ -22,7 +22,7 @@ import { InputColorClass } from '../../common/input-color-class';
   `,
   styles: ``
 })
-export class UiIconPalette extends InputColorClass {
+export class UiIconPalette extends iconsPropertiesAbstractClass {
   override color: string = 'var(--contrast-neutral-color-9)';
   //@Input() color: string = 'var(--contrast-neutral-color-9)';
 }

@@ -6,9 +6,12 @@
     flex-direction: row-reverse;
     gap: 1em;
     z-index: 101;
+    pointer-events: auto;
   }
-
+  
   .header {
+    pointer-events: none;
+    user-select: none;
     height: 7em;
     width: 100%;
     box-sizing: border-box;

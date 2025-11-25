@@ -8,7 +8,7 @@ import { Theming } from './desing_system/utilities/services/theming/theming';
 import { UiDrag } from './desing_system/utilities/directives/drag/ui-drag';
 import { Dialog } from './desing_system/components/attoms/ui/dialog/dialog';
 import { uiButton } from './desing_system/components/attoms/ui/button/button';
-import { ALL_ICONS } from './desing_system/components/attoms/icons/common/all_icons_array';
+import { ALL_ICONS } from './desing_system/components/attoms/icons/common/all_icons_arrays';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +26,9 @@ export class App implements OnDestroy{
   allPalettes: string[][] = [];
 
   constructor(
-    private dinamicTheme: Theming,
+    private dynamicTheme: Theming,
   ) {
-    this.allPalettesSubscription = this.dinamicTheme.allPalettes$.subscribe(e => {
+    this.allPalettesSubscription = this.dynamicTheme.allPalettes$.subscribe(e => {
       this.allPalettes = e;
     });
 

@@ -1,56 +1,15 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
-    .pc-template {
-        display: flex;
-    }
-      .responsive-content:first-of-type('app-profile') {
-        width: 34%;
-      }
-</style>
-<style>
-  .generalBackground {
-    background-size: cover;
-    background-position: center 70%;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    height: 100%;
-    width: 100%;
-    padding-top: 7em;
-  }
-
-  .multimedia-themes-controler {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    background-color: red;
-    width: auto;
-    min-width: 23%;
-    height: auto;
-    min-height: 6em;
-
+  .pc-template {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-top: 5%;
   }
 
-  .multimedia-themes-controler>div {
-    width: 2.3em;
-    height: 100%;
-    background-color: green;
+  .responsive-content:first-of-type('app-profile') {
+    width: 34%;
   }
 </style>
-<section class="generalBackground">
-  <app-pc-template class="pc-template"></app-pc-template>
-</section>
+<app-pc-template class="pc-template"></app-pc-template>
 
-<div class="multimedia-themes-controler">
-  <div>
-  <ui-button>
-  </ui-button>
-  </div>
-  <div>
-    <ui-button>
-    </ui-button>
-  </div>
-</div>
+<app-dynamic-background-feature></app-dynamic-background-feature>

@@ -1,0 +1,54 @@
+<style>
+    .generalBackground {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-size: cover;
+        background-position: center 70%;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        height: 100%;
+        width: 100%;
+        padding-top: 7em;
+    }
+
+    .multimedia-themes-controler {
+        position: absolute;
+        bottom: 1em;
+        left: 1em;
+        background-color: var(--element-color-4);
+        width: auto;
+        min-width: 23%;
+        max-width: 33%;
+        height: auto;
+        min-height: 6em;
+
+        border-radius: 16px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .multimedia-themes-controler>div {
+        width: auto;
+        height: 100%;
+    }
+</style>
+<section class="generalBackground">
+</section>
+
+<div class="multimedia-themes-controler">
+    <div>
+        <ui-button severity="secondary" (onClick)="changeImageIndex(false)" [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '-90'}]}">
+        </ui-button>
+    </div>
+    <div>
+        <p><b>Background Image #{{imageIndex}}</b></p>
+    </div>
+    <div>
+        <ui-button severity="secondary" (onClick)="changeImageIndex(true)" [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '90'}]}"
+        ></ui-button>
+    </div>
+</div>

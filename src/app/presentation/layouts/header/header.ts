@@ -26,11 +26,12 @@ export class Header implements OnInit, OnDestroy {
   //Theming Vars Light Theme = False
   activeTheme: boolean = false;
   colorHex: string = '#AA2222';//AA22AA also 170, 34, 0 / 170, 34, 170 are good options
+  private activeThemeSubscription: Subscription | undefined;
 
   //Lang Vars
   langOptions: string[] = [];
   lang?: string;
-  private subLang: Subscription | undefined;
+  private languageSubscription: Subscription | undefined;
 
   constructor(
     private translateService: Translate,
@@ -43,15 +44,20 @@ export class Header implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
-    this.subLang = this.translateService.language$.subscribe(e => {
+    this.languageSubscription = this.translateService.language$.subscribe(e => {
       this.lang = e;
       this.updateLanguages(e);
     }
     );
+
+    this.activeThemeSubscription = this.themingService.activeTheme$.subscribe(e => {
+      this.activeTheme = e;
+    })
   };
 
   ngOnDestroy(): void {
-    this.subLang?.unsubscribe();
+    this.languageSubscription?.unsubscribe();
+    this.activeThemeSubscription?.unsubscribe();
   };
 
 

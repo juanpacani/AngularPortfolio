@@ -1,4 +1,24 @@
-<section style="width: 70%; height: 100%; margin-left: 5%;">
+<style>
+    .curriculum {
+        width: 70%;
+        height: 100%;
+        margin-left: 5%;
+    }
+
+    @media screen and (orientation: portrait),
+    (max-width: 1024px) {
+        .curriculum {
+            width: 90%;
+        }
+    }
+    @media screen and (orientation: portrait) and
+    (max-width: 600px) {
+        p, em {
+            font-size: 1.2em;
+        }
+    }
+</style>
+<section class="curriculum">
     <ui-accordion-group>
         <ui-accordion [label]="summaryButtonLabel!" [accordionId]="'1'" [styles]="[{p: 'width', v: '100%'}]">
             <p>{{summary}}</p>

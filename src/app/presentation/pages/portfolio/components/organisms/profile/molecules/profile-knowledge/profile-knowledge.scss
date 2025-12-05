@@ -1,0 +1,113 @@
+@use './templates/pc-template.scss' as *;
+@use './templates/mobile-template.scss' as *;
+
+.knowledge {
+    width: 100%;
+    height: auto;
+}
+
+
+.slider-wrapper {
+    position: relative;
+    /*max-width: 80em;*/
+    margin: 0 auto;
+}
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    /* necesario para el scroll */
+    overflow-y: hidden;
+    /* no mostrar scroll vertical */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    background-color: var(--element-color-4);
+    box-shadow: 0 .25rem .5rem #21212126;
+    border-radius: .5rem;
+
+    /* Ocultar scrollbar (cross-browser) */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE y Edge Legacy */
+    box-sizing: border-box;
+    padding-bottom: 1em;
+    padding-top: 1em;
+
+    min-height: 120px;
+    height: auto;
+    width: 100%;
+}
+
+@media (orientation: portrait) {
+    .slider {
+        padding-bottom: 1em;
+        max-width: 100%;
+    }
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari y derivados */
+}
+
+.contents {
+    display: flex;
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    height: auto;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    justify-content: left;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+
+    user-select: none;
+}
+
+.contents img {
+    height: 100%;
+    min-height: 90px;
+    max-height: 100px;
+    pointer-events: all;
+    user-select: none;
+}
+
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+.slider-nav-button {
+    width: 2rem;
+    height: 1rem;
+    border-radius: 25px;
+    background-color: var(--element-color-0);
+    opacity: .60;
+    transition: opacity ease 250ms;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-active {
+    opacity: 1;
+    width: 3rem;
+    transition: 250ms;
+}
+
+.slider-nav button:hover {
+    opacity: 1;
+}
+
+.knowledge-definition {
+    position: relative;
+}

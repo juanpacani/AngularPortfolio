@@ -1,0 +1,10 @@
+@media screen and (orientation: portrait) and (max-width: 600px) {
+    .responsive-content {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .responsive-content > * {
+        width: 100%;
+    }
+}

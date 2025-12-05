@@ -1,14 +1,49 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { UiPopover } from '../../../../../../../../desing_system/components/attoms/ui/popover/popover';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-profile-knowledge',
-  imports: [],
+  selector: 'mol-profile-knowledge',
+  imports: [UiPopover, NgFor],
   templateUrl: './profile-knowledge.html',
   styleUrl: './profile-knowledge.scss'
 })
 export class ProfileKnowledge {
+  //Contenido de los knowledge 
+  knowledgeDataMap = {
+    1: [
+      "multimedia/images/knowledge/languages/ts.svg",
+      "multimedia/images/knowledge/languages/js.svg",
+      "multimedia/images/knowledge/languages/dart.svg",
+      "multimedia/images/knowledge/languages/java.svg",
+      "multimedia/images/knowledge/languages/c++.svg"
+    ],
+    2: [
+      "multimedia/images/knowledge/frameworks/angular.svg",
+      "multimedia/images/knowledge/frameworks/flutter.svg",
+      "multimedia/images/knowledge/frameworks/nestjs.svg"
+    ],
+    3: [
+      "multimedia/images/knowledge/db/postgresql.svg",
+      "multimedia/images/knowledge/db/mysql.svg",
+      "multimedia/images/knowledge/db/mongodb.svg"
+    ],
+    4: [
+      "multimedia/images/knowledge/enviroments&plattforms/docker.svg",
+      "multimedia/images/knowledge/enviroments&plattforms/firebase.svg",
+      "multimedia/images/knowledge/enviroments&plattforms/linux.svg"
+    ],
+    5: [
+      "multimedia/images/knowledge/developeTools&utilities/git.svg",
+      "multimedia/images/knowledge/developeTools&utilities/github.svg",
+      "multimedia/images/knowledge/developeTools&utilities/postman.svg",
+      "multimedia/images/knowledge/developeTools&utilities/swagger.svg"
+    ]
+  };
+  knowledgeDataArray = Object.values(this.knowledgeDataMap);
+
+  //Variables de navegación e instanciado de elementos
   currentSlide: number = 0;
-  slideInterval: number = 3000;
   intervalId: any;
 
   slider?: HTMLElement;
@@ -16,6 +51,11 @@ export class ProfileKnowledge {
 
   sliderNavs?: HTMLElement;
   slidesNavs?: NodeListOf<HTMLButtonElement>;
+
+  //Variables de scroll con click mantenido
+  pressed = false;
+  startX = 0;
+  startScrollLeft = 0;
 
   constructor(private el: ElementRef) { }
 
@@ -31,11 +71,11 @@ export class ProfileKnowledge {
     this.updateActiveNav();
   }
 
-  //EVENTOS DE PRUEBA PARA HACER SCROLL CON EL MOUSE CLICKEANDO
-  pressed = false;
-  startX = 0;
-  startScrollLeft = 0;
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
+  }
 
+  //Eventos de scroll con click mantenido
   onMouseDown(event: MouseEvent) {
     this.slider = this.el.nativeElement.querySelector('#slider') as HTMLElement;
     this.pressed = true;
@@ -58,9 +98,8 @@ export class ProfileKnowledge {
   onMouseLeave() {
     this.pressed = false;
   }
-  //AQUI TERMINAN LOS EVENTOS DE PRUEBA
 
-
+  //Eventos de detección de scroll del mousepad
   onScroll() {
     if (!this.slider || !this.slides) return;
 
@@ -75,10 +114,8 @@ export class ProfileKnowledge {
     }
   }
 
-  ngOnDestroy() {
-    clearInterval(this.intervalId);
-  }
 
+  //Eventos de navegación con botones
   goToSlide = (n: number) => {
     this.currentSlide = (n - 1 + this.slides!.length) % this.slides!.length;
     const slide = this.slides![this.currentSlide] as HTMLElement;
@@ -89,10 +126,20 @@ export class ProfileKnowledge {
   nextSlide = () => this.goToSlide(this.currentSlide + 2);
 
 
+  //Eventos de actualización de pantalla
   updateActiveNav() {
     const buttons = Array.from(this.slidesNavs || []);
     buttons.forEach(btn => btn.classList.remove('nav-active'));
     const navSlide = buttons[this.currentSlide];
     if (navSlide) navSlide.classList.add('nav-active');
+  }
+
+  @ViewChild(UiPopover, { static: false })
+  popover!: UiPopover;
+
+  activePopup(i: number) {
+    if (!this.popover) return;
+
+    this.popover.setTrue();
   }
 }

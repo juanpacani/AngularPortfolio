@@ -1,0 +1,17 @@
+@media screen and (orientation: landscape) {
+    .responsive-content {
+        flex-direction: row;
+
+        > *:nth-child(1) { order: 2;}
+        > *:nth-child(2) { order: 1;}
+        > *:nth-child(3) { order: 3;}
+    }
+
+    .responsive-content>* {
+        width: 33%;
+    }
+
+    .responsive-content:first-of-type('org-profile') {
+        width: 34%;
+    }
+}

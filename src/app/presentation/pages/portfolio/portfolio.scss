@@ -1,0 +1,11 @@
+@use './components/templates/pc-template.scss' as *;
+@use './components/templates/tablet-template.scss' as *;
+@use './components/templates/mobile-template.scss' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+.responsive-content {
+    display: flex;
+    width: 100%;
+    padding-top: 5%;
+}

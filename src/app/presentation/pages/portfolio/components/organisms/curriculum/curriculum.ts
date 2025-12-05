@@ -7,7 +7,7 @@ import languages from './curriculum-languages.json';
 import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-curriculum',
+  selector: 'org-curriculum',
   imports: [UiAccordion, UiAccordionGroup, NgFor],
   templateUrl: './curriculum.html',
   styles: ``

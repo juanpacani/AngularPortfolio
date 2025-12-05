@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-picture',
+  selector: 'mol-profile-picture',
   imports: [],
   template: `
       <div class="picture">

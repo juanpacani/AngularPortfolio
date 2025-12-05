@@ -14,13 +14,24 @@
     }
 
     .multimedia-themes-controler {
-        width: 100%;
+        position: fixed;
+        z-index: 10;
+        bottom: 1em;
+        left: 1em;
+
+        width: auto;
+        max-width: 33%;
+        min-width: 23%;
         height: auto;
         min-height: 3em;
-
+        
+        background-color: var(--element-color-4);
+        border-radius: 16px;
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1em;
     }
 
     .multimedia-themes-controler>div {
@@ -33,14 +44,15 @@
 
 <div class="multimedia-themes-controler">
     <div>
-        <ui-button severity="secondary" (onClick)="changeImageIndex(false)" [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '-90'}]}">
+        <ui-button severity="secondary" (onClick)="changeImageIndex(false)"
+            [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '-90'}]}">
         </ui-button>
     </div>
     <div>
         <p><b>Background Image #{{imageIndex}}</b></p>
     </div>
     <div>
-        <ui-button severity="secondary" (onClick)="changeImageIndex(true)" [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '90'}]}"
-        ></ui-button>
+        <ui-button severity="secondary" (onClick)="changeImageIndex(true)"
+            [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '90'}]}"></ui-button>
     </div>
 </div>

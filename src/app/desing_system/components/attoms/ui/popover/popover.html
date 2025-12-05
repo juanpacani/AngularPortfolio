@@ -1,1 +1,14 @@
-<p>ui-popover works!</p>
+<style>
+    .popover {
+        min-width: 6em;
+        min-height: 5em;
+        background-color: var(--contrast-neutral-color-0);
+        height: auto;
+        width: auto;
+        z-index: 1;
+        position: absolute;
+    }
+</style>
+<section #popover *ngIf="active" class="popover" [style.transform]="transform">
+    <ng-content></ng-content>
+</section>

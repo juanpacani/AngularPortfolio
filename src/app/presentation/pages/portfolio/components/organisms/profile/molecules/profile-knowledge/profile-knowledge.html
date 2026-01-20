@@ -3,16 +3,12 @@
         <div class="slider-nav" id="slider-nav" style="position: relative;">
             <button *ngFor="let sect of knowledgeDataArray, index as i" class="slider-nav-button"
                 (click)="goToSlide(i + 1)" [class.nav-active]="i == 0"></button>
-            <ui-popover transform="translateX(0%) translateY(-50%)">
-                <p>level</p>
-            </ui-popover>
         </div>
         <br>
         <div class="slider" id="slider" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
             (mouseup)="onMouseUp()" (mouseleave)="onMouseLeave()" (scroll)="onScroll()">
             <section *ngFor="let sect of knowledgeDataArray, index as i" class="contents">
-                <img *ngFor="let image of sect" [src]="image" alt="Juan Pablo Canon knowledge"
-                    (mouseover)="activePopup(i)">
+                <img *ngFor="let image of sect" [src]="image" alt="Juan Pablo Canon knowledge">
             </section>
         </div>
     </div>

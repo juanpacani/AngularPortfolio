@@ -1,14 +1,21 @@
-<section class="header" >
+<section class="header">
+    <div style="pointer-events: all; display: inline-flex; gap: 1em;">
+        <cat-button (clicked)="toHome()">Home</cat-button>
+        <cat-button (clicked)="toCatarinaPreview()">Catarina Preview</cat-button>
+    </div>
     <!-- Theme buttons -->
     <div class="appareanceFixed">
-        <ui-button [styles]="staticButtonsStyles" 
-            severity="contrast" [label]="downloadCV"></ui-button>
-        <ui-button #buttonTheme id="buttonTheme" [styles]="staticButtonsStyles"
-            severity="contrast" (onClick)="toggleTheme()" [icon]="activeTheme ? {icon: 'sun'} : {icon: 'moon'}"></ui-button>
+        <cat-button customClass="static-button" variant="contrast">{{downloadCV}}</cat-button>
+        <cat-button customClass="static-button" variant="contrast" (clicked)="toggleTheme()"
+            [iconCenter]="activeTheme ? 'sun' : 'moon'"></cat-button>
 
-        <ui-input-color [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></ui-input-color>
-        <ui-select type="text" [options]="langOptions" [(ngModel)]="lang"
-            [styles]="[{p: 'border-top-right-radius', v: '0'}, {p: 'border-top-left-radius', v: '0'}, {p: 'width', v: '3em'}, {p: 'height', v: '2.3em'}]"
-            (selected)="toggleLanguage($event)" transform="translateX(0) translateY(10%)"></ui-select>
+        <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
+        <!-- 
+        Select Input Missed Properties
+        [styles]="[{p: 'border-top-right-radius', v: '0'}, {p: 'border-top-left-radius', v: '0'}, {p: 'width', v: '3em'}, {p: 'height', v: '2.3em'}]"
+        (selected)="toggleLanguage($event)" 
+        -->
+        <cat-select-input customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)" type="string" [options]="langOptions"
+            transform="translateX(0) translateY(10%)"></cat-select-input>
     </div>
 </section>

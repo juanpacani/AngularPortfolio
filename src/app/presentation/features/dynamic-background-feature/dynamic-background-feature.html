@@ -44,15 +44,15 @@
 
 <div class="multimedia-themes-controler">
     <div>
-        <ui-button severity="secondary" (onClick)="changeImageIndex(false)"
-            [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '-90'}]}">
-        </ui-button>
+        <cat-button variant="secondary" (clicked)="changeImageIndex(false)"
+            iconCenter="arrows/chevron-arrow-left">
+        </cat-button>
     </div>
     <div>
         <p><b>Background Image #{{imageIndex}}</b></p>
     </div>
     <div>
-        <ui-button severity="secondary" (onClick)="changeImageIndex(true)"
-            [icon]="{icon: 'chevron-arrow', isDynamic: true, values: [{p: 'rotation', v: '90'}]}"></ui-button>
+        <cat-button variant="secondary" (clicked)="changeImageIndex(true)"
+            iconCenter="arrows/chevron-arrow-right"></cat-button>
     </div>
 </div>

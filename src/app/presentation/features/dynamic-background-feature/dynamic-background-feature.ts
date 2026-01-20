@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
-import { uiButton } from '../../../desing_system/components/attoms/ui/button/button';
-import { Theming } from '../../../desing_system/utilities/services/theming/theming';
+import { Button, Theming } from 'catarina';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-background-feature',
-  imports: [uiButton],
+  imports: [Button],
   templateUrl: `dynamic-background-feature.html`,
   styles: ``
 })

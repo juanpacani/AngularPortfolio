@@ -32,12 +32,24 @@
             flex-direction: column;
             gap: 0;
         }
+
+        .dist>mol-profile-basic-data {
+            margin-top: 5%;
+            align-self: center;
+        }
+
+        /* .dist>mol-profile-picture {
+            max-width: 70%;
+        } */
     }
 </style>
 <section class="container">
     <section class="container dist">
         <mol-profile-picture></mol-profile-picture>
-        <mol-profile-basic-data></mol-profile-basic-data>
+        <div style="justify-content: space-around;">
+            <mol-profile-basic-data></mol-profile-basic-data>
+            <app-contact></app-contact>
+        </div>
     </section>
     <mol-profile-knowledge style="width: 100%;"></mol-profile-knowledge>
 </section>

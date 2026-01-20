@@ -11,30 +11,42 @@
             width: 90%;
         }
     }
-    @media screen and (orientation: portrait) and
-    (max-width: 600px) {
-        p, em {
+
+    @media screen and (orientation: portrait) and (max-width: 600px) {
+
+        p,
+        em {
             font-size: 1.2em;
         }
     }
+
+    cat-accordion[data-card-class="curriculum-accordion"] {
+        ::ng-deep button:hover {
+                opacity: 90%;
+            }
+        ::ng-deep button:active {
+                opacity: 70%;
+            }
+    }
 </style>
 <section class="curriculum">
-    <ui-accordion-group>
-        <ui-accordion [label]="summaryButtonLabel!" [accordionId]="'1'" [styles]="[{p: 'width', v: '100%'}]">
+    <cat-accordion-group>
+        <cat-accordion customClass="curriculum-accordion" [label]="summaryButtonLabel!" [accordionId]="'1'"
+            width="100%">
             <p>{{summary}}</p>
-        </ui-accordion>
-        <ui-accordion [label]="educationButtonLabel!" [accordionId]="'2'" [styles]="[{p: 'width', v: '100%'}]">
+        </cat-accordion>
+        <cat-accordion customClass="curriculum-accordion" [label]="educationButtonLabel!" [accordionId]="'2'" width="100%">
             <div *ngFor="let e of education">
                 <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
                 <em>{{e['studyPlace'] || 'Not Found'}}</em><br>
             </div>
-        </ui-accordion>
-        <ui-accordion [label]="experienceButtonLabel!" [accordionId]="'3'" [styles]="[{p: 'width', v: '100%'}]">
+        </cat-accordion>
+        <cat-accordion customClass="curriculum-accordion" [label]="experienceButtonLabel!" [accordionId]="'3'" width="100%">
             <div *ngFor="let e of experience">
                 <p><b>{{e['jobTitle'] || 'NotFound'}} - {{e['companyName'] || 'NotFound'}}</b></p>
                 <em>{{e['dateInterval'] || 'Not Defined'}}</em><br>
                 <em>{{e['description'] || 'Not Defined'}}</em>
             </div>
-        </ui-accordion>
-    </ui-accordion-group>
+        </cat-accordion>
+    </cat-accordion-group>
 </section>

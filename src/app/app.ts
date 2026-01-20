@@ -3,16 +3,11 @@ import { CommonModule } from "@angular/common";
 import { Subscription } from 'rxjs';
 import { Header } from './presentation/layouts/header/header';
 import { Body } from './presentation/layouts/body/body';
-import { Theming } from './desing_system/utilities/services/theming/theming';
-
-import { UiDrag } from './desing_system/utilities/directives/drag/ui-drag';
-import { Dialog } from './desing_system/components/attoms/ui/dialog/dialog';
-import { uiButton } from './desing_system/components/attoms/ui/button/button';
-import { ALL_ICONS } from './desing_system/components/attoms/icons/common/all_icons_arrays';
+import { Theming } from 'catarina';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, CommonModule, Body, ALL_ICONS],
+  imports: [Header, CommonModule, Body],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

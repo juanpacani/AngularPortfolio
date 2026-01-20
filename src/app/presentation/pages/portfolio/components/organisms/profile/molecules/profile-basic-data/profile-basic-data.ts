@@ -29,7 +29,7 @@ import languages from './profile-basic-data-languages.json';
     margin-bottom: 0.3em;
     line-height: 1em;
 
-    color: var(--contrast-color-0);
+    color: var(--neutral-color-9);
     
       font-family: "Roboto Condensed", sans-serif;
       font-optical-sizing: auto;

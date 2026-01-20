@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
       <div class="picture">
-        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="30em" height="30em" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; 
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; 
                 image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 14008.5 18217.93">
             <defs>
                 <style type="text/css">
@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
                     }
 
                     .fil0 {
-                        fill: var(--element-color-4);
+                        fill: var(--neutral-color-0);
                     }
                 </style>
             </defs>
@@ -39,16 +39,27 @@ import { Component } from '@angular/core';
 
     .picture>img {
         position: absolute;
-        top: 0;
-        left: 15%;
-        width: 60%;
+        top: -3%;
+        left: 3.5%;
+        width: 80%;
         border-bottom-left-radius: 70px;
         border-bottom-right-radius: 200px;
         box-shadow: inset 0 -150px 0px rgba(0, 0, 0, 0.6);
     }
+
     .picture>svg {
-        max-width: 100vw;
-        
+        width: 100%;
+        height: 30em;
+    }
+
+    @media screen and (orientation: portrait) and (max-width: 600px) {
+        .picture {
+            width: 80%;
+        }
+        .picture>img {
+            top: 8%;
+            width: 80.9%;
+        }
     }
     `
 })

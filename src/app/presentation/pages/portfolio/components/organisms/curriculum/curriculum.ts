@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UiAccordion } from '../../../../../../desing_system/components/molecules/ui/accordion/accordion';
-import { UiAccordionGroup } from '../../../../../../desing_system/components/organisms/accordion-group/accordion-group';
 import { Subscription } from 'rxjs';
 import { Translate } from '../../../../../../core/utilities/translate/translate';
 import languages from './curriculum-languages.json';
 import { NgFor } from '@angular/common';
+import { Accordion, AccordionGroup} from 'catarina';
+
 
 @Component({
   selector: 'org-curriculum',
-  imports: [UiAccordion, UiAccordionGroup, NgFor],
+  imports: [NgFor, Accordion, AccordionGroup],
   templateUrl: './curriculum.html',
   styles: ``
 })

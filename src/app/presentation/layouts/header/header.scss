@@ -8,7 +8,7 @@
     z-index: 101;
     pointer-events: auto;
   }
-  
+
   .header {
     pointer-events: none;
     user-select: none;
@@ -23,4 +23,23 @@
     top: 0;
     z-index: 100;
     left: 0;
+  }
+
+  cat-button[data-button-class="static-button"] {
+    ::ng-deep {
+      >button {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+
+  cat-select-input[data-select-input-class="static-select"] {
+    ::ng-deep {
+      input {
+        max-width: 3em;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
   }

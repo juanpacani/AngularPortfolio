@@ -1,10 +1,9 @@
 import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { UiPopover } from '../../../../../../../../desing_system/components/attoms/ui/popover/popover';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'mol-profile-knowledge',
-  imports: [UiPopover, NgFor],
+  imports: [NgFor],
   templateUrl: './profile-knowledge.html',
   styleUrl: './profile-knowledge.scss'
 })
@@ -132,14 +131,5 @@ export class ProfileKnowledge {
     buttons.forEach(btn => btn.classList.remove('nav-active'));
     const navSlide = buttons[this.currentSlide];
     if (navSlide) navSlide.classList.add('nav-active');
-  }
-
-  @ViewChild(UiPopover, { static: false })
-  popover!: UiPopover;
-
-  activePopup(i: number) {
-    if (!this.popover) return;
-
-    this.popover.setTrue();
   }
 }

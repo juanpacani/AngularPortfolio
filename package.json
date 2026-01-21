@@ -31,10 +31,10 @@
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.1",
-    "catarina": "file:../library-workspace/dist/catarina/catarina-0.1.0.tgz",
+    "catarina": "^1.0.0",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
-    "safirial-icons": "file:../library-workspace/dist/safirial-icons/safirial-icons-0.0.1.tgz",
+    "safirial-icons": "^0.1.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

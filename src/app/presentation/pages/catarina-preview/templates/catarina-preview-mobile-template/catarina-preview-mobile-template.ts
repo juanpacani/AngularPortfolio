@@ -17,9 +17,9 @@ import { Subscription } from 'rxjs';
 import languages from '../catarina-preview-languages.json';
 
 @Component({
-  selector: 'app-catarina-preview-desktop-template',
+  selector: 'app-catarina-preview-mobile-template',
   imports: [
-    //Angular
+        //Angular
     NgFor,
     NgIf,
     FormsModule,
@@ -40,10 +40,10 @@ import languages from '../catarina-preview-languages.json';
     //Overlays
     CDialog,
   ],
-  templateUrl: './catarina-preview-desktop-template.html',
-  styleUrl: './catarina-preview-desktop-template.scss'
+  templateUrl: './catarina-preview-mobile-template.html',
+  styleUrl: './catarina-preview-mobile-template.scss'
 })
-export class CatarinaPreviewDesktopTemplate implements OnInit, OnDestroy {
+export class CatarinaPreviewMobileTemplate implements OnInit, OnDestroy {
   clickCount = 0;
 
   color: string = '#A40000';
@@ -68,7 +68,7 @@ export class CatarinaPreviewDesktopTemplate implements OnInit, OnDestroy {
   buttons?: string;
   inputs?: string;
   overlays?: string;
-  panels?: string;
+  accordion?: string;
   accordionGroup?: string;
   primary?: string;
   grayScale?: string;
@@ -107,7 +107,6 @@ export class CatarinaPreviewDesktopTemplate implements OnInit, OnDestroy {
   surfaceSecondary?: string;
   elevatedContrast?: string;
   outlinedOutlined?: string;
-  buttonsTitle?: string;
 
   //Subscriptions
   private languageSubscription: Subscription | undefined;
@@ -134,7 +133,7 @@ export class CatarinaPreviewDesktopTemplate implements OnInit, OnDestroy {
     this.buttons = (languages as any)[lang]?.buttons ?? '';
     this.inputs = (languages as any)[lang]?.inputs ?? '';
     this.overlays = (languages as any)[lang]?.overlays ?? '';
-    this.panels = (languages as any)[lang]?.panels ?? '';
+    this.accordion = (languages as any)[lang]?.accordion ?? '';
     this.accordionGroup = (languages as any)[lang]?.accordionGroup ?? '';
     this.primary = (languages as any)[lang]?.primary ?? '';
     this.grayScale = (languages as any)[lang]?.grayScale ?? '';
@@ -173,7 +172,6 @@ export class CatarinaPreviewDesktopTemplate implements OnInit, OnDestroy {
     this.surfaceSecondary = (languages as any)[lang]?.surfaceSecondary ?? '';
     this.elevatedContrast = (languages as any)[lang]?.elevatedContrast ?? '';
     this.outlinedOutlined = (languages as any)[lang]?.outlinedOutlined ?? '';
-    this.buttonsTitle = (languages as any)[lang]?.buttonsTitle ?? '';
   }
   //Just an test event for the buttons
   counterEvent(): void {

@@ -1,6 +1,6 @@
 <div class="grid-container">
     <div class="item-1">
-        <p>Tipografias</p>
+        <p>{{ typographies }}</p>
         <div class="typographies">
             <h2>REM / Sans Serif</h2>
             <small>https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100..900;1,100..900&display=swap</small>
@@ -18,19 +18,19 @@
         </div>
     </div>
     <div class="item-2">
-        <p>Colores</p>
+        <p>{{ colors }}</p>
         <div class="colors">
-            <h4>Primary</h4>
+            <h4>{{ primary }}</h4>
             <div>
                 <div *ngFor="let v of [0,0,0,0,0], index as i" [style]="`background-color: var(--primary-color-${i});`">
                 </div>
             </div>
-            <h4>Gray Scale</h4>
+            <h4>{{ grayScale }}</h4>
             <div>
                 <div *ngFor="let v of [0,0,0,0,0,0,0,0,0,0], index as i"
                     [style]="`background-color: var(--neutral-color-${i});`"></div>
             </div>
-            <h4>Elements</h4>
+            <h4>{{ elements }}</h4>
             <div>
                 <div *ngFor="let v of [0,0,0,0,0], index as i" [style]="`background-color: var(--element-color-${i});`">
                 </div>
@@ -39,9 +39,8 @@
             <br><br>
         </div>
     </div>
-    <div class="item-3">Indice</div>
     <div class="item-4">
-        <p>Cards</p>
+        <p>{{ cards }}</p>
         <cat-card variant="elevated" size="lg" customClass="cards">
             <cat-card variant="surface">Surface</cat-card>
             <cat-card variant="elevated">Elevated</cat-card>
@@ -49,87 +48,87 @@
         </cat-card>
     </div>
     <div class="item-5">
-        <p>Botones</p>
+        <p>{{ buttons }}</p>
         <div>
             <section>
-                <h2>Buttons</h2>
+                <h2>{{ buttonsTitle }}</h2>
 
-                <h3>Variants</h3>
+                <h3>{{ variants }}</h3>
                 <div class="row">
-                    <cat-button variant="primary">Primary</cat-button>
-                    <cat-button variant="secondary">Secondary</cat-button>
-                    <cat-button variant="contrast">Contrast</cat-button>
-                    <cat-button variant="outline">Outline</cat-button>
-                    <cat-button variant="ghost">Ghost</cat-button>
+                    <cat-button variant="primary">{{ primaryButton }}</cat-button>
+                    <cat-button variant="secondary">{{ secondaryButton }}</cat-button>
+                    <cat-button variant="contrast">{{ contrastButton }}</cat-button>
+                    <cat-button variant="outline">{{ outlineButton }}</cat-button>
+                    <cat-button variant="ghost">{{ ghostButton }}</cat-button>
                 </div>
 
-                <h3>Sizes</h3>
+                <h3>{{ sizes }}</h3>
                 <div class="row">
-                    <cat-button size="sm">Small</cat-button>
-                    <cat-button size="md">Medium</cat-button>
-                    <cat-button size="lg">Large</cat-button>
+                    <cat-button size="sm">{{ small }}</cat-button>
+                    <cat-button size="md">{{ medium }}</cat-button>
+                    <cat-button size="lg">{{ large }}</cat-button>
                 </div>
 
-                <h3>With Icons</h3>
+                <h3>{{ withIcons }}</h3>
                 <div class="row">
-                    <cat-button iconLeft="home">Home</cat-button>
-                    <cat-button iconRight="home">Next</cat-button>
-                    <cat-button iconLeft="home" iconRight="home">Both</cat-button>
+                    <cat-button iconLeft="home">{{ home }}</cat-button>
+                    <cat-button iconRight="home">{{ next }}</cat-button>
+                    <cat-button iconLeft="home" iconRight="home">{{ both }}</cat-button>
                 </div>
 
-                <h3>States</h3>
+                <h3>{{ states }}</h3>
                 <div class="row">
-                    <cat-button>Normal</cat-button>
-                    <cat-button [disabled]="true">Disabled</cat-button>
+                    <cat-button>{{ normal }}</cat-button>
+                    <cat-button [disabled]="true">{{ disabled }}</cat-button>
                 </div>
 
-                <h3>Click Events</h3>
+                <h3>{{ clickEvents }}</h3>
                 <div class="row">
-                    <cat-button (clicked)="counterEvent()">Click me</cat-button>
-                    <p>Clicks: {{ clickCount }}</p>
+                    <cat-button (clicked)="counterEvent()">{{ clickMe }}</cat-button>
+                    <p>{{ clicks }}: {{ clickCount }}</p>
                 </div>
             </section>
         </div>
     </div>
     <div class="item-6">
-        <p>Inputs</p>
+        <p>{{ inputs }}</p>
         <cat-card customClass="cards">
             <div class="input-inside-card">
-                <input catInput placeholder="Text Input" type="text">
+                <input catInput [placeholder]="textInput" type="text">
             </div>
             <div class="input-inside-card">
-                <input catInput placeholder="Number Input" type="number">
+                <input catInput [placeholder]="numberInput" type="number">
             </div>
             <div class="input-inside-card">
-                <cat-select-input [(ngModel)]="value" (ngModelChange)="onValue($event)" [options]="options" placeholder="Select Input" transform="translateY(0%) translateX(0%)"></cat-select-input>
+                <cat-select-input [(ngModel)]="value" (ngModelChange)="onValue($event)" [options]="options" [placeholder]="selectInput!" transform="translateY(0%) translateX(0%)"></cat-select-input>
             </div>
             <div class="input-inside-card">
                 <cat-color-input [icon]="true"></cat-color-input>
-                <p>Color Input con Iconos de Safirial</p>
+                <p>{{ colorInputWithIcons }}</p>
             </div>
             <div class="input-inside-card">
                 <cat-color-input></cat-color-input>
-                <p>Color Input sin Iconos de Safirial</p>
+                <p>{{ colorInputWithoutIcons }}</p>
             </div>
         </cat-card>
     </div>
     <div class="item-7">
-        <p>Overlays</p>
+        <p>{{ overlays }}</p>
         <cat-card customClass="cards">
-            <cat-button (clicked)="openDialog(0)">Surfaced Dialog</cat-button>
-            <cat-dialog *ngIf="surfacedDialogActive" (closs)="closeDialog($event, 0)">Dialog</cat-dialog>
-            <cat-button (clicked)="openDialog(1)">Elevated Dialog</cat-button>
+            <cat-button (clicked)="openDialog(0)">{{ surfacedDialog }}</cat-button>
+            <cat-dialog *ngIf="surfacedDialogActive" (closs)="closeDialog($event, 0)">{{ dialog }}</cat-dialog>
+            <cat-button (clicked)="openDialog(1)">{{ elevatedDialog }}</cat-button>
             <cat-dialog variant="elevated" *ngIf="elevatedDialogActive"
-                (closs)="closeDialog($event, 1)">Dialog</cat-dialog>
-            <cat-button (clicked)="openDialog(2)">Outlined Dialog</cat-button>
+                (closs)="closeDialog($event, 1)">{{ dialog }}</cat-dialog>
+            <cat-button (clicked)="openDialog(2)">{{ outlinedDialog }}</cat-button>
             <cat-dialog variant="outlined" *ngIf="outlinedDialogActive"
-                (closs)="closeDialog($event, 2)">Dialog</cat-dialog>
+                (closs)="closeDialog($event, 2)">{{ dialog }}</cat-dialog>
         </cat-card>
     </div>
     <div class="item-8">
-        <p>Panels</p>
+        <p>{{ panels }}</p>
         <cat-card width="100%">
-            <cat-accordion label="Scrolleable" buttonVariant="primary" width="12em" [scrolleable]="true" [status]="accordionStatus">
+            <cat-accordion [label]="scrolleable!" buttonVariant="primary" width="12em" [scrolleable]="true" [status]="accordionStatus">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -142,7 +141,7 @@
                     mollit
                     anim id est laborum.</p>
             </cat-accordion>
-            <cat-accordion label="Non Scrolleable" buttonVariant="primary" width="12em" [scrolleable]="false" [status]="accordionStatus">
+            <cat-accordion [label]="nonScrolleable!" buttonVariant="primary" width="12em" [scrolleable]="false" [status]="accordionStatus">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -157,10 +156,10 @@
             </cat-accordion>
         </cat-card>
 
-        <p>Accordion Group</p>
+        <p>{{ accordionGroup }}</p>
         <cat-card width="100%">
             <cat-accordion-group [singleExpand]="true">
-                <cat-accordion label="Surface/Secondary" accordionId="1" buttonVariant="secondary" variant="surface" width="12em" [scrolleable]="true"
+                <cat-accordion [label]="surfaceSecondary!" accordionId="1" buttonVariant="secondary" variant="surface" width="12em" [scrolleable]="true"
                     [status]="accordionStatus">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                         et
@@ -172,7 +171,7 @@
                         mollit
                         anim id est laborum.</p>
                 </cat-accordion>
-                <cat-accordion label="Elevated/Contrast" accordionId="2" buttonVariant="contrast" variant="elevated" width="12em" [scrolleable]="true"
+                <cat-accordion [label]="elevatedContrast!" accordionId="2" buttonVariant="contrast" variant="elevated" width="12em" [scrolleable]="true"
                     [status]="accordionStatus">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                         et
@@ -184,7 +183,7 @@
                         mollit
                         anim id est laborum.</p>
                 </cat-accordion>
-                <cat-accordion label="Outlined/Outlined" accordionId="3" buttonVariant="outline" variant="outlined" width="12em" [scrolleable]="true"
+                <cat-accordion [label]="outlinedOutlined!" accordionId="3" buttonVariant="outline" variant="outlined" width="12em" [scrolleable]="true"
                     [status]="accordionStatus">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                         et

@@ -11,11 +11,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DeviceService } from '../../../core/services/device-service';
 import { CatarinaPreviewDesktopTemplate } from './templates/catarina-preview-desktop-template/catarina-preview-desktop-template';
-import { CatarinaPreviewMobilTemplate } from './templates/catarina-preview-mobil-template/catarina-preview-mobil-template';
+import { CatarinaPreviewMobileTemplate } from './templates/catarina-preview-mobile-template/catarina-preview-mobile-template';
 
 @Component({
   selector: 'app-catarina-preview',
-    imports: [CatarinaPreviewDesktopTemplate, CatarinaPreviewMobilTemplate],
+    imports: [CatarinaPreviewDesktopTemplate, CatarinaPreviewMobileTemplate],
   templateUrl: './catarina-preview.html',
   styleUrl: './catarina-preview.scss'
 })

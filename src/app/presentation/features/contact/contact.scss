@@ -1,0 +1,44 @@
+    .contact-card {
+        background-color: var(--neutral-color-0);
+        border-radius: 16px;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        box-sizing: content-box;
+        padding: 1em;
+        max-width: 18em;
+
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        z-index: 1000;
+    }
+
+    .contact-card>div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;
+    }
+
+    @media screen and (orientation: portrait),
+    (max-width: 1024px) {
+        .contact-card {
+            position: inherit;
+            margin-top: 10%;
+            justify-self: flex-end;
+        }
+    }
+
+    @media screen and (orientation: portrait) and (max-width: 600px) {
+        .contact-card {
+            position: fixed;
+            bottom: 60%;
+            left: 60%;
+            max-width: 2.4em;
+            left: auto;
+            right: 1em;
+        }
+    }

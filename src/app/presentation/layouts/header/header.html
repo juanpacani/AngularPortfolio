@@ -1,21 +1,18 @@
-<section class="header">
-    <div style="pointer-events: all; display: inline-flex; gap: 1em;">
+<cat-menu class="cat-menu">
+    <div class="navigate-buttons">
         <cat-button (clicked)="toHome()">Home</cat-button>
-        <cat-button (clicked)="toCatarinaPreview()">Catarina Preview</cat-button>
+        <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
     </div>
+
     <!-- Theme buttons -->
-    <div class="appareanceFixed">
-        <cat-button customClass="static-button" variant="contrast">{{downloadCV}}</cat-button>
-        <cat-button customClass="static-button" variant="contrast" (clicked)="toggleTheme()"
+    <div class="theme-buttons">
+        <cat-button (clicked)="downloadCurriculum()" variant="contrast">{{downloadCV}}</cat-button>
+        <cat-button variant="contrast" (clicked)="toggleTheme()"
             [iconCenter]="activeTheme ? 'sun' : 'moon'"></cat-button>
 
         <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
-        <!-- 
-        Select Input Missed Properties
-        [styles]="[{p: 'border-top-right-radius', v: '0'}, {p: 'border-top-left-radius', v: '0'}, {p: 'width', v: '3em'}, {p: 'height', v: '2.3em'}]"
-        (selected)="toggleLanguage($event)" 
-        -->
-        <cat-select-input customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)" type="string" [options]="langOptions"
-            transform="translateX(0) translateY(10%)"></cat-select-input>
+
+        <cat-select-input customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
+            type="string" [options]="langOptions" [transform]="deviceService.isMobile ? 'translateX(-11%)  translateY(-80%)' : 'translateX(-13%)'"></cat-select-input>
     </div>
-</section>
+</cat-menu>

@@ -24,10 +24,10 @@
         min-width: 23%;
         height: auto;
         min-height: 3em;
-        
-        background-color: var(--element-color-4);
+
+        background-color: var(--neutral-color-1);
         border-radius: 16px;
-        
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,14 +38,22 @@
         width: auto;
         height: 100%;
     }
+    
+    @media screen and (orientation: portrait) and (max-width: 600px) {
+        .multimedia-themes-controler {
+            max-width: 100%;
+            width: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 </style>
 <section class="generalBackground">
 </section>
 
 <div class="multimedia-themes-controler">
     <div>
-        <cat-button variant="secondary" (clicked)="changeImageIndex(false)"
-            iconCenter="chevron-arrow-left">
+        <cat-button variant="secondary" (clicked)="changeImageIndex(false)" iconCenter="chevron-arrow-left">
         </cat-button>
     </div>
     <div>

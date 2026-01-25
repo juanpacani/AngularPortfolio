@@ -15,7 +15,8 @@ import { Component } from '@angular/core';
                     }
 
                     .fil0 {
-                        fill: var(--neutral-color-0);
+                        fill: var(--primary-color-0);
+                        opacity: 0.7;
                     }
                 </style>
             </defs>

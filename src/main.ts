@@ -4,7 +4,7 @@ import { App } from './app/app';
 
 import { inject } from '@vercel/analytics';
 
-bootstrapApplication(App, appConfig).then(() => {
-  inject();
-})
+bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
+
+inject();

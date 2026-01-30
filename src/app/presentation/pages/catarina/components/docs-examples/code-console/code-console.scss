@@ -1,0 +1,108 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+/* Container Class */
+
+.code-console-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Card Class */
+.component-preview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/*  Buttons Classes*/
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
+cat-button[data-button-class="centered-buttons"] {
+    ::ng-deep button {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+cat-button[data-button-class="left-button"] {
+    ::ng-deep button {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right: none;
+    }
+}
+
+cat-button[data-button-class="right-button"] {
+    ::ng-deep button {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left: none;
+    }
+}
+
+cat-button.active {
+    ::ng-deep button {
+        background-color: var(--primary-color-1) !important;
+        opacity: 1 !important;
+    }
+}
+
+cat-button:not(.active) {
+    ::ng-deep button {
+        opacity: 0.7;
+    }
+}
+
+/* Code Container Classes */
+.code-container {
+    position: relative;
+    width: 100%;
+    min-height: 12em;
+    background-color: var(--primary-color-3);
+    color: cornflowerblue;
+    border-radius: 1em;
+    padding: 1em;
+    padding-bottom: 0;
+    font-size: 0.875rem;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color-2) var(--primary-color-3);
+    box-sizing: border-box;
+}
+
+.code-block {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: inherit;
+    line-height: 1.5;
+    color: inherit;
+    background: transparent;
+    border: none;
+    
+    code {
+        display: block;
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background: transparent;
+        white-space: pre;
+        word-wrap: normal;
+    }
+}

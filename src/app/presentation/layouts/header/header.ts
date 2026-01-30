@@ -21,7 +21,7 @@ export class Header implements OnInit, OnDestroy {
 
   //Theming Vars Light Theme = False
   activeTheme: boolean = false;
-  colorHex: string = '#16709c';//AA22AA also 170, 34, 0 / 170, 34, 170 are good options
+  colorHex: string = '#16709c';
   private themeSub: Subscription | undefined;
 
   //Lang Vars
@@ -98,6 +98,10 @@ export class Header implements OnInit, OnDestroy {
   }
 
   toCatarinaPreview() {
-    this.router.navigate(['/catarina-preview']);
+    this.router.navigate(['/catarina']);
+  }
+
+  toSafirialIcons() {
+    this.router.navigate(['/safirial-icons']);
   }
 }

@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { Portfolio } from './presentation/pages/portfolio/portfolio';
-import { CatarinaPreview } from './presentation/pages/catarina-preview/catarina-preview';
+import { Catarina } from './presentation/pages/catarina/catarina';
+import { CatarinaDocs } from './presentation/pages/catarina/components/catarina-docs/catarina-docs';
+import { SafirialIcons } from './presentation/pages/safirial-icons/safirial-icons';
 
 export const routes: Routes = [
     {
@@ -8,8 +10,27 @@ export const routes: Routes = [
         component: Portfolio,
     },
     {
-        path: 'catarina-preview',
-        component: CatarinaPreview
+        path: 'catarina',
+        component: Catarina,
+        children: [
+            {
+                path: ':doc/:lang',
+                component: CatarinaDocs
+            },
+            {
+                path: ':doc',
+                component: CatarinaDocs
+            },
+            {
+                path: '',
+                redirectTo: 'get-started',
+                pathMatch: 'full'
+            }
+        ]
+    },
+    {
+        path: 'safirial-icons',
+        component: SafirialIcons,
     },
     {
         path: '**',

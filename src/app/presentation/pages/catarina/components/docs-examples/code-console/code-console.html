@@ -1,0 +1,50 @@
+<div class="code-console-container">
+  <!-- Card superior: Renderizado del componente -->
+  <cat-card variant="elevated">
+    <div #componentContainer class="component-preview"></div>
+  </cat-card>
+
+  <!-- Controles de tabs y copiar -->
+  <div class="buttons">
+    <cat-button 
+      variant="primary" 
+      customClass="left-button"
+      [class.active]="isActiveTab('html')"
+      (clicked)="setActiveTab('html')">
+      HTML
+    </cat-button>
+    <cat-button 
+      variant="primary" 
+      customClass="centered-buttons"
+      [class.active]="isActiveTab('css')"
+      (clicked)="setActiveTab('css')">
+      CSS
+    </cat-button>
+    <cat-button 
+      variant="primary" 
+      customClass="centered-buttons"
+      [class.active]="isActiveTab('ts')"
+      (clicked)="setActiveTab('ts')">
+      TS
+    </cat-button>
+    <cat-button 
+      variant="primary" 
+      customClass="right-button" 
+      iconCenter="copy"
+      (clicked)="copyCode()">
+    </cat-button>
+  </div>
+
+  <!-- Contenedor de código -->
+  <div class="code-container">
+    @if (activeTab === 'html') {
+      <pre class="code-block html"><code>{{ currentCode || ' ' }}</code></pre>
+    }
+    @if (activeTab === 'css') {
+      <pre class="code-block css"><code>{{ currentCode || ' ' }}</code></pre>
+    }
+    @if (activeTab === 'ts') {
+      <pre class="code-block typescript"><code>{{ currentCode || ' ' }}</code></pre>
+    }
+  </div>
+</div>

@@ -2,6 +2,7 @@
     <div class="navigate-buttons">
         <cat-button (clicked)="toHome()">Home</cat-button>
         <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
+        <cat-button (clicked)="toSafirialIcons()">Safirial Icons</cat-button>
     </div>
 
     <!-- Theme buttons -->
@@ -12,7 +13,7 @@
 
         <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
 
-        <cat-select-input customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
+        <cat-select-input variant="elevated" customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
             type="string" [options]="langOptions" [transform]="deviceService.isMobile ? 'translateX(-11%)  translateY(-80%)' : 'translateX(-13%)'"></cat-select-input>
     </div>
 </cat-menu>

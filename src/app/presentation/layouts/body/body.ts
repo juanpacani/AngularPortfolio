@@ -5,9 +5,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-body',
   imports: [RouterOutlet],
   template: `
-  <section>
     <router-outlet></router-outlet>
-  </section>
   `,
   styles: ``
 })

@@ -1,0 +1,21 @@
+# DateInput (`lib-date-input`)
+
+**Estado**: En desarrollo
+
+Componente para seleccionar fechas. Actualmente en desarrollo.
+
+### Importación
+
+```typescript
+import { DateInput } from 'catarina';
+```
+
+### Ejemplos
+
+#### Ejemplo de Date Input
+
+<example name="date-input"></example>
+
+---
+
+Este componente está actualmente en desarrollo. La documentación completa estará disponible en futuras versiones de Catarina.

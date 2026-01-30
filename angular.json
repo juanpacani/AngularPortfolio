@@ -32,6 +32,11 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/safirial-icons/assets",
                 "output": "safirial-icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "documentation",
+                "output": "documentation"
               }
             ],
             "styles": [

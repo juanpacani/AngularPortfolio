@@ -3,10 +3,6 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 export const serverRoutes: ServerRoute[] = [
   // Rutas estáticas que se pueden pre-renderizar
   {
-    path: '',
-    renderMode: RenderMode.Prerender
-  },
-  {
     path: 'portfolio',
     renderMode: RenderMode.Prerender
   },
@@ -21,6 +17,11 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: 'catarina/**',
+    renderMode: RenderMode.Server
+  },
+  // Ruta catch-all (debe coincidir con app.routes.ts)
+  {
+    path: '**',
     renderMode: RenderMode.Server
   }
 ];

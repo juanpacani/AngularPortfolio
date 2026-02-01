@@ -84,7 +84,7 @@ cat-button:not(.active) {
 }
 
 .code-block {
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
     white-space: pre;
     word-wrap: normal;
@@ -95,6 +95,7 @@ cat-button:not(.active) {
     color: inherit;
     background: transparent;
     border: none;
+    background-color: transparent !important;
     
     code {
         display: block;

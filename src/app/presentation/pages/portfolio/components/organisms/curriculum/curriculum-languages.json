@@ -3,26 +3,26 @@
         "summaryButtonLabel": "Summary",
         "educationButtonLabel": "Education",
         "experienceButtonLabel": "Experience",
-        "summary": "Junior Fullstack Devoloper with one year of experience with Angular and NestJS. Focused on frontend devolopement with Angular and Flutter, NestJS and JS knowledge. A keen learner of technologies and an active participant in development teams.",
+        "summary": "Junior Full Stack Developer with experience in Angular, Flutter, NestJS, MySQL, PostgreSQL, Firebase, and MongoDB. Knowledge in Object-Oriented Programming, Clean Architecture, and scalable modular architectures. Experience in designing and implementing REST and RESTful APIs with NestJS, developing npm libraries, documentation with Swagger, and API testing with Postman. Basic knowledge in Docker and experience in interface customization with Shopify, Liquid, and Canva.",
         "education": [
             {
                 "studyTitle": "Technical Bachelor's Degree with a Specialization in Graphic Design and Development.",
-                "studyPlace": "Julio Flórez Technical Industrial Educational Institution."
+                "studyPlace": "Instituto Técnico Industrial Julio Flórez."
             },
             {
                 "studyTitle": "Course in Web Design with HTML and JavaScript.",
-                "studyPlace": "SENA - Industrial Maintenance and Manufacturing Center."
+                "studyPlace": "SENA - CIMM."
             },
             {
                 "studyTitle": "Software Analysis and Development Technology.",
-                "studyPlace": "SENA - Industrial Maintenance and Manufacturing Center."
+                "studyPlace": "SENA - CIMM."
             }
         ],
         "experience": [
             {
                 "jobTitle": "Web Development",
                 "companyName": "BIOWEB SAS.",
-                "dateInterval": "September 31th 2024 - September 19th 2025.",
+                "dateInterval": "Sep 31 2024 - Sep 19 2025.",
                 "description": "Development of HTML5 and CSS instances for products on sales websites, editing internal code with Angular, Firebase with Kanban and Scrum methodologies, remote."
             }
         ]
@@ -31,26 +31,26 @@
         "summaryButtonLabel": "Resumen",
         "educationButtonLabel": "Educación",
         "experienceButtonLabel": "Experiencia",
-        "summary": "Desarrollador Fullstack Junior con un año de experiencia en Angular y NestJS. Enfocado en desarrollo frontend con Angular y Flutter, con conocimientos en NestJS y JavaScript. Aprendiz constante y participante activo en equipos de desarrollo.",
+        "summary": "Desarrollador Full Stack Junior con experiencia en Angular, Flutter, NestJS, MySQL, PostgreSQL, Firebase y MongoDB. Conocimientos en Programación Orientada a Objetos, Arquitectura Limpia y arquitecturas modulares escalables. Experiencia en diseño e implementación de APIs REST y RESTful con NestJS, desarrollo de librerías npm, documentación con Swagger y pruebas con Postman. Conocimientos básicos en Docker y experiencia en personalización de interfaces con Shopify, Liquid y Canva.",
         "education": [
             {
                 "studyTitle": "Bachiller Técnico con Especialización en Desarrollo y Diseño Gráfico.",
-                "studyPlace": "Institución Educativa Técnica Industrial Julio Flórez."
+                "studyPlace": "Instituto Técnico Industrial Julio Flórez."
             },
             {
                 "studyTitle": "Curso de Diseño Web con HTML y JavaScript.",
-                "studyPlace": "SENA - Centro de Mantenimiento Industrial y Manufactura."
+                "studyPlace": "SENA - CIMM."
             },
             {
                 "studyTitle": "Tecnología en Análisis y Desarrollo de Software.",
-                "studyPlace": "SENA - Centro de Mantenimiento Industrial y Manufactura."
+                "studyPlace": "SENA - CIMM."
             }
         ],
         "experience": [
             {
                 "jobTitle": "Desarrollo Web",
                 "companyName": "BIOWEB SAS.",
-                "dateInterval": "31 de septiembre de 2024 - 19 de septiembre de 2025.",
+                "dateInterval": "Sep 31 2024 - Sep 19 2025.",
                 "description": "Desarrollo de instancias HTML5 y CSS para productos en sitios web de ventas, edición de código interno con Angular y Firebase bajo metodologías Kanban y Scrum, trabajo remoto."
             }
         ]

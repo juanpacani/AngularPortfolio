@@ -20,7 +20,7 @@ export class Header implements OnInit, OnDestroy {
   downloadCV?: string;
 
   //Theming Vars Light Theme = False
-  activeTheme: boolean = false;
+  darkTheme: boolean = true;
   colorHex: string = '#16709c';
   private themeSub: Subscription | undefined;
 
@@ -35,10 +35,6 @@ export class Header implements OnInit, OnDestroy {
     private router: Router,
     public deviceService: DeviceService,
   ) {
-    this.theming.generatePalettes(this.colorHex, this.activeTheme);
-
-    this.activeTheme = true;
-
     //Language
     this.langOptions = translateService.languageMap;
   };
@@ -48,7 +44,7 @@ export class Header implements OnInit, OnDestroy {
       this.lang = e;
       this.updateLanguages(e);
     });
-    this.themeSub = this.theming.activeTheme$.subscribe(e => this.activeTheme = e)
+    this.themeSub = this.theming.activeTheme$.subscribe(e => this.darkTheme = e)
   };
 
   ngOnDestroy(): void {
@@ -58,8 +54,8 @@ export class Header implements OnInit, OnDestroy {
 
   //Theming Events
   toggleTheme(): void {
-    this.activeTheme = !this.activeTheme;
-    this.theming.calculateDynamicPalettes(this.activeTheme);
+    this.darkTheme = !this.darkTheme;
+    this.theming.calculateDynamicPalettes(this.darkTheme);
   };
 
   onColorChange(hex: string) {
@@ -81,12 +77,14 @@ export class Header implements OnInit, OnDestroy {
   downloadCurriculum() {
     if (this.lang === 'ES') {
       window.open(
-        'https://github.com/user-attachments/files/24846763/ES_JUAN_PABLO_CANON_N._Resume.pdf',
+        'https://github.com/user-attachments/files/25028527/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        //'https://github.com/user-attachments/files/24846763/ES_JUAN_PABLO_CANON_N._Resume.pdf',
         '_blank'
       );
     } else if (this.lang === 'EN') {
       window.open(
-        'https://github.com/user-attachments/files/24846762/EN_JUAN_PABLO_CANON_N._Resume.pdf',
+        'https://github.com/user-attachments/files/25028526/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        //'https://github.com/user-attachments/files/24846762/EN_JUAN_PABLO_CANON_N._Resume.pdf',
         '_blank'
       );
     }

@@ -23,24 +23,24 @@ export class CodeConsole implements AfterViewInit, OnDestroy, OnChanges {
    * (htmlCode, cssCode, tsCode)
    */
   @Input() component?: Type<any>;
-  
-  @ViewChild('componentContainer', { read: ViewContainerRef }) 
+
+  @ViewChild('componentContainer', { read: ViewContainerRef })
   componentContainer!: ViewContainerRef;
-  
+
   activeTab: TabType = 'html';
   componentRef?: ComponentRef<any>;
   private viewInitialized = false;
-  
+
   /**
    * Obtiene el código actual según el tab activo
    * Accede a los getters estáticos del componente
    */
   get currentCode(): string {
     if (!this.component) return '';
-    
+
     // Acceder a los getters estáticos del componente
     const ComponentClass = this.component as any;
-    
+
     switch (this.activeTab) {
       case 'html':
         return ComponentClass.htmlCode || '';
@@ -52,32 +52,32 @@ export class CodeConsole implements AfterViewInit, OnDestroy, OnChanges {
         return '';
     }
   }
-  
+
   ngAfterViewInit() {
     this.viewInitialized = true;
     if (this.component) {
       this.loadComponent();
     }
   }
-  
+
   ngOnChanges(changes: SimpleChanges) {
     if (this.viewInitialized && changes['component']) {
       this.loadComponent();
     }
   }
-  
+
   ngOnDestroy() {
     if (this.componentRef) {
       this.componentRef.destroy();
     }
   }
-  
+
   loadComponent() {
     if (!this.componentContainer || !this.component) return;
-    
+
     // Limpiar contenedor anterior
     this.componentContainer.clear();
-    
+
     // Crear y renderizar el componente dinámicamente
     try {
       this.componentRef = this.componentContainer.createComponent(this.component);
@@ -85,21 +85,39 @@ export class CodeConsole implements AfterViewInit, OnDestroy, OnChanges {
       console.error('Error al cargar el componente:', error);
     }
   }
-  
+
   setActiveTab(tab: TabType) {
     this.activeTab = tab;
   }
-  
+
+  get hasHtmlCode(): boolean {
+    if (!this.component) return false;
+    const ComponentClass = this.component as any;
+    return ComponentClass.htmlCode && ComponentClass.htmlCode.trim().length > 0;
+  }
+
+  get hasCssCode(): boolean {
+    if (!this.component) return false;
+    const ComponentClass = this.component as any;
+    return ComponentClass.cssCode && ComponentClass.cssCode.trim().length > 0;
+  }
+
+  get hasTsCode(): boolean {
+    if (!this.component) return false;
+    const ComponentClass = this.component as any;
+    return ComponentClass.tsCode && ComponentClass.tsCode.trim().length > 0;
+  }
+
   copyCode() {
     if (!this.currentCode) return;
-    
+
     navigator.clipboard.writeText(this.currentCode).then(() => {
       console.log('Código copiado al portapapeles');
     }).catch(err => {
       console.error('Error al copiar código:', err);
     });
   }
-  
+
   isActiveTab(tab: TabType): boolean {
     return this.activeTab === tab;
   }

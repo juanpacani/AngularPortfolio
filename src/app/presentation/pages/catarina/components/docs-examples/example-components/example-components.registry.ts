@@ -20,12 +20,7 @@ import { CatInputBasicExample } from './input/cat-input-basic-example.component'
 import { CatInputSizesExample } from './input/cat-input-sizes-example.component';
 import { SelectInputExample } from './input/select-input-example.component';
 import { ColorInputExample } from './input/color-input-example.component';
-import { DateInputExample } from './input/date-input-example.component';
-import { TimeInputExample } from './input/time-input-example.component';
-import { PasswordInputExample } from './input/password-input-example.component';
-import { FileInputExample } from './input/file-input-example.component';
-import { TextAreaInputExample } from './input/text-area-input-example.component';
-import { RangeInputExample } from './input/range-input-example.component';
+
 // Overlay Examples
 import { DialogVariantsExample } from './overlay/dialog-variants-example.component';
 import { DrawerExample } from './overlay/drawer-example.component';
@@ -59,12 +54,6 @@ export const EXAMPLE_COMPONENTS: Map<string, Type<any>> = new Map([
   ['cat-input-sizes', CatInputSizesExample],
   ['select-input', SelectInputExample],
   ['color-input', ColorInputExample],
-  ['date-input', DateInputExample],
-  ['time-input', TimeInputExample],
-  ['password-input', PasswordInputExample],
-  ['file-input', FileInputExample],
-  ['text-area-input', TextAreaInputExample],
-  ['range-input', RangeInputExample],
   // Overlay Examples
   ['dialog-variants', DialogVariantsExample],
   ['drawer', DrawerExample],

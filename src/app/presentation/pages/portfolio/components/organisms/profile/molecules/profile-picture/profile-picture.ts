@@ -40,7 +40,7 @@ import { Component } from '@angular/core';
 
     .picture>img {
         position: absolute;
-        top: -3%;
+        top: 7%;
         left: 3.5%;
         width: 80%;
         border-bottom-left-radius: 70px;
@@ -58,7 +58,7 @@ import { Component } from '@angular/core';
             width: 80%;
         }
         .picture>img {
-            top: 8%;
+            top: 16%;
             width: 80.9%;
         }
     }

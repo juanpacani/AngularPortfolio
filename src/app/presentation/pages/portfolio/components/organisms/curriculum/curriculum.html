@@ -21,33 +21,51 @@
         }
     }
 
-    cat-accordion[data-card-class="curriculum-accordion"] {
+    cat-accordion[data-accordion-class="curriculum-accordion"] {
         ::ng-deep button:hover {
-                opacity: 90%;
-            }
+            opacity: 90%;
+        }
+
         ::ng-deep button:active {
-                opacity: 70%;
-            }
+            opacity: 70%;
+            background-color: red;
+        }
+
+        ::ng-deep p {
+            line-height: 1.5em;
+            margin-left: .5em;
+        }
+
+        ::ng-deep em {
+            margin-left: 1em;
+        }
     }
 </style>
 <section class="curriculum">
-    <cat-accordion-group>
-        <cat-accordion customClass="curriculum-accordion" [label]="summaryButtonLabel!" [accordionId]="'1'"
-            width="100%">
-            <p>{{summary}}</p>
-        </cat-accordion>
-        <cat-accordion customClass="curriculum-accordion" [label]="educationButtonLabel!" [accordionId]="'2'" width="100%">
-            <div *ngFor="let e of education">
-                <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
-                <em>{{e['studyPlace'] || 'Not Found'}}</em><br>
-            </div>
-        </cat-accordion>
-        <cat-accordion customClass="curriculum-accordion" [label]="experienceButtonLabel!" [accordionId]="'3'" width="100%">
-            <div *ngFor="let e of experience">
-                <p><b>{{e['jobTitle'] || 'NotFound'}} - {{e['companyName'] || 'NotFound'}}</b></p>
-                <em>{{e['dateInterval'] || 'Not Defined'}}</em><br>
-                <em>{{e['description'] || 'Not Defined'}}</em>
-            </div>
-        </cat-accordion>
-    </cat-accordion-group>
+    <ng-container *ngIf="language$ | async as currentLang">
+        <cat-accordion-group>
+            <cat-accordion customClass="curriculum-accordion" [label]="getSummaryButtonLabel(currentLang)"
+                accordionId="1" width="100%">
+                <p>{{getSummary(currentLang)}}</p>
+            </cat-accordion>
+            <cat-accordion customClass="curriculum-accordion" [label]="getEducationButtonLabel(currentLang)"
+                accordionId="2" width="100%">
+                <div *ngFor="let e of getEducation(currentLang)">
+                    <br>
+                    <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
+                    <p>{{e['studyPlace'] || 'Not Found'}}</p>
+                    <br>
+                </div>
+            </cat-accordion>
+            <cat-accordion customClass="curriculum-accordion" [label]="getExperienceButtonLabel(currentLang)"
+                accordionId="3" width="100%">
+                <div *ngFor="let e of getExperience(currentLang)">
+                    <p><b>{{e['jobTitle'] || 'NotFound'}} - {{e['companyName'] || 'NotFound'}}</b></p>
+                    <p>{{e['dateInterval'] || 'Not Defined'}}</p>
+                    <br>
+                    <p>{{e['description'] || 'Not Defined'}}</p>
+                </div>
+            </cat-accordion>
+        </cat-accordion-group>
+    </ng-container>
 </section>

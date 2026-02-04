@@ -1,0 +1,97 @@
+<!-- <div class="new-background"></div> -->
+<div class="docs-container">
+  <!-- Menú de navegación lateral izquierdo -->
+  @if (showIndex) {
+    @if (deviceService.isDesktop || deviceService.isTablet) {
+      <aside class="docs-sidebar">
+        <nav class="docs-nav">
+          @if (indexData) {
+            @for (section of indexData.sections; track section.title) {
+              <div class="nav-section">
+                @if (section.group) {
+                  <!-- Sección con grupo (Design System) -->
+                  <div class="nav-group-title">{{ section.title }}</div>
+                  @if (section.items) {
+                    <ul class="nav-items">
+                      @for (item of section.items; track item.path) {
+                        <li class="nav-item" [class.active]="isActive(item.path)">
+                          <a (click)="navigateToDoc(item.path, currentLang)" class="nav-link">
+                            {{ item.title }}
+                          </a>
+                        </li>
+                      }
+                    </ul>
+                  }
+                } @else {
+                  <!-- Sección simple -->
+                  <div class="nav-item" [class.active]="section.path && isActive(section.path)">
+                    <a (click)="navigateToDoc(section.path!, currentLang)" class="nav-link">
+                      {{ section.title }}
+                    </a>
+                  </div>
+                }
+              </div>
+            }
+          } @else {
+            <div class="loading">Cargando...</div>
+          }
+        </nav>
+      </aside>
+    } @else if (deviceService.isMobile) {
+      @if (!drawerActive) {
+        <cat-button (clicked)="openDrawer()" iconCenter="bars-3" class="button-container"></cat-button>
+      }
+      @if (drawerActive) {
+        <cat-drawer (closs)="closeDrawer()" customClass="drawer-content">
+          <aside class="docs-sidebar">
+            <nav class="docs-nav">
+              @if (indexData) {
+                @for (section of indexData.sections; track section.title) {
+                  <div class="nav-section">
+                    @if (section.group) {
+                      <!-- Sección con grupo (Design System) -->
+                      <div class="nav-group-title">{{ section.title }}</div>
+                      @if (section.items) {
+                        <ul class="nav-items">
+                          @for (item of section.items; track item.path) {
+                            <li class="nav-item" [class.active]="isActive(item.path)">
+                              <a (click)="navigateToDoc(item.path, currentLang); closeDrawer()" class="nav-link">
+                                {{ item.title }}
+                              </a>
+                            </li>
+                          }
+                        </ul>
+                      }
+                    } @else {
+                      <!-- Sección simple -->
+                      <div class="nav-item" [class.active]="section.path && isActive(section.path)">
+                        <a (click)="navigateToDoc(section.path!, currentLang); closeDrawer()" class="nav-link">
+                          {{ section.title }}
+                        </a>
+                      </div>
+                    }
+                  </div>
+                }
+              } @else {
+                <div class="loading">Cargando...</div>
+              }
+            </nav>
+          </aside>
+        </cat-drawer>
+      }
+    }
+  }
+
+  <!-- Contenido principal -->
+  <main class="docs-content" [ngClass]="scrolleableMain ? 'scrolleable-main' : ''" [class.full-width]="!showIndex">
+    @if (show404) {
+      <div class="error-404">
+        <h1>404</h1>
+        <p>Documento no encontrado</p>
+        <p>El documento que buscas no existe en la documentación.</p>
+      </div>
+    } @else {
+      <div #markdownContent class="markdown-content" [innerHTML]="renderedContent"></div>
+    }
+  </main>
+</div>

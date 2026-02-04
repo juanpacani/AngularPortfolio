@@ -1,48 +1,53 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { Translate } from '../../../../../../core/utilities/translate/translate';
 import languages from './curriculum-languages.json';
-import { NgFor } from '@angular/common';
+import { NgFor, AsyncPipe, NgIf } from '@angular/common';
 import { Accordion, AccordionGroup} from 'catarina';
 
 
 @Component({
   selector: 'org-curriculum',
-  imports: [NgFor, Accordion, AccordionGroup],
+  imports: [NgFor, NgIf, Accordion, AccordionGroup, AsyncPipe],
   templateUrl: './curriculum.html',
   styles: ``
 })
-export class Curriculum implements OnInit, OnDestroy {
-  //Language Variables
-  summaryButtonLabel?: string;
-  educationButtonLabel?: string;
-  experienceButtonLabel?: string;
-  summary?: string;
-  education?: {studyTitle: string, studyPlace: string}[];
-  experience?: {jobTitle: string, companyName: string, dateInterval: string, description: string}[];
+export class Curriculum {
+  // Observable que emite el idioma actual
+  language$;
 
-  //Subscriptions
-  sub: Subscription | undefined;
   constructor(
     private translate: Translate,
-  ) { }
-
-  ngOnInit(): void {
-    this.sub = this.translate.language$.subscribe(e =>
-      this.updateLanguages(e),
-    );
+  ) {
+    this.language$ = this.translate.language$;
   }
 
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+  // Getters que acceden directamente al JSON sin almacenar en memoria
+  getCurrentLanguageData(lang: string) {
+    return (languages as any)[lang] || {};
   }
 
-  updateLanguages(lang: string) {
-    this.summaryButtonLabel = (languages as any)[lang]?.summaryButtonLabel ?? '';
-    this.educationButtonLabel = (languages as any)[lang]?.educationButtonLabel ?? '';
-    this.experienceButtonLabel = (languages as any)[lang]?.experienceButtonLabel ?? '';
-    this.summary = (languages as any)[lang]?.summary ?? '';
-    this.education = (languages as any)[lang]?.education ?? '';
-    this.experience = (languages as any)[lang]?.experience ?? '';
+  // Getters individuales para acceso directo desde el template
+  getSummaryButtonLabel(lang: string): string {
+    return this.getCurrentLanguageData(lang)?.summaryButtonLabel ?? '';
+  }
+
+  getEducationButtonLabel(lang: string): string {
+    return this.getCurrentLanguageData(lang)?.educationButtonLabel ?? '';
+  }
+
+  getExperienceButtonLabel(lang: string): string {
+    return this.getCurrentLanguageData(lang)?.experienceButtonLabel ?? '';
+  }
+
+  getSummary(lang: string): string {
+    return this.getCurrentLanguageData(lang)?.summary ?? '';
+  }
+
+  getEducation(lang: string): {studyTitle: string, studyPlace: string}[] {
+    return this.getCurrentLanguageData(lang)?.education ?? [];
+  }
+
+  getExperience(lang: string): {jobTitle: string, companyName: string, dateInterval: string, description: string}[] {
+    return this.getCurrentLanguageData(lang)?.experience ?? [];
   }
 }

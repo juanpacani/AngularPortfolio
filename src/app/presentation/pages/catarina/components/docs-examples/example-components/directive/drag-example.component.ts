@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Drag } from 'catarina';
+import { Translate } from '../../../../../../../core/utilities/translate/translate';
 
 @Component({
   selector: 'app-drag-example',
@@ -7,9 +8,9 @@ import { Drag } from 'catarina';
   template: `
     <div style="position: relative; width: 100%; height: 300px; border: 2px dashed var(--neutral-color-3); border-radius: 8px; padding: 1rem;">
       <div 
-        Drag 
+        CDrag 
         style="width: 150px; height: 100px; background: var(--primary-color-2); cursor: grab; display: flex; align-items: center; justify-content: center; border-radius: 8px; user-select: none;">
-        Arrástrame
+        Drag
       </div>
     </div>
   `,
@@ -27,8 +28,7 @@ export class DragExample {
   }
 
   static get cssCode(): string {
-    return `/* Este ejemplo no tiene estilos CSS personalizados */
-/* Los estilos están definidos inline en el template */`;
+    return ``;
   }
 
   static get tsCode(): string {

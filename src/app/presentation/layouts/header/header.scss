@@ -2,14 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
-}
-
-.navigate-buttons {
-  pointer-events: all;
-  display: flex;
-  gap: 1em;
 }
 
 .theme-buttons {
@@ -19,10 +12,13 @@
   gap: 1em;
 }
 
-cat-select-input[data-select-input-class="static-select"] {
-  ::ng-deep {
-    input {
-      max-width: 3em;
-    }
+.static-select {
+  width: 4em;
+}
+
+@media screen and (orientation: portrait) and (max-width: 1024px) {
+  .theme-buttons {
+    width: 100%;
+    justify-content: space-between;
   }
 }

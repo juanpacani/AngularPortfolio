@@ -1,0 +1,166 @@
+<div class="background"></div>
+<ng-container *ngIf="language$ | async as currentLang">
+  <div class="overview-container">
+      <!-- Contenido principal -->
+      <div class="overview-content">
+        <!-- Diseño circular inspirado en catarinas -->
+        <div class="catarina-pattern">
+          <!-- Círculos grandes del caparazón -->
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+          <div class="circle circle-3"></div>
+          <div class="circle circle-4"></div>
+          <div class="circle circle-5"></div>
+          <div class="circle circle-6"></div>
+          <div class="circle circle-7"></div>
+        </div>
+    
+        <!-- Contenido central -->
+        <div class="content-wrapper">
+          <cat-card variant="elevated" customClass="main-card">
+            <div class="card-content">
+              <h1 class="title">{{getTitle(currentLang)}}</h1>
+              <p class="subtitle">{{getSubtitle(currentLang)}}</p>
+              
+              <!-- Botón Get Started centrado -->
+              <div class="button-container">
+                <cat-button 
+                  variant="primary" 
+                  size="lg"
+                  (clicked)="navigateToGetStarted()">
+                  {{getGetStartedButton(currentLang)}}
+                </cat-button>
+              </div>
+            </div>
+          </cat-card>
+        </div>
+      </div>
+    
+      <!-- Sección de ejemplos: Vista Desktop -->
+      <div class="examples-section">
+        <div class="examples-container">
+          <h2 class="examples-title">{{getDesktopExampleTitle(currentLang)}}</h2>
+          
+          <!-- Barra de herramientas -->
+          <div class="toolbar">
+            <input catInput type="text" [placeholder]="getSearchPlaceholder(currentLang)" [(ngModel)]="searchValue" class="search-input">
+            <cat-select-input 
+              [(ngModel)]="filterValue" 
+              [options]="getSelectOptions(currentLang)" 
+              [placeholder]="getFilterPlaceholder(currentLang)"
+              transform="translateY(0%) translateX(0%)">
+            </cat-select-input>
+            <cat-button variant="primary" size="md">{{getFilterButton(currentLang)}}</cat-button>
+            <cat-button variant="outline" size="md">{{getExportButton(currentLang)}}</cat-button>
+          </div>
+    
+          <!-- Cards de estadísticas -->
+          <div class="stats-grid">
+            <cat-card variant="elevated" customClass="stat-card">
+              <div class="stat-content">
+                <h3 class="stat-label">{{getUsersLabel(currentLang)}}</h3>
+                <p class="stat-value">1,234</p>
+                <cat-button variant="ghost" size="sm">{{getViewMoreButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+    
+            <cat-card variant="surface" customClass="stat-card">
+              <div class="stat-content">
+                <h3 class="stat-label">{{getSalesLabel(currentLang)}}</h3>
+                <p class="stat-value">$45,678</p>
+                <cat-button variant="ghost" size="sm">{{getViewMoreButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+    
+            <cat-card variant="outlined" customClass="stat-card">
+              <div class="stat-content">
+                <h3 class="stat-label">{{getOrdersLabel(currentLang)}}</h3>
+                <p class="stat-value">892</p>
+                <cat-button variant="ghost" size="sm">{{getViewMoreButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+    
+            <cat-card variant="elevated" customClass="stat-card">
+              <div class="stat-content">
+                <h3 class="stat-label">{{getActivityLabel(currentLang)}}</h3>
+                <p class="stat-value">+12%</p>
+                <cat-button variant="ghost" size="sm">{{getViewMoreButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+          </div>
+    
+          <!-- Cards de contenido adicional -->
+          <div class="content-cards">
+            <cat-card variant="elevated" customClass="content-card">
+              <h4>{{getImportantInfoTitle(currentLang)}}</h4>
+              <p>{{getImportantInfoDescription(currentLang)}}</p>
+              <div class="card-actions">
+                <cat-button variant="primary" size="md">{{getPrimaryActionButton(currentLang)}}</cat-button>
+                <cat-button variant="secondary" size="md">{{getSecondaryActionButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+    
+            <cat-card variant="surface" customClass="content-card">
+              <h4>{{getNotificationsTitle(currentLang)}}</h4>
+              <p>{{getNotificationsDescription(currentLang)}}</p>
+              <div class="card-actions">
+                <cat-button variant="outline" size="md">{{getCancelButton(currentLang)}}</cat-button>
+                <cat-button variant="contrast" size="md">{{getAcceptButton(currentLang)}}</cat-button>
+              </div>
+            </cat-card>
+          </div>
+        </div>
+    
+        <!-- Sección de ejemplos: Vista Mobile Emulada -->
+        <div class="mobile-example">
+          <div class="mobile-frame">
+            <div class="mobile-header">
+              <h3>{{getMobileExampleTitle(currentLang)}}</h3>
+            </div>
+            <div class="mobile-content">
+              <input catInput type="text" [placeholder]="getSearchPlaceholder(currentLang)" [(ngModel)]="searchValue" class="mobile-search">
+              
+              <cat-card variant="elevated" customClass="mobile-stat-card">
+                <div class="stat-content">
+                  <h3 class="stat-label">{{getUsersLabel(currentLang)}}</h3>
+                  <p class="stat-value">1,234</p>
+                </div>
+              </cat-card>
+    
+              <cat-card variant="surface" customClass="mobile-stat-card">
+                <div class="stat-content">
+                  <h3 class="stat-label">{{getSalesLabel(currentLang)}}</h3>
+                  <p class="stat-value">$45,678</p>
+                </div>
+              </cat-card>
+    
+              <cat-card variant="outlined" customClass="mobile-stat-card">
+                <div class="stat-content">
+                  <h3 class="stat-label">{{getOrdersLabel(currentLang)}}</h3>
+                  <p class="stat-value">892</p>
+                </div>
+              </cat-card>
+    
+              <div class="mobile-actions">
+                <cat-button variant="primary" size="md" style="width: 100%;">{{getFilterButton(currentLang)}}</cat-button>
+                <cat-select-input 
+                  [(ngModel)]="filterValue" 
+                  [options]="getSelectOptions(currentLang)" 
+                  [placeholder]="getFilterPlaceholder(currentLang)"
+                  transform="translateY(0%) translateX(0%)"
+                  style="width: 100%;">
+                </cat-select-input>
+              </div>
+    
+              <cat-card variant="elevated" customClass="mobile-content-card">
+                <h4>{{getMobileContentTitle(currentLang)}}</h4>
+                <p>{{getMobileContentDescription(currentLang)}}</p>
+                <cat-button variant="primary" size="md" style="width: 100%; margin-top: 1rem;">{{getActionButton(currentLang)}}</cat-button>
+              </cat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-container>
+  

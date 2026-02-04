@@ -1,66 +1,21 @@
-<style>
-    .icons-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 1em;
-        box-sizing: border-box;
-        padding: 1em;
-        background-color: var(--neutral-color-1);
-    }
-    
-    .icon-frame {
-        position: relative;
-        background-color: var(--element-color-3);
-        border-radius: 18px;
-        aspect-ratio: 1/1;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-
-    .icon-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 70%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .icon-frame p {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 30%;
-        margin: 0;
-        padding: 0.5em;
-        box-sizing: border-box;
-        text-align: center;
-        background-color: var(--element-color-2);
-        border-radius: 0 0 10px 10px;
-        font-size: 1rem;
-        line-height: 1.2;
-        word-break: break-word;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
-
-<div class="icons-container">
-    @for (icon of iconList; track $index) {
-        <div class="icon-frame">
-            <div class="icon-wrapper">
-                <cat-icon [name]="icon" size="3em"></cat-icon>
+<section class="icons-section">
+    <div class="icons-container">
+        @for (icon of iconList; track $index) {
+            <div class="icon-frame">
+                <div class="icon-wrapper">
+                    <cat-icon [name]="icon" size="3em"></cat-icon>
+                </div>
+                <p>{{icon}}</p>
             </div>
-            <p>{{icon}}</p>
-        </div>
-    }
-</div>
+        }
+    </div>
+</section>
 
-<app-code-console [component]="iconSizesExample"></app-code-console>
+<section class="documentation-section">
+    <app-documentation-viewer 
+        [indexPath]="indexPath" 
+        [showIndex]="false"
+        initialDoc="README"
+        [scrolleableMain]="false">
+    </app-documentation-viewer>
+</section>

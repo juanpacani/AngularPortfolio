@@ -1,19 +1,17 @@
 <cat-menu class="cat-menu">
-    <div class="navigate-buttons">
-        <cat-button (clicked)="toHome()">Home</cat-button>
-        <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
-        <cat-button (clicked)="toSafirialIcons()">Safirial Icons</cat-button>
-    </div>
+    <cat-button (clicked)="toHome()" iconLeft="home">Home</cat-button>
+    <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
+    <cat-button (clicked)="toSafirialIcons()">Safirial Icons</cat-button>
 
     <!-- Theme buttons -->
     <div class="theme-buttons">
         <cat-button (clicked)="downloadCurriculum()" variant="contrast">{{downloadCV}}</cat-button>
         <cat-button variant="contrast" (clicked)="toggleTheme()"
-            [iconCenter]="activeTheme ? 'sun' : 'moon'"></cat-button>
+            [iconCenter]="darkTheme ? 'sun' : 'moon'"></cat-button>
 
         <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
 
-        <cat-select-input variant="elevated" customClass="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
+        <cat-select-input variant="elevated" class="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
             type="string" [options]="langOptions" [transform]="deviceService.isMobile ? 'translateX(-11%)  translateY(-80%)' : 'translateX(-13%)'"></cat-select-input>
     </div>
 </cat-menu>

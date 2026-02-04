@@ -14,10 +14,8 @@ export class MarkdownProcessor {
     });
 
     // Headers (procesar de más específico a menos específico)
-    html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
-    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+    // Excluir contenido dentro de <pre><code> blocks
+    html = this.processHeadersExcludingCodeBlocks(html);
 
     // Blockquotes
     html = html.replace(/^> (.+)$/gim, '<blockquote>$1</blockquote>');
@@ -63,8 +61,75 @@ export class MarkdownProcessor {
     });
 
     // Paragraphs (líneas que no son otros elementos)
-    const lines = html.split('\n');
-    html = lines.map((line, index) => {
+    // Excluir contenido dentro de <pre><code> blocks
+    html = this.processParagraphsExcludingCodeBlocks(html);
+
+    // Clean up empty paragraphs y líneas vacías múltiples
+    html = html.replace(/<p>\s*<\/p>/g, '');
+    html = html.replace(/\n{3,}/g, '\n\n');
+
+    return html.trim();
+  }
+
+  private static processHeadersExcludingCodeBlocks(text: string): string {
+    // Dividir por bloques de código para procesar headers solo fuera de ellos
+    const parts: string[] = [];
+    let lastIndex = 0;
+    const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
+    let match;
+    
+    while ((match = codeBlockRegex.exec(text)) !== null) {
+      // Procesar headers en la parte antes del code block
+      const beforeCode = text.substring(lastIndex, match.index);
+      parts.push(this.processHeadersInText(beforeCode));
+      // Mantener el code block sin cambios
+      parts.push(match[0]);
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Procesar headers en la parte final
+    const afterCode = text.substring(lastIndex);
+    parts.push(this.processHeadersInText(afterCode));
+    
+    return parts.join('');
+  }
+
+  private static processHeadersInText(text: string): string {
+    let result = text;
+    // Procesar headers de más específico a menos específico
+    result = result.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
+    result = result.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+    result = result.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+    result = result.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+    return result;
+  }
+
+  private static processParagraphsExcludingCodeBlocks(text: string): string {
+    // Dividir por bloques de código para procesar párrafos solo fuera de ellos
+    const parts: string[] = [];
+    let lastIndex = 0;
+    const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
+    let match;
+    
+    while ((match = codeBlockRegex.exec(text)) !== null) {
+      // Procesar párrafos en la parte antes del code block
+      const beforeCode = text.substring(lastIndex, match.index);
+      parts.push(this.processParagraphsInText(beforeCode));
+      // Mantener el code block sin cambios
+      parts.push(match[0]);
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Procesar párrafos en la parte final
+    const afterCode = text.substring(lastIndex);
+    parts.push(this.processParagraphsInText(afterCode));
+    
+    return parts.join('');
+  }
+
+  private static processParagraphsInText(text: string): string {
+    const lines = text.split('\n');
+    return lines.map((line) => {
       const trimmed = line.trim();
       if (!trimmed) return '';
       
@@ -89,12 +154,6 @@ export class MarkdownProcessor {
       
       return `<p>${line}</p>`;
     }).join('\n');
-
-    // Clean up empty paragraphs y líneas vacías múltiples
-    html = html.replace(/<p>\s*<\/p>/g, '');
-    html = html.replace(/\n{3,}/g, '\n\n');
-
-    return html.trim();
   }
 
   private static escapeHtml(text: string): string {

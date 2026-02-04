@@ -15,7 +15,6 @@ export class ProfileKnowledge {
       "multimedia/images/knowledge/languages/js.svg",
       "multimedia/images/knowledge/languages/dart.svg",
       "multimedia/images/knowledge/languages/java.svg",
-      "multimedia/images/knowledge/languages/c++.svg"
     ],
     2: [
       "multimedia/images/knowledge/frameworks/angular.svg",

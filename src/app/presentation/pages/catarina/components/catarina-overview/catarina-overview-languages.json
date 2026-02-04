@@ -1,0 +1,78 @@
+{
+    "EN": {
+        "title": "Catarina",
+        "subtitle": "A modern and elegant design system",
+        "getStartedButton": "Get Started",
+        "desktopExampleTitle": "Usage Example - Desktop View",
+        "mobileExampleTitle": "Mobile View",
+        "searchPlaceholder": "Search...",
+        "filterPlaceholder": "Filter",
+        "filterButton": "Filter",
+        "exportButton": "Export",
+        "viewMoreButton": "View more",
+        "stats": {
+            "users": "Users",
+            "sales": "Sales",
+            "orders": "Orders",
+            "activity": "Activity"
+        },
+        "contentCards": {
+            "importantInfo": {
+                "title": "Important information",
+                "description": "This is an example card with additional content that shows how Catarina components can be used in a real interface.",
+                "primaryAction": "Primary action",
+                "secondaryAction": "Secondary action"
+            },
+            "notifications": {
+                "title": "Notifications",
+                "description": "Components adapt perfectly to different contexts and maintain a consistent appearance throughout the application.",
+                "cancelButton": "Cancel",
+                "acceptButton": "Accept"
+            }
+        },
+        "mobileContent": {
+            "title": "Mobile content",
+            "description": "Components adapt perfectly to mobile screens while maintaining usability and design.",
+            "actionButton": "Action"
+        },
+        "selectOptions": ["All", "Active", "Inactive", "Pending"]
+    },
+    "ES": {
+        "title": "Catarina",
+        "subtitle": "Un sistema de diseño moderno y elegante",
+        "getStartedButton": "Comenzar",
+        "desktopExampleTitle": "Ejemplo de uso - Vista Desktop",
+        "mobileExampleTitle": "Vista Mobile",
+        "searchPlaceholder": "Buscar...",
+        "filterPlaceholder": "Filtrar",
+        "filterButton": "Filtrar",
+        "exportButton": "Exportar",
+        "viewMoreButton": "Ver más",
+        "stats": {
+            "users": "Usuarios",
+            "sales": "Ventas",
+            "orders": "Pedidos",
+            "activity": "Actividad"
+        },
+        "contentCards": {
+            "importantInfo": {
+                "title": "Información importante",
+                "description": "Este es un ejemplo de card con contenido adicional que muestra cómo se pueden usar los componentes de Catarina en una interfaz real.",
+                "primaryAction": "Acción principal",
+                "secondaryAction": "Acción secundaria"
+            },
+            "notifications": {
+                "title": "Notificaciones",
+                "description": "Los componentes se adaptan perfectamente a diferentes contextos y mantienen una apariencia consistente en toda la aplicación.",
+                "cancelButton": "Cancelar",
+                "acceptButton": "Aceptar"
+            }
+        },
+        "mobileContent": {
+            "title": "Contenido móvil",
+            "description": "Los componentes se adaptan perfectamente a pantallas móviles manteniendo la usabilidad y el diseño.",
+            "actionButton": "Acción"
+        },
+        "selectOptions": ["Todos", "Activos", "Inactivos", "Pendientes"]
+    }
+}

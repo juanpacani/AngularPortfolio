@@ -1,36 +1,42 @@
 <div class="code-console-container">
   <!-- Card superior: Renderizado del componente -->
-  <cat-card variant="elevated">
+  <cat-card variant="outlined">
     <div #componentContainer class="component-preview"></div>
   </cat-card>
 
   <!-- Controles de tabs y copiar -->
   <div class="buttons">
-    <cat-button 
-      variant="primary" 
-      customClass="left-button"
-      [class.active]="isActiveTab('html')"
-      (clicked)="setActiveTab('html')">
-      HTML
-    </cat-button>
-    <cat-button 
-      variant="primary" 
-      customClass="centered-buttons"
-      [class.active]="isActiveTab('css')"
-      (clicked)="setActiveTab('css')">
-      CSS
-    </cat-button>
-    <cat-button 
-      variant="primary" 
-      customClass="centered-buttons"
-      [class.active]="isActiveTab('ts')"
-      (clicked)="setActiveTab('ts')">
-      TS
-    </cat-button>
+        @if (hasHtmlCode) {
+      <cat-button 
+        variant="primary" 
+        customClass="left-button"
+        [class.active]="isActiveTab('html')"
+        (clicked)="setActiveTab('html')">
+        HTML
+      </cat-button>
+    }
+    @if (hasCssCode) {
+      <cat-button 
+        variant="primary" 
+        customClass="centered-buttons"
+        [class.active]="isActiveTab('css')"
+        (clicked)="setActiveTab('css')">
+        CSS
+      </cat-button>
+    }
+    @if (hasTsCode) {
+      <cat-button 
+        variant="primary" 
+        customClass="centered-buttons"
+        [class.active]="isActiveTab('ts')"
+        (clicked)="setActiveTab('ts')">
+        TS
+      </cat-button>
+    }
     <cat-button 
       variant="primary" 
       customClass="right-button" 
-      iconCenter="copy"
+      iconCenter="clipboard"
       (clicked)="copyCode()">
     </cat-button>
   </div>

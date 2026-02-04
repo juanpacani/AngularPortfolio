@@ -1,11 +1,80 @@
 :host {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: calc(100vh - 7em);
-    box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 7em);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
-.console {
-    width: 50%;
+
+.icons-section {
+  width: 100%;
+  padding: 2em;
+  box-sizing: border-box;
+  background-color: var(--neutral-color-1);
+}
+
+.icons-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1em;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+}
+
+.icon-frame {
+  position: relative;
+  background-color: var(--element-color-3);
+  border-radius: 18px;
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-frame p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  margin: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: var(--element-color-2);
+  border-radius: 0 0 10px 10px;
+  font-size: 1rem;
+  line-height: 1.2;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.documentation-section {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+
+  ::ng-deep app-documentation-viewer {
+    position: relative;
+    height: 100%;
+  }
 }

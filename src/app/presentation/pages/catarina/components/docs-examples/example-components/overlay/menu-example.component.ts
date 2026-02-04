@@ -25,8 +25,7 @@ export class MenuExample {
   }
 
   static get cssCode(): string {
-    return `/* Este ejemplo no tiene estilos CSS personalizados */
-/* Los estilos están definidos inline en el template */`;
+    return ``;
   }
 
   static get tsCode(): string {

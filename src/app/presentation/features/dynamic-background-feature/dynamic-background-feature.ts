@@ -47,7 +47,6 @@ export class DynamicBackgroundFeature implements AfterViewInit, OnDestroy {
     this.images = [
       this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '0.svg',
       this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '1.svg',
-      this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '2.svg',
     ];
   }
 

@@ -6,14 +6,14 @@ import { Accordion, AccordionGroup } from 'catarina';
   imports: [Accordion, AccordionGroup],
   template: `
     <cat-accordion-group [singleExpand]="true">
-      <cat-accordion accordionId="1" label="Sección 1">
-        <p>Contenido de la sección 1</p>
+      <cat-accordion accordionId="1" label="Section 1">
+        <p>Content of section 1</p>
       </cat-accordion>
-      <cat-accordion accordionId="2" label="Sección 2">
-        <p>Contenido de la sección 2</p>
+      <cat-accordion accordionId="2" label="Section 2">
+        <p>Content of section 2</p>
       </cat-accordion>
-      <cat-accordion accordionId="3" label="Sección 3">
-        <p>Contenido de la sección 3</p>
+      <cat-accordion accordionId="3" label="Section 3">
+        <p>Content of section 3</p>
       </cat-accordion>
     </cat-accordion-group>
   `,
@@ -22,14 +22,14 @@ import { Accordion, AccordionGroup } from 'catarina';
 export class AccordionGroupExample {
   static get htmlCode(): string {
     return `<cat-accordion-group [singleExpand]="true">
-  <cat-accordion accordionId="1" label="Sección 1">
-    <p>Contenido de la sección 1</p>
+  <cat-accordion accordionId="1" label="Section 1">
+    <p>Content of section 1</p>
   </cat-accordion>
-  <cat-accordion accordionId="2" label="Sección 2">
-    <p>Contenido de la sección 2</p>
+  <cat-accordion accordionId="2" label="Section 2">
+    <p>Content of section 2</p>
   </cat-accordion>
-  <cat-accordion accordionId="3" label="Sección 3">
-    <p>Contenido de la sección 3</p>
+  <cat-accordion accordionId="3" label="Section 3">
+    <p>Content of section 3</p>
   </cat-accordion>
 </cat-accordion-group>`;
   }
@@ -47,14 +47,14 @@ import { Accordion, AccordionGroup } from 'catarina';
   imports: [Accordion, AccordionGroup],
   template: \`
     <cat-accordion-group [singleExpand]="true">
-      <cat-accordion accordionId="1" label="Sección 1">
-        <p>Contenido de la sección 1</p>
+      <cat-accordion accordionId="1" label="Section 1">
+        <p>Content of section 1</p>
       </cat-accordion>
-      <cat-accordion accordionId="2" label="Sección 2">
-        <p>Contenido de la sección 2</p>
+      <cat-accordion accordionId="2" label="Section 2">
+        <p>Content of section 2</p>
       </cat-accordion>
-      <cat-accordion accordionId="3" label="Sección 3">
-        <p>Contenido de la sección 3</p>
+      <cat-accordion accordionId="3" label="Section 3">
+        <p>Content of section 3</p>
       </cat-accordion>
     </cat-accordion-group>
   \`,

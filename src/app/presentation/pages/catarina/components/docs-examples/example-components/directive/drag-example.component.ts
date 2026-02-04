@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Drag } from 'catarina';
-import { Translate } from '../../../../../../../core/utilities/translate/translate';
 
 @Component({
   selector: 'app-drag-example',
@@ -22,7 +21,7 @@ export class DragExample {
   <div 
     Drag 
     style="width: 150px; height: 100px; background: var(--primary-color-2); cursor: grab; display: flex; align-items: center; justify-content: center; border-radius: 8px; user-select: none;">
-    Arrástrame
+    Drag
   </div>
 </div>`;
   }
@@ -43,7 +42,7 @@ import { Drag } from 'catarina';
       <div 
         Drag 
         style="width: 150px; height: 100px; background: var(--primary-color-2); cursor: grab; display: flex; align-items: center; justify-content: center; border-radius: 8px; user-select: none;">
-        Arrástrame
+        Drag
       </div>
     </div>
   \`,

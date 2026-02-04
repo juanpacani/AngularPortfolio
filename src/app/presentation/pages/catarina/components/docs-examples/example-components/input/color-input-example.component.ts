@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-color-input [(ngModel)]="colorValue"></cat-color-input>
       <cat-color-input [icon]="true" [(ngModel)]="colorValue2"></cat-color-input>
-      <p *ngIf="colorValue">Color seleccionado: {{ colorValue }}</p>
+      <p *ngIf="colorValue">Selected color: {{ colorValue }}</p>
     </div>
   `,
   styles: ``
@@ -23,7 +23,7 @@ export class ColorInputExample {
     return `<div style="display: flex; flex-direction: column; gap: 1rem;">
   <cat-color-input [(ngModel)]="colorValue"></cat-color-input>
   <cat-color-input [icon]="true" [(ngModel)]="colorValue2"></cat-color-input>
-  <p *ngIf="colorValue">Color seleccionado: {{ colorValue }}</p>
+  <p *ngIf="colorValue">Selected color: {{ colorValue }}</p>
 </div>`;
   }
 
@@ -44,7 +44,7 @@ import { CommonModule } from '@angular/common';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-color-input [(ngModel)]="colorValue"></cat-color-input>
       <cat-color-input [icon]="true" [(ngModel)]="colorValue2"></cat-color-input>
-      <p *ngIf="colorValue">Color seleccionado: {{ colorValue }}</p>
+      <p *ngIf="colorValue">Selected color: {{ colorValue }}</p>
     </div>
   \`,
   styles: \`\`

@@ -6,14 +6,14 @@ import { Accordion } from 'catarina';
   imports: [Accordion],
   template: `
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-      <cat-accordion label="Sección 1">
-        <p>Contenido de la sección 1</p>
+      <cat-accordion label="Section 1">
+        <p>Content of section 1</p>
       </cat-accordion>
-      <cat-accordion label="Sección 2">
-        <p>Contenido de la sección 2</p>
+      <cat-accordion label="Section 2">
+        <p>Content of section 2</p>
       </cat-accordion>
-      <cat-accordion label="Sección 3">
-        <p>Contenido de la sección 3</p>
+      <cat-accordion label="Section 3">
+        <p>Content of section 3</p>
       </cat-accordion>
     </div>
   `,
@@ -22,14 +22,14 @@ import { Accordion } from 'catarina';
 export class AccordionBasicExample {
   static get htmlCode(): string {
     return `<div style="display: flex; flex-direction: column; gap: 0.5rem;">
-  <cat-accordion label="Sección 1">
-    <p>Contenido de la sección 1</p>
+  <cat-accordion label="Section 1">
+    <p>Content of section 1</p>
   </cat-accordion>
-  <cat-accordion label="Sección 2">
-    <p>Contenido de la sección 2</p>
+  <cat-accordion label="Section 2">
+    <p>Content of section 2</p>
   </cat-accordion>
-  <cat-accordion label="Sección 3">
-    <p>Contenido de la sección 3</p>
+  <cat-accordion label="Section 3">
+    <p>Content of section 3</p>
   </cat-accordion>
 </div>`;
   }
@@ -47,14 +47,14 @@ import { Accordion } from 'catarina';
   imports: [Accordion],
   template: \`
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-      <cat-accordion label="Sección 1">
-        <p>Contenido de la sección 1</p>
+      <cat-accordion label="Section 1">
+        <p>Content of section 1</p>
       </cat-accordion>
-      <cat-accordion label="Sección 2">
-        <p>Contenido de la sección 2</p>
+      <cat-accordion label="Section 2">
+        <p>Content of section 2</p>
       </cat-accordion>
-      <cat-accordion label="Sección 3">
-        <p>Contenido de la sección 3</p>
+      <cat-accordion label="Section 3">
+        <p>Content of section 3</p>
       </cat-accordion>
     </div>
   \`,

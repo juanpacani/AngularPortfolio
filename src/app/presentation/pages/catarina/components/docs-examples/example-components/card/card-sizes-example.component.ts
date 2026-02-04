@@ -8,15 +8,15 @@ import { Card } from 'catarina';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-card size="sm">
         <h3>Small</h3>
-        <p>Tarjeta pequeña</p>
+        <p>Small card</p>
       </cat-card>
       <cat-card size="md">
         <h3>Medium</h3>
-        <p>Tarjeta mediana</p>
+        <p>Medium card</p>
       </cat-card>
       <cat-card size="lg">
         <h3>Large</h3>
-        <p>Tarjeta grande</p>
+        <p>Large card</p>
       </cat-card>
     </div>
   `,
@@ -27,15 +27,15 @@ export class CardSizesExample {
     return `<div style="display: flex; flex-direction: column; gap: 1rem;">
   <cat-card size="sm">
     <h3>Small</h3>
-    <p>Tarjeta pequeña</p>
+    <p>Small card</p>
   </cat-card>
   <cat-card size="md">
     <h3>Medium</h3>
-    <p>Tarjeta mediana</p>
+    <p>Medium card</p>
   </cat-card>
   <cat-card size="lg">
     <h3>Large</h3>
-    <p>Tarjeta grande</p>
+    <p>Large card</p>
   </cat-card>
 </div>`;
   }
@@ -55,15 +55,15 @@ import { Card } from 'catarina';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-card size="sm">
         <h3>Small</h3>
-        <p>Tarjeta pequeña</p>
+        <p>Small card</p>
       </cat-card>
       <cat-card size="md">
         <h3>Medium</h3>
-        <p>Tarjeta mediana</p>
+        <p>Medium card</p>
       </cat-card>
       <cat-card size="lg">
         <h3>Large</h3>
-        <p>Tarjeta grande</p>
+        <p>Large card</p>
       </cat-card>
     </div>
   \`,

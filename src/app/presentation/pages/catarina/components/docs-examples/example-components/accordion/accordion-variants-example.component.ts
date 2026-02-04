@@ -7,13 +7,13 @@ import { Accordion } from 'catarina';
   template: `
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <cat-accordion label="Surface" variant="surface">
-        <p>Accordion con variante surface</p>
+        <p>Accordion with surface variant</p>
       </cat-accordion>
       <cat-accordion label="Outlined" variant="outlined">
-        <p>Accordion con variante outlined</p>
+        <p>Accordion with outlined variant</p>
       </cat-accordion>
       <cat-accordion label="Elevated" variant="elevated">
-        <p>Accordion con variante elevated</p>
+        <p>Accordion with elevated variant</p>
       </cat-accordion>
     </div>
   `,
@@ -23,13 +23,13 @@ export class AccordionVariantsExample {
   static get htmlCode(): string {
     return `<div style="display: flex; flex-direction: column; gap: 0.5rem;">
   <cat-accordion label="Surface" variant="surface">
-    <p>Accordion con variante surface</p>
+    <p>Accordion with surface variant</p>
   </cat-accordion>
   <cat-accordion label="Outlined" variant="outlined">
-    <p>Accordion con variante outlined</p>
+    <p>Accordion with outlined variant</p>
   </cat-accordion>
   <cat-accordion label="Elevated" variant="elevated">
-    <p>Accordion con variante elevated</p>
+    <p>Accordion with elevated variant</p>
   </cat-accordion>
 </div>`;
   }
@@ -48,13 +48,13 @@ import { Accordion } from 'catarina';
   template: \`
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <cat-accordion label="Surface" variant="surface">
-        <p>Accordion con variante surface</p>
+        <p>Accordion with surface variant</p>
       </cat-accordion>
       <cat-accordion label="Outlined" variant="outlined">
-        <p>Accordion con variante outlined</p>
+        <p>Accordion with outlined variant</p>
       </cat-accordion>
       <cat-accordion label="Elevated" variant="elevated">
-        <p>Accordion con variante elevated</p>
+        <p>Accordion with elevated variant</p>
       </cat-accordion>
     </div>
   \`,

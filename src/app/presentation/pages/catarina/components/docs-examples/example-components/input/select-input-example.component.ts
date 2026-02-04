@@ -11,15 +11,15 @@ import { CommonModule } from '@angular/common';
       <cat-select-input 
         [options]="options" 
         [(ngModel)]="selectedValue"
-        placeholder="Selecciona una opción">
+        placeholder="Select an option">
       </cat-select-input>
-      <p *ngIf="selectedValue">Seleccionado: {{ selectedValue }}</p>
+      <p *ngIf="selectedValue">Selected: {{ selectedValue }}</p>
     </div>
   `,
   styles: ``
 })
 export class SelectInputExample {
-  options = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+  options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   selectedValue = '';
 
   static get htmlCode(): string {
@@ -27,9 +27,9 @@ export class SelectInputExample {
   <cat-select-input 
     [options]="options" 
     [(ngModel)]="selectedValue"
-    placeholder="Selecciona una opción">
+    placeholder="Select an option">
   </cat-select-input>
-  <p *ngIf="selectedValue">Seleccionado: {{ selectedValue }}</p>
+  <p *ngIf="selectedValue">Selected: {{ selectedValue }}</p>
 </div>`;
   }
 
@@ -51,15 +51,15 @@ import { CommonModule } from '@angular/common';
       <cat-select-input 
         [options]="options" 
         [(ngModel)]="selectedValue"
-        placeholder="Selecciona una opción">
+        placeholder="Select an option">
       </cat-select-input>
-      <p *ngIf="selectedValue">Seleccionado: {{ selectedValue }}</p>
+      <p *ngIf="selectedValue">Selected: {{ selectedValue }}</p>
     </div>
   \`,
   styles: \`\`
 })
 export class SelectInputExample {
-  options = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'];
+  options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   selectedValue = '';
 }`;
   }

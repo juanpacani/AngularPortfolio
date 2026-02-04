@@ -8,15 +8,15 @@ import { Card } from 'catarina';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-card variant="surface">
         <h3>Surface</h3>
-        <p>Tarjeta con variante surface</p>
+        <p>Card with surface variant</p>
       </cat-card>
       <cat-card variant="outlined">
         <h3>Outlined</h3>
-        <p>Tarjeta con variante outlined</p>
+        <p>Card with outlined variant</p>
       </cat-card>
       <cat-card variant="elevated">
         <h3>Elevated</h3>
-        <p>Tarjeta con variante elevated</p>
+        <p>Card with elevated variant</p>
       </cat-card>
     </div>
   `,
@@ -27,15 +27,15 @@ export class CardVariantsExample {
     return `<div style="display: flex; flex-direction: column; gap: 1rem;">
   <cat-card variant="surface">
     <h3>Surface</h3>
-    <p>Tarjeta con variante surface</p>
+    <p>Card with surface variant</p>
   </cat-card>
   <cat-card variant="outlined">
     <h3>Outlined</h3>
-    <p>Tarjeta con variante outlined</p>
+    <p>Card with outlined variant</p>
   </cat-card>
   <cat-card variant="elevated">
     <h3>Elevated</h3>
-    <p>Tarjeta con variante elevated</p>
+    <p>Card with elevated variant</p>
   </cat-card>
 </div>`;
   }
@@ -55,15 +55,15 @@ import { Card } from 'catarina';
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       <cat-card variant="surface">
         <h3>Surface</h3>
-        <p>Tarjeta con variante surface</p>
+        <p>Card with surface variant</p>
       </cat-card>
       <cat-card variant="outlined">
         <h3>Outlined</h3>
-        <p>Tarjeta con variante outlined</p>
+        <p>Card with outlined variant</p>
       </cat-card>
       <cat-card variant="elevated">
         <h3>Elevated</h3>
-        <p>Tarjeta con variante elevated</p>
+        <p>Card with elevated variant</p>
       </cat-card>
     </div>
   \`,

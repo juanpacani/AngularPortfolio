@@ -7,12 +7,12 @@ import { CommonModule } from '@angular/common';
   imports: [Drawer, Button, CommonModule],
   template: `
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <cat-button (clicked)="showDrawer = true">Abrir Drawer</cat-button>
+      <cat-button (clicked)="showDrawer = true">Open Drawer</cat-button>
       
       <cat-drawer *ngIf="showDrawer" side="left" (closs)="showDrawer = false">
-        <h3>Drawer Lateral</h3>
-        <p>Este es un drawer que se abre desde la izquierda</p>
-        <cat-button (clicked)="showDrawer = false">Cerrar</cat-button>
+        <h3>Lateral Drawer</h3>
+        <p>This is a drawer that opens from the left</p>
+        <cat-button (clicked)="showDrawer = false">Close</cat-button>
       </cat-drawer>
     </div>
   `,
@@ -23,12 +23,12 @@ export class DrawerExample {
 
   static get htmlCode(): string {
     return `<div style="display: flex; flex-direction: column; gap: 1rem;">
-  <cat-button (clicked)="showDrawer = true">Abrir Drawer</cat-button>
+  <cat-button (clicked)="showDrawer = true">Open Drawer</cat-button>
   
   <cat-drawer *ngIf="showDrawer" side="left" (closs)="showDrawer = false">
-    <h3>Drawer Lateral</h3>
-    <p>Este es un drawer que se abre desde la izquierda</p>
-    <cat-button (clicked)="showDrawer = false">Cerrar</cat-button>
+    <h3>Lateral Drawer</h3>
+    <p>This is a drawer that opens from the left</p>
+    <cat-button (clicked)="showDrawer = false">Close</cat-button>
   </cat-drawer>
 </div>`;
   }
@@ -47,12 +47,12 @@ import { CommonModule } from '@angular/common';
   imports: [Drawer, Button, CommonModule],
   template: \`
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <cat-button (clicked)="showDrawer = true">Abrir Drawer</cat-button>
+      <cat-button (clicked)="showDrawer = true">Open Drawer</cat-button>
       
       <cat-drawer *ngIf="showDrawer" side="left" (closs)="showDrawer = false">
-        <h3>Drawer Lateral</h3>
-        <p>Este es un drawer que se abre desde la izquierda</p>
-        <cat-button (clicked)="showDrawer = false">Cerrar</cat-button>
+        <h3>Lateral Drawer</h3>
+        <p>This is a drawer that opens from the left</p>
+        <cat-button (clicked)="showDrawer = false">Close</cat-button>
       </cat-drawer>
     </div>
   \`,

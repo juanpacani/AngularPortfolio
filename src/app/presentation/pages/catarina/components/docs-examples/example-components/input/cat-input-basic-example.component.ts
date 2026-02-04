@@ -7,9 +7,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CatInput, FormsModule],
   template: `
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <input catInput type="text" placeholder="Nombre" [(ngModel)]="name">
+      <input catInput type="text" placeholder="Name" [(ngModel)]="name">
       <input catInput type="email" placeholder="Email" [(ngModel)]="email">
-      <input catInput type="text" placeholder="Teléfono" [(ngModel)]="phone">
+      <input catInput type="text" placeholder="Phone" [(ngModel)]="phone">
     </div>
   `,
   styles: ``
@@ -21,9 +21,9 @@ export class CatInputBasicExample {
 
   static get htmlCode(): string {
     return `<div style="display: flex; flex-direction: column; gap: 1rem;">
-  <input catInput type="text" placeholder="Nombre" [(ngModel)]="name">
+  <input catInput type="text" placeholder="Name" [(ngModel)]="name">
   <input catInput type="email" placeholder="Email" [(ngModel)]="email">
-  <input catInput type="text" placeholder="Teléfono" [(ngModel)]="phone">
+  <input catInput type="text" placeholder="Phone" [(ngModel)]="phone">
 </div>`;
   }
 
@@ -41,9 +41,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CatInput, FormsModule],
   template: \`
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <input catInput type="text" placeholder="Nombre" [(ngModel)]="name">
+      <input catInput type="text" placeholder="Name" [(ngModel)]="name">
       <input catInput type="email" placeholder="Email" [(ngModel)]="email">
-      <input catInput type="text" placeholder="Teléfono" [(ngModel)]="phone">
+      <input catInput type="text" placeholder="Phone" [(ngModel)]="phone">
     </div>
   \`,
   styles: \`\`

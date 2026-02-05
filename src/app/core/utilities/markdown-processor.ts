@@ -42,11 +42,8 @@ export class MarkdownProcessor {
     // Inline code (después de procesar code blocks)
     html = html.replace(/`([^`\n]+)`/g, '<code>$1</code>');
 
-    // Bold y Italic (procesar después de code)
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+    // Bold y Italic (procesar después de code, excluyendo code blocks)
+    html = this.processBoldItalicExcludingCodeBlocks(html);
 
     // Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
@@ -154,6 +151,39 @@ export class MarkdownProcessor {
       
       return `<p>${line}</p>`;
     }).join('\n');
+  }
+
+  private static processBoldItalicExcludingCodeBlocks(text: string): string {
+    // Dividir por bloques de código para procesar bold/italic solo fuera de ellos
+    const parts: string[] = [];
+    let lastIndex = 0;
+    const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
+    let match;
+    
+    while ((match = codeBlockRegex.exec(text)) !== null) {
+      // Procesar bold/italic en la parte antes del code block
+      const beforeCode = text.substring(lastIndex, match.index);
+      parts.push(this.processBoldItalicInText(beforeCode));
+      // Mantener el code block sin cambios
+      parts.push(match[0]);
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Procesar bold/italic en la parte final
+    const afterCode = text.substring(lastIndex);
+    parts.push(this.processBoldItalicInText(afterCode));
+    
+    return parts.join('');
+  }
+
+  private static processBoldItalicInText(text: string): string {
+    let result = text;
+    // Procesar bold y italic (procesar bold antes de italic para evitar conflictos)
+    result = result.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    result = result.replace(/__(.+?)__/g, '<strong>$1</strong>');
+    result = result.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    result = result.replace(/_(.+?)_/g, '<em>$1</em>');
+    return result;
   }
 
   private static escapeHtml(text: string): string {

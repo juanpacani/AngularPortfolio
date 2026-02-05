@@ -6,7 +6,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { ICON_PROVIDER as CATARINA_ICON_PROVIDER } from 'catarina';
-import { getIconPath } from 'safirial-icons';
+import { getIconPath } from 'catarina';
 
 const iconProviderConfig = {
   getPath: getIconPath

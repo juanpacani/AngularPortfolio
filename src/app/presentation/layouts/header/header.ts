@@ -21,7 +21,7 @@ export class Header implements OnInit, OnDestroy {
 
   //Theming Vars Light Theme = False
   darkTheme: boolean = true;
-  colorHex: string = '#16709c';
+  colorHex: string = '#16709c';//#93a2a9
   private themeSub: Subscription | undefined;
 
   //Lang Vars

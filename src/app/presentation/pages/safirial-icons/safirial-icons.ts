@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { iconList } from 'safirial-icons';
-import { Icon, Theming } from 'catarina';
+import { Icon, iconList, Theming } from 'catarina';
 import { IconSizesExample } from '../catarina/components/docs-examples/example-components/icon/icon-sizes-example.component';
 import { DocumentationViewer } from '../../features/documentation-viewer/documentation-viewer';
 import { Translate } from '../../../core/utilities/translate/translate';

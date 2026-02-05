@@ -7,6 +7,7 @@
   width: 100%;
   height: calc(100vh - 7em);
   display: block;
+  z-index: 2;
 }
 
 /* New Background for Header */
@@ -119,13 +120,13 @@
   min-height: 60vh;
   text-align: center;
   padding: 2rem;
-  
+
   h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--neutral-color-5);
   }
-  
+
   p {
     font-size: 1.2rem;
     color: var(--neutral-color-4);
@@ -228,17 +229,20 @@
 }
 
 @media screen and (orientation: portrait) and (max-width: 600px) {
+  :host {
+    height: calc(100vh - 5.5em);
+  }
+
   .button-container {
-    position: fixed;
-    top: 7em;
+    position: absolute;
+    top: 1em;
     right: 1em;
-    z-index: 1000;
+    z-index: 1;
   }
 
   cat-drawer[data-drawer-class="drawer-content"] {
 
     ::ng-deep section {
-      padding-top: 5em;
       width: min-content;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
       box-sizing: border-box;

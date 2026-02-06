@@ -19,17 +19,13 @@ export class Contact {
   ) { }
 
   toGithub() {
-    console.log('TOGITHUB');
-    
     window.open("https://github.com/Hydenaky", "_blank", "noopener,noreferrer");
   }
   toLinkedin() {
-    console.log('TOLINKEDIN');
     window.open("https://www.linkedin.com/in/juan-pablo-ca%C3%B1on-n-b304bb339/", "_blank", "noopener noreferrer");
   }
 
   toGmail() {
-    console.log('TOGMAIL');
     const mail = "jpcnwkacc.irl@gmail.com";
     window.open(
       `https://mail.google.com/mail/?view=cm&fs=1&to=${mail}`,

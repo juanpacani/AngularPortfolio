@@ -1,15 +1,15 @@
 <section class="contact-card">
-    <div (click)="toGithub()">
+    <div title="https://github.com/Hydenaky" (click)="toGithub()">
         <!-- <ui-icon-github></ui-icon-github> -->
          <cat-icon size="2em" name="github"></cat-icon>
         <p *ngIf="deviceService.isDesktop || deviceService.isTablet"><b>Hydenaky</b></p>
     </div>
-    <div (click)="toLinkedin()">
+    <div title="https://www.linkedin.com/in/juan-pablo-ca%C3%B1on-n-b304bb339/" (click)="toLinkedin()">
         <!--<ui-icon-linkedin></ui-icon-linkedin> -->
          <cat-icon size="2em" name="linkedin"></cat-icon>
         <p *ngIf="deviceService.isDesktop || deviceService.isTablet"><b>Juan Pablo Cañon N</b></p>
     </div>
-    <div (click)="toGmail()">
+    <div title="https://mail.google.com/mail/?view=cm&fs=1&to=jpcnwkacc.irl@gmail.com" (click)="toGmail()">
         <!-- <ui-icon-email></ui-icon-email> -->
         <cat-icon size="2em" name="email"></cat-icon>
         <p *ngIf="deviceService.isDesktop || deviceService.isTablet"><b>jpcnwkacc.irl@gmail.com</b></p>

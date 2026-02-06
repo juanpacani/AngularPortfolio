@@ -1,7 +1,6 @@
-# Safirial Icons – SVG Icons Package for Angular
+# Safirial Icons – SVG Icons Package
 
-**Safirial Icons** is an SVG icons package designed for Angular applications.  
-It provides a list of icon names and a function to resolve static paths to SVGs.
+**Safirial Icons** is an SVG icons package designed for web applications.  
 
 This package can be used independently or together with the `catarina` design system.
 
@@ -12,7 +11,7 @@ This package can be used independently or together with the `catarina` design sy
 
 ## Installation
 
-In an Angular project:
+In a project's terminal:
 
 ```bash
 npm install safirial-icons

@@ -11,8 +11,8 @@ export class ProfileKnowledge {
   //Contenido de los knowledge 
   knowledgeDataMap = {
     1: [
-      "multimedia/images/knowledge/languages/ts.svg",
-      "multimedia/images/knowledge/languages/js.svg",
+      "multimedia/images/knowledge/languages/typescript.svg",
+      "multimedia/images/knowledge/languages/javascript.svg",
       "multimedia/images/knowledge/languages/dart.svg",
       "multimedia/images/knowledge/languages/java.svg",
     ],
@@ -39,6 +39,13 @@ export class ProfileKnowledge {
     ]
   };
   knowledgeDataArray = Object.values(this.knowledgeDataMap);
+
+  getTechName(path: string): string {
+    // Divide por '/' y toma el último elemento
+    const fileName = path.split('/').pop() || '';
+    // Remueve la extensión .svg
+    return fileName.replace('.svg', '');
+  }
 
   //Variables de navegación e instanciado de elementos
   currentSlide: number = 0;

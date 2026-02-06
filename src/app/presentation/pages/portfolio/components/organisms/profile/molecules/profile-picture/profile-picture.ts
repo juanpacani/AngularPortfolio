@@ -62,6 +62,17 @@ import { Component } from '@angular/core';
             width: 80.9%;
         }
     }
+
+    @media screen and (max-width: 1024px) {
+        .picture {
+            width: 80%;
+        }
+        .picture>img {
+            top: 10%;
+            left: -0.5%;
+            width: 90%
+        }
+    }
     `
 })
 export class ProfilePicture {

@@ -45,26 +45,46 @@
     <ng-container *ngIf="language$ | async as currentLang">
         <cat-accordion-group>
             <cat-accordion customClass="curriculum-accordion" [label]="getSummaryButtonLabel(currentLang)"
-                accordionId="1" width="100%">
+                accordionId="1">
                 <p>{{getSummary(currentLang)}}</p>
             </cat-accordion>
             <cat-accordion customClass="curriculum-accordion" [label]="getEducationButtonLabel(currentLang)"
-                accordionId="2" width="100%">
-                <div *ngFor="let e of getEducation(currentLang)">
-                    <br>
-                    <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
-                    <p>{{e['studyPlace'] || 'Not Found'}}</p>
-                    <br>
-                </div>
+                accordionId="2">
+                @for (e of getEducation(currentLang); track $index) {
+                    <div>
+                        @if ($index > 0) {
+                            <br>
+                        }
+                        <p><b>{{e['studyTitle'] || 'Not Found'}}</b></p>
+                        <p>{{e['studyPlace'] || 'Not Found'}}</p>
+                        <br>
+                    </div>
+                }
             </cat-accordion>
             <cat-accordion customClass="curriculum-accordion" [label]="getExperienceButtonLabel(currentLang)"
-                accordionId="3" width="100%">
+                accordionId="3">
                 <div *ngFor="let e of getExperience(currentLang)">
                     <p><b>{{e['jobTitle'] || 'NotFound'}} - {{e['companyName'] || 'NotFound'}}</b></p>
                     <p>{{e['dateInterval'] || 'Not Defined'}}</p>
                     <br>
                     <p>{{e['description'] || 'Not Defined'}}</p>
                 </div>
+            </cat-accordion>
+            <cat-accordion customClass="curriculum-accordion" [label]="getProjectsButtonLabel(currentLang)"
+                accordionId="4">
+                @for (p of getProjects(currentLang); track $index) {
+                    <div>
+                        @if ($index > 0) {
+                            <br>
+                        }
+                        <ul>
+                            <li><b>{{p['projectName'] || 'Not Found'}}</b></li>
+                        </ul>
+                        <p>{{p['dateInterval'] || 'Not Defined'}}</p>
+                        <br>
+                        <p>{{p['description'] || 'Not Defined'}}</p>
+                    </div>
+                }
             </cat-accordion>
         </cat-accordion-group>
     </ng-container>

@@ -25,6 +25,19 @@
                 "dateInterval": "Sep 31 2024 - Sep 19 2025.",
                 "description": "Development of HTML5 and CSS instances for products on sales websites, editing internal code with Angular, Firebase with Kanban and Scrum methodologies, remote."
             }
+        ],
+        "projectsButtonLabel": "Projects",
+        "projects": [
+            {
+                "projectName": "Personal Portfolio",
+                "dateInterval": "September 2025 - Present",
+                "description": "Development of a professional portfolio using Angular to showcase personal projects and technical skills."
+            },
+            {
+                "projectName": "Workspace Library Development",
+                "dateInterval": "December 23, 2025 Present",
+                "description": "Development of a modular library workspace for reusable components and logic."
+            }
         ]
     },
     "ES": {
@@ -52,6 +65,19 @@
                 "companyName": "BIOWEB SAS.",
                 "dateInterval": "Sep 31 2024 - Sep 19 2025.",
                 "description": "Desarrollo de instancias HTML5 y CSS para productos en sitios web de ventas, edición de código interno con Angular y Firebase bajo metodologías Kanban y Scrum, trabajo remoto."
+            }
+        ],
+        "projectsButtonLabel": "Proyectos",
+        "projects": [
+            {
+                "projectName": "Portafolio Personal",
+                "dateInterval": "Septiembre 2025 - Presente",
+                "description": "Desarrollo un portafolio profesional utilizando Angular para mostrar proyectos personales y habilidades técnicas."
+            },
+            {
+                "projectName": "Desarrollo del Espacio de Trabajo de Bibliotecas",
+                "dateInterval": "Diciembre 23, 2025 Presente",
+                "description": "Desarrollo de un espacio de trabajo de biblioteca modular para componentes y lógica reutilizables."
             }
         ]
     }

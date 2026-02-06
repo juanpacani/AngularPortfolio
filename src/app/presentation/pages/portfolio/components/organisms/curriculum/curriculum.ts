@@ -50,4 +50,12 @@ export class Curriculum {
   getExperience(lang: string): {jobTitle: string, companyName: string, dateInterval: string, description: string}[] {
     return this.getCurrentLanguageData(lang)?.experience ?? [];
   }
+
+  getProjectsButtonLabel(lang: string): string {
+    return this.getCurrentLanguageData(lang)?.projectsButtonLabel ?? '';
+  }
+
+  getProjects(lang: string): {projectName: string, dateInterval: string, description: string}[] {
+    return this.getCurrentLanguageData(lang)?.projects ?? [];
+  }
 }

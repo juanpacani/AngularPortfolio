@@ -12,6 +12,6 @@
         <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
 
         <cat-select-input variant="elevated" class="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
-            type="string" [options]="langOptions" [transform]="deviceService.isMobile ? 'translateX(-11%)  translateY(-80%)' : 'translateX(-13%)'"></cat-select-input>
+            type="string" [options]="langOptions"></cat-select-input>
     </div>
 </cat-menu>

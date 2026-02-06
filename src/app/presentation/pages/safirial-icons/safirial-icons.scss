@@ -1,10 +1,10 @@
 :host {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 7em);
-  box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 7em);
+    box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -76,5 +76,5 @@
   ::ng-deep app-documentation-viewer {
     position: relative;
     height: 100%;
-  }
+}
 }

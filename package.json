@@ -32,7 +32,7 @@
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.1",
     "@vercel/analytics": "^1.6.1",
-    "catarina": "^20.3.0",
+    "catarina": "^20.3.3",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "safirial-icons": "^1.0.5",

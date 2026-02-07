@@ -2,6 +2,11 @@
 
 The `Dialog` component displays a draggable modal dialog box.
 
+> **⚠️ Requirement**: This component requires `@angular/cdk@^20.2.14` as a dependency. If you use `Dialog` or `Drawer`, install CDK:
+> ```bash
+> npm install @angular/cdk@^20.2.14
+> ```
+
 ### Import
 
 ```typescript
@@ -47,8 +52,10 @@ export class ExampleComponent {
 
 - **Draggable**: The dialog includes the `CDrag` directive to make it draggable
 - **Escape to close**: Automatically closes when pressing the `Escape` key
-- **Dark background**: Shows a semi-transparent dark background (`dialog-shadow`) that also closes the dialog on click
-- **Fixed positioning**: Positioned fixed on the screen
+- **Dark background**: Shows a semi-transparent dark background that also closes the dialog on click
+- **CDK Overlay**: Uses Angular CDK Overlay for automatic z-index, scroll, and accessibility management
+- **Scroll blocking**: The body scroll is automatically blocked when the dialog is open
+- **Better accessibility**: Automatic support for focus trap and multiple overlays management
 
 ### Examples
 
@@ -93,6 +100,8 @@ export class ExampleComponent {
 ### Notes
 
 - The dialog must be controlled with `*ngIf` or similar to show/hide it
-- The dark background (`dialog-shadow`) covers the entire screen and has `z-index: 999`
-- The dialog has `z-index: 1000` to be above the background
+- The component uses CDK Overlay for rendering outside the main DOM flow
+- Z-index and stacking context are automatically managed by CDK
+- The body scroll is automatically blocked when the dialog is open
 - The dialog is draggable by default thanks to the `CDrag` directive
+- **Version**: Since version 20.3.3, the component uses CDK Overlay instead of manual fixed positioning

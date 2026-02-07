@@ -7,11 +7,11 @@ import { ErrorHandler } from '@angular/core';
 
 class ResizeObserverErrorHandler implements ErrorHandler {
   handleError(error: any): void {
-    // Ignorar errores de ResizeObserver loop
+    // Ignora los errores de ResizeObserver loop
     if (error?.message?.includes('ResizeObserver loop')) {
       return;
     }
-    // Re-lanzar otros errores
+    // Re-lanza otros errores
     throw error;
   }
 }

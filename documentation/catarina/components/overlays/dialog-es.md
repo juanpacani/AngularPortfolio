@@ -2,6 +2,11 @@
 
 El componente `Dialog` muestra un cuadro de diálogo modal que se puede arrastrar.
 
+> **⚠️ Requisito**: Este componente requiere `@angular/cdk@^20.2.14` como dependencia. Si usas `Dialog` o `Drawer`, instala CDK:
+> ```bash
+> npm install @angular/cdk@^20.2.14
+> ```
+
 ### Importación
 
 ```typescript
@@ -47,8 +52,10 @@ export class ExampleComponent {
 
 - **Arrastrable**: El diálogo incluye la directiva `CDrag` para poder arrastrarlo
 - **Cierre con Escape**: Se cierra automáticamente al presionar la tecla `Escape`
-- **Fondo oscuro**: Muestra un fondo oscuro semitransparente (`dialog-shadow`) que también cierra el diálogo al hacer clic
-- **Posicionamiento fijo**: Se posiciona de forma fija en la pantalla
+- **Fondo oscuro**: Muestra un fondo oscuro semitransparente que también cierra el diálogo al hacer clic
+- **CDK Overlay**: Utiliza Angular CDK Overlay para gestión automática de z-index, scroll y accesibilidad
+- **Bloqueo de scroll**: El scroll del body se bloquea automáticamente cuando el diálogo está abierto
+- **Mejor accesibilidad**: Soporte automático para focus trap y gestión de múltiples overlays
 
 ### Ejemplos
 
@@ -93,6 +100,8 @@ export class ExampleComponent {
 ### Notas
 
 - El diálogo debe controlarse con `*ngIf` o similar para mostrarlo/ocultarlo
-- El fondo oscuro (`dialog-shadow`) cubre toda la pantalla y tiene `z-index: 999`
-- El diálogo tiene `z-index: 1000` para estar sobre el fondo
+- El componente utiliza CDK Overlay para renderizado fuera del flujo del DOM principal
+- El z-index y el stacking context se gestionan automáticamente por CDK
+- El scroll del body se bloquea automáticamente cuando el diálogo está abierto
 - El diálogo es arrastrable por defecto gracias a la directiva `CDrag`
+- **Versión**: Desde la versión 20.3.3, el componente utiliza CDK Overlay en lugar de posicionamiento fijo manual

@@ -36,7 +36,7 @@
             {
                 "projectName": "Catarina",
                 "dateInterval": "December 2025 - Present",
-                "description": "Development of a modular library workspace for reusable components and logic."
+                "description": "Development of a UI component design system for Angular 20.3.x, built as a standalone library. It includes reusable components, icon utilities, a theming system, and Angular CDK-based overlays. Features comprehensive technical documentation in English and Spanish, usage guides, and implementation examples."
             }
         ]
     },
@@ -77,7 +77,7 @@
             {
                 "projectName": "Catarina",
                 "dateInterval": "Diciembre - 2025 Presente",
-                "description": "Desarrollo de un espacio de trabajo de biblioteca modular para componentes y lógica reutilizables."
+                "description": "Desarrollo de un sistema de diseño de componentes UI para Angular 20.3.x, desarrollado como librería standalone. Incluye componentes reutilizables, utilidades de iconos, sistema de theming y overlays basados en Angular CDK. Cuenta con documentación técnica en español e inglés, guías de uso y ejemplos de implementación."
             }
         ]
     }

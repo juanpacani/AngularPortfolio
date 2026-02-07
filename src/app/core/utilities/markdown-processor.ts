@@ -8,13 +8,13 @@ export class MarkdownProcessor {
 
     let html = markdown;
 
-    // Primero procesar code blocks (para proteger el código)
+    // Primero procesa los code blocks para proteger el código
     html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
       return `<pre><code class="language-${lang || 'text'}">${this.escapeHtml(code.trim())}</code></pre>`;
     });
 
-    // Headers (procesar de más específico a menos específico)
-    // Excluir contenido dentro de <pre><code> blocks
+    // Procesa los headers de más específico a menos específico
+    // Excluye el contenido dentro de bloques <pre><code>
     html = this.processHeadersExcludingCodeBlocks(html);
 
     // Blockquotes
@@ -24,25 +24,25 @@ export class MarkdownProcessor {
     html = html.replace(/^---$/gim, '<hr>');
     html = html.replace(/^\*\*\*$/gim, '<hr>');
 
-    // Lists (unordered) - solo si no están dentro de code blocks
+    // Procesa las listas desordenadas solo si no están dentro de code blocks
     html = html.replace(/^[\*\+\-] (.+)$/gim, '<li>$1</li>');
     
-    // Lists (ordered)
+    // Procesa las listas ordenadas
     html = html.replace(/^\d+\. (.+)$/gim, '<li>$1</li>');
 
-    // Wrap consecutive list items in ul
+    // Envuelve los elementos de lista consecutivos en ul
     html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => {
-      // Verificar que no esté dentro de un pre
+      // Verifica que no esté dentro de un pre
       if (match.includes('<pre>') || match.includes('</pre>')) {
         return match;
       }
       return '<ul>' + match + '</ul>';
     });
 
-    // Inline code (después de procesar code blocks)
+    // Procesa el código inline después de procesar los code blocks
     html = html.replace(/`([^`\n]+)`/g, '<code>$1</code>');
 
-    // Bold y Italic (procesar después de code, excluyendo code blocks)
+    // Procesa el bold y italic después del código, excluyendo los code blocks
     html = this.processBoldItalicExcludingCodeBlocks(html);
 
     // Links
@@ -51,17 +51,17 @@ export class MarkdownProcessor {
     // Images
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">');
 
-    // Procesar tags de ejemplo: <example name="example-name"></example>
-    // Los reemplazamos con un placeholder que será procesado después
+    // Procesa los tags de ejemplo: <example name="example-name"></example>
+    // Los reemplaza con un placeholder que será procesado después
     html = html.replace(/<example name="([^"]+)"><\/example>/g, (match, name) => {
       return `<div class="example-placeholder" data-example-name="${name}"></div>`;
     });
 
-    // Paragraphs (líneas que no son otros elementos)
-    // Excluir contenido dentro de <pre><code> blocks
+    // Procesa los párrafos (líneas que no son otros elementos)
+    // Excluye el contenido dentro de bloques <pre><code>
     html = this.processParagraphsExcludingCodeBlocks(html);
 
-    // Clean up empty paragraphs y líneas vacías múltiples
+    // Limpia los párrafos vacíos y las líneas vacías múltiples
     html = html.replace(/<p>\s*<\/p>/g, '');
     html = html.replace(/\n{3,}/g, '\n\n');
 
@@ -69,22 +69,22 @@ export class MarkdownProcessor {
   }
 
   private static processHeadersExcludingCodeBlocks(text: string): string {
-    // Dividir por bloques de código para procesar headers solo fuera de ellos
+    // Divide por bloques de código para procesar headers solo fuera de ellos
     const parts: string[] = [];
     let lastIndex = 0;
     const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
     let match;
     
     while ((match = codeBlockRegex.exec(text)) !== null) {
-      // Procesar headers en la parte antes del code block
+      // Procesa los headers en la parte antes del code block
       const beforeCode = text.substring(lastIndex, match.index);
       parts.push(this.processHeadersInText(beforeCode));
-      // Mantener el code block sin cambios
+      // Mantiene el code block sin cambios
       parts.push(match[0]);
       lastIndex = match.index + match[0].length;
     }
     
-    // Procesar headers en la parte final
+    // Procesa los headers en la parte final
     const afterCode = text.substring(lastIndex);
     parts.push(this.processHeadersInText(afterCode));
     
@@ -93,7 +93,7 @@ export class MarkdownProcessor {
 
   private static processHeadersInText(text: string): string {
     let result = text;
-    // Procesar headers de más específico a menos específico
+    // Procesa los headers de más específico a menos específico
     result = result.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
     result = result.replace(/^### (.*$)/gim, '<h3>$1</h3>');
     result = result.replace(/^## (.*$)/gim, '<h2>$1</h2>');
@@ -102,22 +102,22 @@ export class MarkdownProcessor {
   }
 
   private static processParagraphsExcludingCodeBlocks(text: string): string {
-    // Dividir por bloques de código para procesar párrafos solo fuera de ellos
+    // Divide por bloques de código para procesar párrafos solo fuera de ellos
     const parts: string[] = [];
     let lastIndex = 0;
     const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
     let match;
     
     while ((match = codeBlockRegex.exec(text)) !== null) {
-      // Procesar párrafos en la parte antes del code block
+      // Procesa los párrafos en la parte antes del code block
       const beforeCode = text.substring(lastIndex, match.index);
       parts.push(this.processParagraphsInText(beforeCode));
-      // Mantener el code block sin cambios
+      // Mantiene el code block sin cambios
       parts.push(match[0]);
       lastIndex = match.index + match[0].length;
     }
     
-    // Procesar párrafos en la parte final
+    // Procesa los párrafos en la parte final
     const afterCode = text.substring(lastIndex);
     parts.push(this.processParagraphsInText(afterCode));
     
@@ -130,7 +130,7 @@ export class MarkdownProcessor {
       const trimmed = line.trim();
       if (!trimmed) return '';
       
-      // No procesar si ya es un elemento HTML
+      // No procesa si ya es un elemento HTML
       if (trimmed.startsWith('<h') || 
           trimmed.startsWith('</h') ||
           trimmed.startsWith('<ul') || 
@@ -154,22 +154,22 @@ export class MarkdownProcessor {
   }
 
   private static processBoldItalicExcludingCodeBlocks(text: string): string {
-    // Dividir por bloques de código para procesar bold/italic solo fuera de ellos
+    // Divide por bloques de código para procesar bold/italic solo fuera de ellos
     const parts: string[] = [];
     let lastIndex = 0;
     const codeBlockRegex = /<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g;
     let match;
     
     while ((match = codeBlockRegex.exec(text)) !== null) {
-      // Procesar bold/italic en la parte antes del code block
+      // Procesa el bold/italic en la parte antes del code block
       const beforeCode = text.substring(lastIndex, match.index);
       parts.push(this.processBoldItalicInText(beforeCode));
-      // Mantener el code block sin cambios
+      // Mantiene el code block sin cambios
       parts.push(match[0]);
       lastIndex = match.index + match[0].length;
     }
     
-    // Procesar bold/italic en la parte final
+    // Procesa el bold/italic en la parte final
     const afterCode = text.substring(lastIndex);
     parts.push(this.processBoldItalicInText(afterCode));
     
@@ -178,7 +178,7 @@ export class MarkdownProcessor {
 
   private static processBoldItalicInText(text: string): string {
     let result = text;
-    // Procesar bold y italic (procesar bold antes de italic para evitar conflictos)
+    // Procesa el bold y italic (procesa el bold antes del italic para evitar conflictos)
     result = result.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     result = result.replace(/__(.+?)__/g, '<strong>$1</strong>');
     result = result.replace(/\*(.+?)\*/g, '<em>$1</em>');
@@ -187,7 +187,7 @@ export class MarkdownProcessor {
   }
 
   private static escapeHtml(text: string): string {
-    // Escape HTML manualmente para compatibilidad con SSR
+    // Escapa el HTML manualmente para compatibilidad con SSR
     return text
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')

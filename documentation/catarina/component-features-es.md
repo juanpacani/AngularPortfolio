@@ -136,7 +136,7 @@ export class AppComponent implements OnInit {
   constructor(private theming: Theming) {}
 
   ngOnInit() {
-    // Generar paletas con un color primario y tema oscuro
+    // Genera las paletas con un color primario y tema oscuro
     this.theming.generatePalettes('#3b82f6', true);
   }
 }
@@ -161,7 +161,7 @@ this.theming.generatePalettes('#10b981', false);
 Calcula solo la paleta de colores primaria sin cambiar el tema:
 
 ```typescript
-// Cambiar solo el color primario manteniendo el tema actual
+// Cambia solo el color primario manteniendo el tema actual
 this.theming.calculatePrimaryColor('#ef4444');
 ```
 
@@ -170,10 +170,10 @@ this.theming.calculatePrimaryColor('#ef4444');
 Calcula las paletas dinámicas (neutral y elementos) según el tema:
 
 ```typescript
-// Cambiar a tema oscuro
+// Cambia a tema oscuro
 const palettes = this.theming.calculateDynamicPalettes(true);
 
-// Cambiar a tema claro
+// Cambia a tema claro
 const palettes = this.theming.calculateDynamicPalettes(false);
 ```
 
@@ -196,19 +196,19 @@ export class AppComponent implements OnInit {
   constructor(private theming: Theming) {}
 
   ngOnInit() {
-    // Suscribirse a cambios de tema
+    // Se suscribe a cambios de tema
     this.theming.activeTheme$.subscribe(isDark => {
       this.isDarkTheme = isDark;
       console.log('Tema actual:', isDark ? 'Oscuro' : 'Claro');
     });
 
-    // Suscribirse a cambios de paletas
+    // Se suscribe a cambios de paletas
     this.theming.allPalettes$.subscribe(palettes => {
       this.allPalettes = palettes;
       console.log('Paletas actualizadas:', palettes);
     });
 
-    // Inicializar tema
+    // Inicializa el tema
     this.theming.generatePalettes('#3b82f6', false);
   }
 }

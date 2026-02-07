@@ -65,20 +65,20 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
   ) {}
 
   ngOnInit() {
-    // Obtener el idioma inicial del servicio
+    // Obtiene el idioma inicial del servicio
     this.currentLang = this.convertLangToRoute(this.translate.actualLanguage);
     
-    // Cargar el índice
+    // Carga el índice
     if (this.indexPath) {
       this.loadIndex();
     }
 
-    // Suscribirse a cambios de idioma
+    // Se suscribe a cambios de idioma
     this.languageSubscription = this.translate.language$.subscribe((lang: string) => {
       const newLang = this.convertLangToRoute(lang);
       if (this.currentLang !== newLang) {
         this.currentLang = newLang;
-        // Actualizar indexPath con el nuevo idioma
+        // Actualiza el indexPath con el nuevo idioma
         this.updateIndexPathForLanguage(newLang);
         this.loadIndex();
       }
@@ -116,12 +116,12 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
       .subscribe({
         next: (data) => {
           this.indexData = data;
-          // Si hay un documento inicial, cargarlo
+          // Si hay un documento inicial, lo carga
           if (this.initialDoc) {
             this.currentDoc = this.initialDoc;
             this.loadDocument(this.initialDoc, this.currentLang);
           } else if (data.sections.length > 0 && data.sections[0].path) {
-            // Cargar el primer documento por defecto
+            // Carga el primer documento por defecto
             const firstDoc = this.extractDocName(data.sections[0].path);
             this.currentDoc = firstDoc;
             this.loadDocument(firstDoc, this.currentLang);
@@ -135,17 +135,17 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
   }
 
   loadDocument(doc: string, lang: string) {
-    // Verificar si el documento existe en el índice
+    // Verifica si el documento existe en el índice
     if (!this.documentExists(doc)) {
       console.error(`Document not found: ${doc}`);
       this.show404 = true;
       return;
     }
 
-    // Extraer el nombre del archivo sin extensión y la ruta
+    // Extrae el nombre del archivo sin extensión y la ruta
     const docPath: string = this.getDocPath(doc, lang);
     
-    // Limpiar componentes de ejemplo anteriores
+    // Limpia los componentes de ejemplo anteriores
     this.clearExampleComponents();
     
     this.http.get(docPath, { responseType: 'text' })
@@ -153,29 +153,29 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
         next: (markdown) => {
           this.show404 = false;
           this.content = markdown;
-          // Procesar markdown a HTML y marcar como seguro
+          // Procesa el markdown a HTML y lo marca como seguro
           const html = MarkdownProcessor.process(markdown);
           this.renderedContent = this.sanitizer.bypassSecurityTrustHtml(html);
           
-          // Procesar placeholders de ejemplo después de un pequeño delay para que el DOM se actualice
+          // Procesa los placeholders de ejemplo después de un pequeño delay para que el DOM se actualice
           setTimeout(() => this.processExamplePlaceholders(), 0);
         },
         error: (error) => {
           console.error('Error loading document:', error);
           console.error('Attempted path:', docPath);
-          // Mostrar 404 en lugar de error
+          // Muestra el 404 en lugar del error
           this.show404 = true;
         }
       });
   }
 
   ngAfterViewInit() {
-    // Procesar placeholders después de que la vista se inicialice
+    // Procesa los placeholders después de que la vista se inicialice
     setTimeout(() => this.processExamplePlaceholders(), 0);
   }
 
   private processExamplePlaceholders() {
-    // Verificar que estamos en el navegador (no en SSR)
+    // Verifica que estamos en el navegador (no en SSR)
     if (typeof document === 'undefined') return;
     if (!this.markdownContent?.nativeElement) return;
 
@@ -192,30 +192,30 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
         return;
       }
 
-      // Crear un contenedor para el CodeConsole
+      // Crea un contenedor para el CodeConsole
       const container = document.createElement('div');
       placeholder.parentNode?.replaceChild(container, placeholder);
 
-      // Crear el componente CodeConsole dinámicamente
+      // Crea el componente CodeConsole dinámicamente
       this.createCodeConsoleComponent(container, exampleComponent);
     });
   }
 
   private createCodeConsoleComponent(container: HTMLElement, exampleComponent: any) {
-    // Crear el componente CodeConsole usando createComponent
+    // Crea el componente CodeConsole usando createComponent
     const componentRef = createComponent(CodeConsole, {
       hostElement: container,
       environmentInjector: this.environmentInjector,
       elementInjector: this.injector,
     });
 
-    // Establecer el input del componente
+    // Establece el input del componente
     componentRef.setInput('component', exampleComponent);
 
-    // Adjuntar la vista al árbol de componentes
+    // Adjunta la vista al árbol de componentes
     this.appRef.attachView(componentRef.hostView);
 
-    // Guardar la referencia para poder destruirla después
+    // Guarda la referencia para poder destruirla después
     this.exampleComponentRefs.set(container, componentRef);
   }
 
@@ -231,29 +231,29 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
   }
 
   getDocPath(doc: string, lang: string): string {
-    // Extraer la ruta base del indexPath
+    // Extrae la ruta base del indexPath
     // Ej: '/documentation/catarina/es/_index.json' -> '/documentation/catarina/'
     const basePath = this.indexPath.replace(/\/[a-z]{2}\/_index\.json$/, '/');
     
     // Busca el path en el índex (_index.json)
     if (this.indexData) {
       for (const section of this.indexData.sections) {
-        // Buscar en items simples
+        // Busca en items simples
         if (section.path) {
           const sectionDoc = this.extractDocName(section.path);
           if (sectionDoc === doc) {
-            // Agregar el sufijo de idioma al path
+            // Agrega el sufijo de idioma al path
             const pathWithLang = this.addLangSuffix(section.path, lang);
             return `${basePath}${pathWithLang}`;
           }
         }
         
-        // Buscar en grupos
+        // Busca en grupos
         if (section.items) {
           for (const item of section.items) {
             const itemDoc = this.extractDocName(item.path);
             if (itemDoc === doc) {
-              // Agregar el sufijo de idioma al path
+              // Agrega el sufijo de idioma al path
               const pathWithLang = this.addLangSuffix(item.path, lang);
               return `${basePath}${pathWithLang}`;
             }
@@ -262,14 +262,14 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
       }
     }
     
-    // Fallback: intentar cargar directamente con sufijo de idioma
+    // Fallback: intenta cargar directamente con sufijo de idioma
     return `${basePath}${doc}-${lang}.md`;
   }
 
   addLangSuffix(path: string, lang: string): string {
-    /* Agregar el sufijo de idioma antes de la extensión .md
+    /* Agrega el sufijo de idioma antes de la extensión .md
     Ej: "button.md" -> "button-es.md", "README.md" -> "README-es.md" */
-    // Si ya tiene un sufijo de idioma, reemplazarlo
+    // Si ya tiene un sufijo de idioma, lo reemplaza
     const withoutLang = path.replace(/-[a-z]{2}\.md$/, '.md');
     return withoutLang.replace('.md', `-${lang}.md`);
   }
@@ -277,24 +277,24 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
   extractDocName(path: string): string {
     /* Extrae el nombre del documento de la ruta en el _index.json sin la extensión .md
     Ej: "get-started-es.md" -> "get-started", "README.md" -> "README" */
-    // Primero quitar la extensión .md
+    // Primero quita la extensión .md
     let withoutExt = path.replace(/\.md$/, '');
-    // Luego quitar el sufijo de idioma si existe (ej: -es, -en)
+    // Luego quita el sufijo de idioma si existe (ej: -es, -en)
     withoutExt = withoutExt.replace(/-[a-z]{2}$/, '');
     const parts = withoutExt.split('/');
     return parts[parts.length - 1];
   }
 
   navigateToDoc(path: string, lang: string) {
-    // Extraer el nombre del documento de la ruta
+    // Extrae el nombre del documento de la ruta
     const docName = this.extractDocName(path);
     this.currentDoc = docName;
     
-    // Si hay un callback personalizado, usarlo
+    // Si hay un callback personalizado, lo usa
     if (this.onNavigate) {
       this.onNavigate(path, lang);
     } else {
-      // Cargar el documento directamente
+      // Carga el documento directamente
       this.loadDocument(docName, lang);
     }
   }
@@ -319,7 +319,7 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
     if (!this.indexData) return false;
 
     for (const section of this.indexData.sections) {
-      // Buscar en items simples
+      // Busca en items simples
       if (section.path) {
         const sectionDoc = this.extractDocName(section.path);
         if (sectionDoc === doc) {
@@ -327,7 +327,7 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
         }
       }
       
-      // Buscar en grupos
+      // Busca en grupos
       if (section.items) {
         for (const item of section.items) {
           const itemDoc = this.extractDocName(item.path);

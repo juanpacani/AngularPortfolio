@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-//import { UiIconGithub } from '../../../desing_system/components/attoms/icons/staticIcons/github/github';
-//import { UiIconLinkedin } from '../../../desing_system/components/attoms/icons/staticIcons/linkedin/linkedin';
-//import { UiIconEmail } from '../../../desing_system/components/attoms/icons/staticIcons/email/email';
-//import { ALL_ICONS } from '../../../desing_system/components/attoms/icons/common/all_icons_arrays';
 import { DeviceService } from '../../../core/services/device-service';
 import { NgIf } from '@angular/common';
 import { Icon } from 'catarina';
@@ -19,7 +15,7 @@ export class Contact {
   ) { }
 
   toGithub() {
-    window.open("https://github.com/Hydenaky", "_blank", "noopener,noreferrer");
+    window.open("https://github.com/juanpacani", "_blank", "noopener,noreferrer");
   }
   toLinkedin() {
     window.open("https://www.linkedin.com/in/juan-pablo-ca%C3%B1on-n-b304bb339/", "_blank", "noopener noreferrer");

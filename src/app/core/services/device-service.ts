@@ -19,7 +19,7 @@ export class DeviceService {
       });
     } else {
       // SSR: asigna un valor por defecto o uno configurable
-      this.width.next(1024); // o cualquier tamaño "seguro"
+      this.width.next(1024); // o cualquier tamaño seguro
     }
   }
 

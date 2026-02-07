@@ -2,6 +2,11 @@
 
 The `Drawer` component displays a sliding side panel from any side of the screen.
 
+> **⚠️ Requirement**: This component requires `@angular/cdk@^20.2.14` as a dependency. If you use `Dialog` or `Drawer`, install CDK:
+> ```bash
+> npm install @angular/cdk@^20.2.14
+> ```
+
 ### Import
 
 ```typescript
@@ -48,13 +53,27 @@ export class ExampleComponent {
 - **Close button**: Includes a close button (`x-mark`) in the top corner
 - **Escape to close**: Automatically closes when pressing the `Escape` key
 - **Dark background**: Shows a semi-transparent dark background that also closes the drawer on click
-- **Fixed positioning**: Positioned fixed from the specified side
-- **Responsive**: In vertical orientation (portrait), `top` and `bottom` drawers occupy 70% of the height
+- **CDK Overlay**: Uses Angular CDK Overlay for automatic z-index, scroll, and accessibility management
+- **Scroll blocking**: The body scroll is automatically blocked when the drawer is open
+- **Better accessibility**: Automatic support for focus trap and multiple overlays management
+- **Responsive**: The drawer automatically adapts based on screen size and orientation
 
 ### Sizes by side
 
-- **`left` / `right`**: 30em width, 100vh height
-- **`top` / `bottom`**: 100% width, 20em height (70% in portrait)
+#### Default values
+
+- **`left` / `right`**: 30vw width, 100vh height
+- **`top` / `bottom`**: 100vw width, minimum height of 10em
+
+#### Responsive
+
+**Mobile (portrait, max-width: 600px)**:
+- **`left` / `right`**: 80vw width
+- **`top` / `bottom`**: 70vh height
+
+**Tablet or mobile (landscape, max-width: 1024px)**:
+- **`left` / `right`**: 50vw width
+- **`top` / `bottom`**: 50vh height
 
 ### Examples
 
@@ -106,6 +125,8 @@ export class ExampleComponent {
 ### Notes
 
 - The drawer must be controlled with `*ngIf` or similar to show/hide it
+- The component uses CDK Overlay for rendering outside the main DOM flow
+- Z-index and stacking context are automatically managed by CDK
+- The body scroll is automatically blocked when the drawer is open
 - The close button is absolutely positioned in the top corner
-- The dark background covers the entire screen and has `z-index: 999`
-- The drawer has `z-index: 1000` to be above the background
+- **Version**: Since version 20.3.3, the component uses CDK Overlay instead of manual fixed positioning

@@ -36,7 +36,7 @@ export class CatarinaDocsWrapper implements OnInit, OnDestroy {
       
       this.currentDoc = doc;
       
-      // Si no hay idioma en la ruta, redirigir con el idioma actual
+      // Si no hay idioma en la ruta, redirige con el idioma actual
       if (!lang) {
         const currentLang = this.translate.actualLanguage.toLowerCase();
         this.router.navigate(['/catarina', doc, currentLang], { replaceUrl: true });

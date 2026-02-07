@@ -75,10 +75,10 @@ export class CodeConsole implements AfterViewInit, OnDestroy, OnChanges {
   loadComponent() {
     if (!this.componentContainer || !this.component) return;
 
-    // Limpiar contenedor anterior
+    // Limpia el contenedor anterior
     this.componentContainer.clear();
 
-    // Crear y renderizar el componente dinámicamente
+    // Crea y renderiza el componente dinámicamente
     try {
       this.componentRef = this.componentContainer.createComponent(this.component);
     } catch (error) {

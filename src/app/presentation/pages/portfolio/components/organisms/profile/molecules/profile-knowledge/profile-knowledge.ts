@@ -93,7 +93,7 @@ export class ProfileKnowledge {
     if (!this.pressed) return;
 
     const dx = event.pageX - this.startX;
-    this.slider.scrollLeft = this.startScrollLeft - dx; // ← esto dispara onScroll()
+    this.slider.scrollLeft = this.startScrollLeft - dx;
   }
 
   onMouseUp() {
@@ -112,7 +112,7 @@ export class ProfileKnowledge {
     const slideWidth = this.slider.clientWidth;
     const index = Math.round(scrollLeft / slideWidth);
 
-    //ROUND redondea hacia abajo ceil hacia arriba
+    // ROUND redondea hacia abajo, ceil redondea hacia arriba
     if (index !== this.currentSlide) {
       this.currentSlide = index;
       this.updateActiveNav();

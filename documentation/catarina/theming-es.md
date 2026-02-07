@@ -20,7 +20,7 @@ import { Theming } from 'catarina';
 })
 export class ExampleComponent {
   constructor(private theming: Theming) {
-    // Generar paletas con un color primario y tema
+    // Genera las paletas con un color primario y tema
     this.theming.generatePalettes('#A40000', false); // false = tema claro
   }
 }

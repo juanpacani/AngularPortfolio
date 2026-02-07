@@ -77,13 +77,15 @@ export class Header implements OnInit, OnDestroy {
   downloadCurriculum() {
     if (this.lang === 'ES') {
       window.open(
-        'https://github.com/user-attachments/files/25028527/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        'https://github.com/user-attachments/files/25142517/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        //'https://github.com/user-attachments/files/25028527/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/24846763/ES_JUAN_PABLO_CANON_N._Resume.pdf',
         '_blank'
       );
     } else if (this.lang === 'EN') {
       window.open(
-        'https://github.com/user-attachments/files/25028526/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        'https://github.com/user-attachments/files/25142515/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        //'https://github.com/user-attachments/files/25028526/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/24846762/EN_JUAN_PABLO_CANON_N._Resume.pdf',
         '_blank'
       );

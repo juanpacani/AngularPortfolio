@@ -10,7 +10,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'safirial-icons',
     renderMode: RenderMode.Prerender
   },
-  // Rutas dinámicas de Catarina usan SSR en tiempo de ejecución
+  // Las rutas dinámicas de Catarina usan SSR en tiempo de ejecución
   {
     path: 'catarina',
     renderMode: RenderMode.Server

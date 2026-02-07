@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,6 +23,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.2.14",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
@@ -32,7 +33,7 @@
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.1",
     "@vercel/analytics": "^1.6.1",
-    "catarina": "^20.3.3",
+    "catarina": "^20.3.4",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "safirial-icons": "^1.0.5",

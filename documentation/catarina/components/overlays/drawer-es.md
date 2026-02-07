@@ -2,6 +2,11 @@
 
 El componente `Drawer` muestra un panel lateral deslizante desde cualquier lado de la pantalla.
 
+> **⚠️ Requisito**: Este componente requiere `@angular/cdk@^20.2.14` como dependencia. Si usas `Dialog` o `Drawer`, instala CDK:
+> ```bash
+> npm install @angular/cdk@^20.2.14
+> ```
+
 ### Importación
 
 ```typescript
@@ -48,13 +53,27 @@ export class ExampleComponent {
 - **Botón de cierre**: Incluye un botón de cierre (`x-mark`) en la esquina superior
 - **Cierre con Escape**: Se cierra automáticamente al presionar la tecla `Escape`
 - **Fondo oscuro**: Muestra un fondo oscuro semitransparente que también cierra el drawer al hacer clic
-- **Posicionamiento fijo**: Se posiciona de forma fija desde el lado especificado
-- **Responsive**: En orientación vertical (portrait), los drawers `top` y `bottom` ocupan 70% de la altura
+- **CDK Overlay**: Utiliza Angular CDK Overlay para gestión automática de z-index, scroll y accesibilidad
+- **Bloqueo de scroll**: El scroll del body se bloquea automáticamente cuando el drawer está abierto
+- **Mejor accesibilidad**: Soporte automático para focus trap y gestión de múltiples overlays
+- **Responsive**: El drawer se adapta automáticamente según el tamaño de pantalla y orientación
 
 ### Tamaños por lado
 
-- **`left` / `right`**: 30em de ancho, 100vh de alto
-- **`top` / `bottom`**: 100% de ancho, 20em de alto (70% en portrait)
+#### Valores por defecto
+
+- **`left` / `right`**: 30vw de ancho, 100vh de alto
+- **`top` / `bottom`**: 100vw de ancho, altura mínima de 10em
+
+#### Responsive
+
+**Móviles (portrait, max-width: 600px)**:
+- **`left` / `right`**: 80vw de ancho
+- **`top` / `bottom`**: 70vh de alto
+
+**Tablet o móviles (landscape, max-width: 1024px)**:
+- **`left` / `right`**: 50vw de ancho
+- **`top` / `bottom`**: 50vh de alto
 
 ### Ejemplos
 
@@ -106,6 +125,8 @@ export class ExampleComponent {
 ### Notas
 
 - El drawer debe controlarse con `*ngIf` o similar para mostrarlo/ocultarlo
+- El componente utiliza CDK Overlay para renderizado fuera del flujo del DOM principal
+- El z-index y el stacking context se gestionan automáticamente por CDK
+- El scroll del body se bloquea automáticamente cuando el drawer está abierto
 - El botón de cierre está posicionado absolutamente en la esquina superior
-- El fondo oscuro cubre toda la pantalla y tiene `z-index: 999`
-- El drawer tiene `z-index: 1000` para estar sobre el fondo
+- **Versión**: Desde la versión 20.3.3, el componente utiliza CDK Overlay en lugar de posicionamiento fijo manual

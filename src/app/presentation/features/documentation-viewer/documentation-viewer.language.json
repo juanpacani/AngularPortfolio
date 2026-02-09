@@ -1,0 +1,12 @@
+{
+  "ES": {
+    "title": "404",
+    "message": "Documento no encontrado",
+    "description": "El documento que buscas no existe en la documentación."
+  },
+  "EN": {
+    "title": "404",
+    "message": "Document not found",
+    "description": "The document you are looking for does not exist in the documentation."
+  }
+}

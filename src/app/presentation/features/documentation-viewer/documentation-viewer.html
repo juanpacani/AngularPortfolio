@@ -83,12 +83,12 @@
   }
 
   <!-- Contenido principal -->
-  <main class="docs-content" [ngClass]="scrolleableMain ? 'scrolleable-main' : ''" [class.full-width]="!showIndex">
+  <main #docsContent class="docs-content" [ngClass]="scrolleableMain ? 'scrolleable-main' : ''" [class.full-width]="!showIndex">
     @if (show404) {
       <div class="error-404">
-        <h1>404</h1>
-        <p>Documento no encontrado</p>
-        <p>El documento que buscas no existe en la documentación.</p>
+        <h1>{{ get404Title(currentLang.toUpperCase()) }}</h1>
+        <p>{{ get404Message(currentLang.toUpperCase()) }}</p>
+        <p>{{ get404Description(currentLang.toUpperCase()) }}</p>
       </div>
     } @else {
       <div #markdownContent class="markdown-content" [innerHTML]="renderedContent"></div>

@@ -9,6 +9,7 @@ import { DeviceService } from '../../../core/services/device-service';
 import { Button, Drawer } from 'catarina';
 import { CodeConsole } from '../../pages/catarina/components/docs-examples/code-console/code-console';
 import { getExampleComponent } from '../../pages/catarina/components/docs-examples/example-components/example-components.registry';
+import documentationViewerLanguages from './documentation-viewer.language.json';
 
 interface SectionItem {
   title: string;
@@ -50,6 +51,7 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
   drawerActive: boolean = false;
   
   @ViewChild('markdownContent', { read: ElementRef }) markdownContent!: ElementRef;
+  @ViewChild('docsContent', { read: ElementRef }) docsContent!: ElementRef<HTMLElement>;
   
   private languageSubscription?: Subscription;
   private exampleComponentRefs: Map<HTMLElement, ComponentRef<CodeConsole>> = new Map();
@@ -139,6 +141,7 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
     if (!this.documentExists(doc)) {
       console.error(`Document not found: ${doc}`);
       this.show404 = true;
+      this.scrollToTop();
       return;
     }
 
@@ -157,6 +160,9 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
           const html = MarkdownProcessor.process(markdown);
           this.renderedContent = this.sanitizer.bypassSecurityTrustHtml(html);
           
+          // Resetea el scroll al principio
+          this.scrollToTop();
+          
           // Procesa los placeholders de ejemplo después de un pequeño delay para que el DOM se actualice
           setTimeout(() => this.processExamplePlaceholders(), 0);
         },
@@ -165,6 +171,7 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
           console.error('Attempted path:', docPath);
           // Muestra el 404 en lugar del error
           this.show404 = true;
+          this.scrollToTop();
         }
       });
   }
@@ -290,6 +297,9 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
     const docName = this.extractDocName(path);
     this.currentDoc = docName;
     
+    // Resetea el scroll antes de navegar
+    this.scrollToTop();
+    
     // Si hay un callback personalizado, lo usa
     if (this.onNavigate) {
       this.onNavigate(path, lang);
@@ -339,5 +349,42 @@ export class DocumentationViewer implements OnInit, OnDestroy, AfterViewInit, On
     }
     
     return false;
+  }
+
+  /**
+   * Resetea el scroll del contenedor principal al principio
+   */
+  private scrollToTop() {
+    // Resetea el scroll del contenedor principal al principio
+    if (typeof document !== 'undefined' && this.docsContent?.nativeElement) {
+      const element = this.docsContent.nativeElement;
+      // Usa scrollTop para compatibilidad con todos los navegadores
+      if (element.scrollTo) {
+        element.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        element.scrollTop = 0;
+      }
+    }
+  }
+
+  /**
+   * Obtiene el título del error 404 según el idioma
+   */
+  get404Title(lang: string): string {
+    return (documentationViewerLanguages as any)[lang]?.title ?? '404';
+  }
+
+  /**
+   * Obtiene el mensaje del error 404 según el idioma
+   */
+  get404Message(lang: string): string {
+    return (documentationViewerLanguages as any)[lang]?.message ?? 'Document not found';
+  }
+
+  /**
+   * Obtiene la descripción del error 404 según el idioma
+   */
+  get404Description(lang: string): string {
+    return (documentationViewerLanguages as any)[lang]?.description ?? 'The document you are looking for does not exist in the documentation.';
   }
 }

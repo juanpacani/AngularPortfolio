@@ -75,6 +75,10 @@ The theming system generates the following CSS variables:
 ### Element colors
 - `--element-color-0` to `--element-color-4`: Colors for interface elements
 
+### Palettes visualization
+
+<example name="theming-palettes"></example>
+
 ## Examples
 
 ### Change theme

@@ -27,6 +27,8 @@ import { DrawerExample } from './overlay/drawer-example.component';
 import { MenuExample } from './overlay/menu-example.component';
 // Directive Examples
 import { DragExample } from './directive/drag-example.component';
+// Theming Examples
+import { ThemingPalettesExample } from './theming/theming-palettes-example.component';
 
 /**
  * Registro de componentes de ejemplo
@@ -60,7 +62,9 @@ export const EXAMPLE_COMPONENTS: Map<string, Type<any>> = new Map([
   ['menu', MenuExample],
   // Directive Examples
   ['drag', DragExample],
-]);
+  // Theming Examples
+  ['theming-palettes', ThemingPalettesExample],
+] as Array<[string, Type<any>]>);
 
 /**
  * Obtiene un componente de ejemplo por su nombre

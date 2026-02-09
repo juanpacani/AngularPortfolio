@@ -1,0 +1,42 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .dist {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .dist>mol-profile-basic-data {
+        margin-top: 5%;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (orientation: portrait) and (max-width: 600px) {
+    .container {
+        margin-top: 5%;
+    }
+
+    .dist {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .dist>mol-profile-basic-data {
+        margin-top: 5%;
+        align-self: center;
+    }
+
+    /* .dist>mol-profile-picture {
+            max-width: 70%;
+        } */
+}

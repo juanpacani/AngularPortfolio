@@ -1,0 +1,306 @@
+
+// Sección de ejemplos
+.examples-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    gap: 3rem;
+    margin-top: 7rem;
+    padding: 5rem 1rem;
+    box-sizing: border-box;
+    z-index: 2;
+    background-color: var(--neutral-color-0);
+}
+
+.examples-container {
+    width: 90%;
+    aspect-ratio: 16 / 9;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--neutral-color-1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--primary-color-2);
+    overflow: auto;
+    box-sizing: border-box;
+
+    // Personalizar scrollbar con colores neutros
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--neutral-color-0);
+        border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--neutral-color-4);
+        border-radius: 6px;
+        border: 2px solid var(--neutral-color-0);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--neutral-color-5);
+    }
+
+    // Para Firefox
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-color-4) var(--neutral-color-0);
+}
+
+.examples-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color-2);
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+// Barra de herramientas
+.toolbar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    background-color: var(--neutral-color-2);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+
+    .search-input {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    cat-select-input {
+        min-width: 150px;
+    }
+}
+
+// Grid de estadísticas
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+cat-card[data-card-class="stat-card"] {
+    ::ng-deep {
+        .card {
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--neutral-color-7);
+    margin: 0;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color-2);
+    margin: 0;
+}
+
+// Cards de contenido
+.content-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+cat-card[data-card-class="content-card"] {
+    ::ng-deep {
+        .card {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            h4 {
+                margin: 0;
+                font-size: 1.3rem;
+                color: var(--primary-color-2);
+                font-weight: 600;
+            }
+
+            p {
+                color: var(--neutral-color-8);
+                line-height: 1.6;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+// Vista Mobile Emulada
+.mobile-example {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+}
+
+.mobile-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 3px solid var(--primary-color-2);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-header {
+    background-color: var(--primary-color-2);
+    color: var(--neutral-color-0);
+    padding: 1rem;
+    text-align: center;
+
+    h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+}
+
+.mobile-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--neutral-color-1);
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // Personalizar scrollbar con colores neutros
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--neutral-color-0);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--neutral-color-4);
+        border-radius: 4px;
+        border: 1px solid var(--neutral-color-0);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--neutral-color-5);
+    }
+
+    // Para Firefox
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-color-4) var(--neutral-color-0);
+}
+
+.mobile-search {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+cat-card[data-card-class="mobile-stat-card"] {
+    width: 100%;
+
+    ::ng-deep {
+        .card {
+            padding: 1rem;
+        }
+    }
+}
+
+.mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+cat-card[data-card-class="mobile-content-card"] {
+    width: 100%;
+
+    ::ng-deep {
+        .card {
+            padding: 1.5rem;
+
+            h4 {
+                margin: 0 0 0.5rem 0;
+                font-size: 1.2rem;
+                color: var(--primary-color-2);
+                font-weight: 600;
+            }
+
+            p {
+                color: var(--neutral-color-8);
+                line-height: 1.6;
+                margin: 0 0 1rem 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1028px) {
+    .examples-section {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .examples-section {
+        flex-direction: column;
+    }
+}

@@ -8,7 +8,7 @@ import { Contact } from '../../../../../features/contact/contact';
   selector: 'org-profile',
   imports: [ProfilePicture, ProfileBasicData, ProfileKnowledge, Contact],
   templateUrl: './profile.html',
-  styles: ``
+  styleUrl: './profile.scss'
 })
 export class Profile {
 

@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-dynamic-background-feature',
   imports: [Button],
   templateUrl: `dynamic-background-feature.html`,
-  styles: ``
+  styleUrl: 'dynamic-background-feature.scss'
 })
 export class DynamicBackgroundFeature implements AfterViewInit, OnDestroy {
   backgroundImagesUrl: string = '/multimedia/images/backgrounds/';
@@ -45,8 +45,9 @@ export class DynamicBackgroundFeature implements AfterViewInit, OnDestroy {
 
   setImagesLinks() {
     this.images = [
-      this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '0.svg',
       this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '1.svg',
+      this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '2.svg',
+      this.backgroundImagesUrl + (this.activeTheme ? 'night' : 'day') + '3.svg', //Non background
     ];
   }
 

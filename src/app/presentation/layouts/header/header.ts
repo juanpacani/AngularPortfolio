@@ -23,6 +23,7 @@ export class Header implements OnInit, OnDestroy {
   darkTheme: boolean = true;
   colorHex: string = '#16709c';//#93a2a9
   private themeSub: Subscription | undefined;
+  private colorSub: Subscription | undefined;
 
   //Lang Vars
   langOptions: string[] = [];
@@ -44,7 +45,8 @@ export class Header implements OnInit, OnDestroy {
       this.lang = e;
       this.updateLanguages(e);
     });
-    this.themeSub = this.theming.activeTheme$.subscribe(e => this.darkTheme = e)
+    this.themeSub = this.theming.activeTheme$.subscribe(e => this.darkTheme = e);
+    this.colorSub = this.theming.allPalettes$.subscribe(e => this.colorHex = this.rgbToHex(e[0][0]));
   };
 
   ngOnDestroy(): void {
@@ -103,5 +105,23 @@ export class Header implements OnInit, OnDestroy {
 
   toSafirialIcons() {
     this.router.navigate(['/safirial-icons']);
+  }
+
+
+  //Auxiliar
+  private rgbToHex(rgb: string): string {
+    // Converts RGB string to hex format
+    // RGB format: "rgb(153, 0, 2)" or "153, 0, 2"
+    const rgbMatch = rgb.match(/\d+/g);
+    if (rgbMatch && rgbMatch.length === 3) {
+      const r = parseInt(rgbMatch[0], 10);
+      const g = parseInt(rgbMatch[1], 10);
+      const b = parseInt(rgbMatch[2], 10);
+      return `#${[r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      }).join('')}`;
+    }
+    return rgb;
   }
 }

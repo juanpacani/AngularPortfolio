@@ -1,0 +1,89 @@
+<style>
+    :host {
+        position: relative;
+    }
+
+    cat-button[data-button-class="visivility-button"] {
+        position: absolute;
+        right: 0;
+        z-index: 2;
+
+        ::ng-deep button {
+            color: white;
+        }
+
+    }
+
+    .picture {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        position: relative;
+    }
+
+    .picture>img {
+        position: absolute;
+        top: 0;
+        left: -0.5%;
+        width: 89%;
+        border-bottom-left-radius: 120px;
+        border-bottom-right-radius: 200px;
+        /*box-shadow: inset 0 -150px 0px rgba(0, 0, 0, 0.6);*/
+    }
+
+    .picture>svg {
+        width: 100%;
+        height: 30em;
+    }
+
+    @media screen and (orientation: portrait) and (max-width: 600px) {
+        .picture {
+            width: 80%;
+        }
+
+        .picture>img {
+            top: 16%;
+            width: 80.9%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .picture {
+            width: 80%;
+        }
+
+        .picture>img {
+            top: 10%;
+            left: -0.5%;
+            width: 90%
+        }
+    }
+</style>
+<cat-button customClass="visivility-button" variant="ghost" [iconCenter]="visivility ? 'eye-slash' : 'eye'"
+    (clicked)="changeVisibility()"></cat-button>
+<div class="picture" [style.opacity]="visivility ? '' : '0'">
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; 
+                image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 14008.5 18217.93">
+        <defs>
+            <style type="text/css">
+                .str0 {
+                    stroke-width: 99.97;
+                    stroke-miterlimit: 22.9256;
+                }
+
+                .fil0 {
+                    fill: var(--primary-color-0);
+                    stroke: var(--primary-color-1);
+                    opacity: 0.7;
+                }
+            </style>
+        </defs>
+        <g id="Capa_x0020_1">
+            <path class="fil0 str0"
+                d="M1188.67 6242.92c0,0 4206.85,-5624.92 4774.09,-5908.53 567.24,-283.6 1701.65,-519.95 2552.49,141.8 850.84,661.75 4963.21,5388.58 5152.27,5719.47 189.05,330.89 614.49,1181.73 -141.81,2127.08 -756.3,945.35 -6901.16,9831.8 -6901.16,9831.8l-6570.31 -3119.72 1134.44 -8791.9z" />
+        </g>
+    </svg>
+    <img src="multimedia/images/photo.png" alt="">
+</div>

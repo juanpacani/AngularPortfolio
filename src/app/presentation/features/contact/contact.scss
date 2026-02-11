@@ -13,7 +13,7 @@
         position: fixed;
         bottom: 1em;
         right: 1em;
-        z-index: 1000;
+        z-index: 1;
     }
 
     .contact-card>div {
@@ -36,7 +36,7 @@
     @media screen and (orientation: portrait) and (max-width: 600px) {
         .contact-card {
             position: fixed;
-            bottom: 60%;
+            bottom: 50%;
             left: 60%;
             max-width: 2.4em;
             left: auto;

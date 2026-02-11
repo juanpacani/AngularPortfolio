@@ -1,29 +1,28 @@
   @media (max-width: 768px) {
-    .overview-container {
-      background-color: var(--neutral-color-0);
-    }
-  
     .overview-content {
       padding-top: 2rem;
-      background-color: var(--neutral-color-0);
     }
-  
+
+    .card-content {
+      padding: 0;
+    }
+
     .title {
       font-size: 2.5rem;
     }
-  
+
     .subtitle {
       font-size: 1rem;
     }
-  
+
     .examples-container {
       width: 95%;
       padding: 1.5rem;
     }
-  
+
     .toolbar {
       flex-direction: column;
-  
+
       .search-input,
       cat-select-input {
         width: 100%;
@@ -31,13 +30,18 @@
         box-sizing: border-box;
       }
     }
-  
+
     .stats-grid {
       grid-template-columns: 1fr;
     }
-  
+
     .mobile-example {
       max-width: 100%;
       aspect-ratio: 9 / 16;
+    }
+
+    // Tarjeta principal
+    cat-card[data-card-class="main-card"] {
+      margin: 2em;
     }
   }

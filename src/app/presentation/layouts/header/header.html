@@ -8,6 +8,10 @@
         <cat-button (clicked)="downloadCurriculum()" variant="contrast">{{downloadCV}}</cat-button>
         <cat-button variant="contrast" (clicked)="toggleTheme()"
             [iconCenter]="darkTheme ? 'sun' : 'moon'"></cat-button>
+        
+        @if (deviceService.isMobile) {
+            <div class="theme-buttons-separator"></div>
+        }
 
         <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
 

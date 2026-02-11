@@ -80,6 +80,7 @@ cat-button:not(.active) {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color-2) var(--primary-color-3);
     box-sizing: border-box;
+    color: white;
 }
 
 .code-block {

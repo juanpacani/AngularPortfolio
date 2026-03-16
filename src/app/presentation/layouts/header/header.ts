@@ -1,4 +1,14 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import languages from './header.language.json';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +21,7 @@ import { DeviceService } from '../../../core/services/device-service';
   selector: 'app-header',
   imports: [FormsModule, Button, SelectInput, ColorInput, Menu],
   templateUrl: './header.html',
-  styleUrl: './header.scss'
+  styleUrl: './header.scss',
 })
 export class Header implements OnInit, OnDestroy {
   //DOM VARS
@@ -21,7 +31,7 @@ export class Header implements OnInit, OnDestroy {
 
   //Theming Vars Light Theme = False
   darkTheme: boolean = true;
-  colorHex: string = '#16709c';//#93a2a9
+  colorHex: string = '#16709c'; //#93a2a9
   private themeSub: Subscription | undefined;
   private colorSub: Subscription | undefined;
 
@@ -38,37 +48,39 @@ export class Header implements OnInit, OnDestroy {
   ) {
     //Language
     this.langOptions = translateService.languageMap;
-  };
+  }
 
   ngOnInit() {
-    this.languageSubscription = this.translateService.language$.subscribe(e => {
+    this.languageSubscription = this.translateService.language$.subscribe((e) => {
       this.lang = e;
       this.updateLanguages(e);
     });
-    this.themeSub = this.theming.activeTheme$.subscribe(e => this.darkTheme = e);
-    this.colorSub = this.theming.allPalettes$.subscribe(e => this.colorHex = this.rgbToHex(e[0][0]));
-  };
+    this.themeSub = this.theming.activeTheme$.subscribe((e) => (this.darkTheme = e));
+    this.colorSub = this.theming.allPalettes$.subscribe(
+      (e) => (this.colorHex = this.rgbToHex(e[0][0])),
+    );
+  }
 
   ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
     this.themeSub?.unsubscribe();
-  };
+  }
 
   //Theming Events
   toggleTheme(): void {
     this.darkTheme = !this.darkTheme;
     this.theming.calculateDynamicPalettes(this.darkTheme);
-  };
+  }
 
   onColorChange(hex: string) {
     this.theming.calculatePrimaryColor(this.colorHex);
-  };
+  }
 
   //Language Events
   async toggleLanguage(language: string) {
     if (!this.lang) return;
     await this.translateService.toggleLanguaje(this.lang);
-  };
+  }
 
   updateLanguages(lang: string) {
     this.title = (languages as any)[lang]?.title ?? '';
@@ -79,17 +91,19 @@ export class Header implements OnInit, OnDestroy {
   downloadCurriculum() {
     if (this.lang === 'ES') {
       window.open(
-        'https://github.com/user-attachments/files/25142517/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        'https://github.com/juanpacani/AngularPortfolio/releases/download/0.1.0/ES_JUAN_PABLO_CANON_N._Resume.pdf',
+        //'https://github.com/user-attachments/files/25142517/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/25028527/ES_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/24846763/ES_JUAN_PABLO_CANON_N._Resume.pdf',
-        '_blank'
+        '_blank',
       );
     } else if (this.lang === 'EN') {
       window.open(
-        'https://github.com/user-attachments/files/25142515/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
+        'https://github.com/juanpacani/AngularPortfolio/releases/download/0.1.0/EN_JUAN_PABLO_CANON_N._Resume.pdf',
+        //'https://github.com/user-attachments/files/25142515/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/25028526/EN_JUAN_PABLO_CANON_N._Resume.pdf.pdf',
         //'https://github.com/user-attachments/files/24846762/EN_JUAN_PABLO_CANON_N._Resume.pdf',
-        '_blank'
+        '_blank',
       );
     }
   }
@@ -107,7 +121,6 @@ export class Header implements OnInit, OnDestroy {
     this.router.navigate(['/safirial-icons']);
   }
 
-
   //Auxiliar
   private rgbToHex(rgb: string): string {
     // Converts RGB string to hex format
@@ -117,10 +130,12 @@ export class Header implements OnInit, OnDestroy {
       const r = parseInt(rgbMatch[0], 10);
       const g = parseInt(rgbMatch[1], 10);
       const b = parseInt(rgbMatch[2], 10);
-      return `#${[r, g, b].map(x => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-      }).join('')}`;
+      return `#${[r, g, b]
+        .map((x) => {
+          const hex = x.toString(16);
+          return hex.length === 1 ? '0' + hex : hex;
+        })
+        .join('')}`;
     }
     return rgb;
   }

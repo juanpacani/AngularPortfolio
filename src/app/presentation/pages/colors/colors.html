@@ -1,0 +1,13 @@
+<div class="colors-container">
+    @for (color of primaryColors; track $index) {
+        <div class="color" [style.background-color]="color"></div>
+    }
+    <div class="br"></div>
+    @for (color of elementColors; track $index) {
+        <div class="color" [style.background-color]="color"></div>
+    }
+    <div class="br"></div>
+    @for (color of neutralColors; track $index) {
+        <div class="color" [style.background-color]="color"></div>
+    }
+</div>

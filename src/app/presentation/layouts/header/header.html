@@ -1,21 +1,35 @@
 <cat-menu class="cat-menu">
-    <cat-button (clicked)="toHome()" iconLeft="home">Home</cat-button>
-    <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
-    <cat-button (clicked)="toSafirialIcons()">Safirial Icons</cat-button>
+  <h1 style="margin: 0; text-shadow: 10px 10px 2px var(--neutral-color-0)">Juan Pablo C. N.</h1>
+  <!--<cat-button (clicked)="toHome()" iconLeft="home">Home</cat-button>
+       <cat-button (clicked)="toCatarinaPreview()">Catarina</cat-button>
+    <cat-button (clicked)="toSafirialIcons()">Safirial Icons</cat-button> -->
 
-    <!-- Theme buttons -->
-    <div class="theme-buttons">
-        <cat-button (clicked)="downloadCurriculum()" variant="contrast">{{downloadCV}}</cat-button>
-        <cat-button variant="contrast" (clicked)="toggleTheme()"
-            [iconCenter]="darkTheme ? 'sun' : 'moon'"></cat-button>
-        
-        @if (deviceService.isMobile) {
-            <div class="theme-buttons-separator"></div>
-        }
+  <!-- Theme buttons -->
+  <div class="theme-buttons">
+    <cat-button (clicked)="downloadCurriculum()" variant="contrast">{{ downloadCV }}</cat-button>
+    <cat-button
+      variant="contrast"
+      (clicked)="toggleTheme()"
+      [iconCenter]="darkTheme ? 'sun' : 'moon'"
+    ></cat-button>
 
-        <cat-color-input [icon]="true" [(ngModel)]="colorHex" (ngModelChange)="onColorChange($event)"></cat-color-input>
+    @if (deviceService.isMobile) {
+      <div class="theme-buttons-separator"></div>
+    }
 
-        <cat-select-input variant="elevated" class="static-select" [(ngModel)]="lang" (ngModelChange)="toggleLanguage($event)"
-            type="string" [options]="langOptions"></cat-select-input>
-    </div>
+    <cat-color-input
+      [icon]="true"
+      [(ngModel)]="colorHex"
+      (ngModelChange)="onColorChange($event)"
+    ></cat-color-input>
+
+    <cat-select-input
+      variant="elevated"
+      class="static-select"
+      [(ngModel)]="lang"
+      (ngModelChange)="toggleLanguage($event)"
+      type="string"
+      [options]="langOptions"
+    ></cat-select-input>
+  </div>
 </cat-menu>

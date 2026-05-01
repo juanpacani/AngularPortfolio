@@ -113,13 +113,13 @@ export class Header implements OnInit, OnDestroy {
     this.router.navigate(['/portfolio']);
   }
 
-  toCatarinaPreview() {
+  /*toCatarinaPreview() {
     this.router.navigate(['/catarina']);
   }
 
   toSafirialIcons() {
     this.router.navigate(['/safirial-icons']);
-  }
+  }*/
 
   //Auxiliar
   private rgbToHex(rgb: string): string {
